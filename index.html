@@ -8,7 +8,7 @@
 --accent:#00cfff;--accent-r:0,207,255;--zoom:1;--tb:36px}
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",system-ui,sans-serif}
 html,body{height:100%}
-body{background:var(--bg);color:var(--text);display:flex;overflow:hidden;padding-top:var(--tb)}
+body{background:var(--bg);color:var(--text);display:flex;overflow:hidden}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#2a3140;border-radius:8px}
 .muted{color:var(--muted)}
 .titlebar{position:fixed;top:0;left:0;right:0;height:var(--tb);background:rgba(10,13,18,.95);
@@ -21,7 +21,7 @@ cursor:pointer;font-size:13px;transition:.15s;display:flex;align-items:center;ju
 .tb-btn:hover{background:rgba(255,255,255,.08);color:var(--text)}
 .tb-btn.close:hover{background:#e81123;color:#fff}
 #side{width:88px;min-width:88px;background:#0a0d12;border-right:1px solid #1c2230;
-display:flex;flex-direction:column;align-items:center;padding:12px 0;height:calc(100vh - var(--tb))}
+display:flex;flex-direction:column;align-items:center;padding:12px 0;height:100vh}
 #logo svg{width:28px;height:28px}
 #nav{display:flex;flex-direction:column;gap:4px;width:100%;margin-top:8px;flex:1}
 .nav{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;
@@ -506,6 +506,351 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 .mobile-nav {
   display: none;
 }
+/* ============ MOBİL UYUMLULUK ============ */
+
+/* Tablet (768px - 1024px arası) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #side {
+    width: 70px;
+    min-width: 70px;
+  }
+  
+  .navAd {
+    font-size: 8px;
+  }
+  
+  .navIkon svg {
+    width: 26px;
+    height: 26px;
+  }
+  
+  #view {
+    padding: 20px;
+  }
+}
+
+/* Telefon (768px altı) */
+@media (max-width: 768px) {
+  /* Sidebar'ı gizle, hamburger menü ile açılsın */
+  #side {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    z-index: 1000;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  }
+  
+  #side.open {
+    left: 0;
+  }
+  
+  /* Hamburger menü butonu */
+  .mobile-menu-btn {
+    display: flex !important;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 999;
+    width: 44px;
+    height: 44px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  /* Sidebar açıldığında arka plan karartsın */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+  
+  /* Ana içerik tam genişlik */
+  #main {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  #view {
+    padding: 70px 16px 100px; /* üstte hamburger, altta nav için boşluk */
+  }
+  
+  /* Header düzenle */
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  
+  h1 {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+  
+  /* Toolbar'ı dikey yap */
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  #arama {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+  
+  .chips {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .chip {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  /* Kartları tek sütun yap */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  
+  .card {
+    border-radius: 14px;
+  }
+  
+  .body h3 {
+    font-size: 16px;
+  }
+  
+  /* Modal'ları tam ekran yap */
+  .modal {
+    padding: 0;
+  }
+  
+  .modalBox {
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .modalHero {
+    height: 220px;
+  }
+  
+  .modalPoster {
+    width: 120px;
+    height: 160px;
+  }
+  
+  .modalInfo h2 {
+    font-size: 20px;
+  }
+  
+  /* Butonları büyüt (dokunma dostu) */
+  .btn {
+    padding: 12px 18px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  .actions {
+    padding: 40px 12px 12px;
+  }
+  
+  .actions button {
+    padding: 10px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+  
+  /* Alt navigasyon (mobil standart) */
+  .mobile-nav {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+    z-index: 998;
+    justify-content: space-around;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  }
+  
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: color 0.2s;
+    min-width: 60px;
+  }
+  
+  .mobile-nav-item.active {
+    color: var(--accent);
+  }
+  
+  .mobile-nav-item svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  /* FormWrap'ı mobil uyumlu */
+  #formWrap {
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  
+  #formWrap form {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Ayarlar sayfası mobil */
+  #ayarlarSayfa {
+    padding: 16px;
+  }
+  
+  /* Login ekranı mobil */
+  #loginScreen {
+    padding: 16px;
+  }
+  
+  #loginScreen > div {
+    padding: 28px 20px;
+  }
+  
+  /* Profil menüsü mobil */
+  .profile-menu {
+    bottom: 80px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+  
+  /* Dizi/oyun modal'ları */
+  .sezonTabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .sezonTab {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+  
+  .epExpandedContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .epImage {
+    max-height: 200px;
+  }
+  
+  /* Cast grid mobil */
+  .castGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .castCard {
+    padding: 8px;
+  }
+  
+  .castCard img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .castCard .castName {
+    font-size: 11px;
+  }
+  
+  .castCard .castRole {
+    font-size: 10px;
+  }
+  
+  /* Benzer içerik grid */
+  .benzerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Küçük telefonlar (375px altı - iPhone SE gibi) */
+@media (max-width: 375px) {
+  h1 {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  
+  .mobile-nav-item {
+    padding: 8px 8px;
+    min-width: 50px;
+  }
+  
+  .mobile-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .mobile-nav-item span {
+    font-size: 9px;
+  }
+  
+  .castGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Başlangıçta gizli olan mobil elementler */
+.mobile-menu-btn {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -525,6 +870,47 @@ const db = firebase.firestore();
 </script>
 </head>
 <body>
+ <!-- MOBİL OVERLAY (sidebar açıkken arka planı karartır) -->
+<div class="sidebar-overlay" onclick="closeMobileMenu()"></div>
+
+<!-- MOBİL HAMBURGER MENÜ BUTONU -->
+<button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menü">☰</button>
+
+<!-- MOBİL ALT NAVİGASYON -->
+<nav class="mobile-nav">
+  <div class="mobile-nav-item active" data-cat="oyunlar" onclick="mobileNav('oyunlar', this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/>
+      <line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/>
+      <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/>
+    </svg>
+    <span>Oyunlar</span>
+  </div>
+  <div class="mobile-nav-item" data-cat="filmler" onclick="mobileNav('filmler', this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/>
+      <path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/>
+      <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>
+      <path d="m10 15 4 2.5-4 2.5Z"/>
+    </svg>
+    <span>Filmler</span>
+  </div>
+  <div class="mobile-nav-item" data-cat="diziler" onclick="mobileNav('diziler', this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="20" height="15" x="2" y="7" rx="2"/>
+      <polyline points="17 2 12 7 7 2"/>
+      <path d="m10 12 4 2.5-4 2.5Z"/>
+    </svg>
+    <span>Diziler</span>
+  </div>
+  <div class="mobile-nav-item" onclick="mobileNav('ayarlar', this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+    <span>Ayarlar</span>
+  </div>
+</nav>
   <!-- MOBİL MENÜ BUTONU -->
 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
 
@@ -574,14 +960,6 @@ const db = firebase.firestore();
 <button id="loginBtn" onclick="loginWithCredentials()" style="width:100%;padding:13px;background:var(--accent);color:#061016;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Giriş Yap</button>
 <button id="registerBtn" onclick="registerWithUsername()" style="display:none;width:100%;padding:13px;background:var(--accent);color:#061016;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Kayıt Ol</button>
 <button id="toggleModeBtn" onclick="toggleRegisterMode()" style="width:100%;padding:13px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:10px;font-size:14px;font-weight:700;cursor:pointer">Hesabım Yok, Kayıt Ol</button>
-</div>
-</div>
-<div class="titlebar">
-<span class="tb-title">NEONHUB LAUNCHER</span>
-<div class="tb-controls">
-<button class="tb-btn" onclick="win('minimize')" title="Küçült">—</button>
-<button class="tb-btn" onclick="win('maximize')" title="Tam Ekran">▢</button>
-<button class="tb-btn close" onclick="win('close')" title="Kapat">✕</button>
 </div>
 </div>
 <aside id="side">
@@ -3053,6 +3431,81 @@ function mobileNav(cat) {
 // Sayfa yüklendiğinde mobil kontrol
 if (window.innerWidth <= 768) {
   console.log('📱 Mobil görünüm aktif');
+}
+// ============ MOBİL MENÜ SİSTEMİ ============
+function toggleMobileMenu() {
+  const side = document.getElementById('side');
+  const overlay = document.querySelector('.sidebar-overlay');
+  side.classList.toggle('open');
+  overlay.classList.toggle('active');
+}
+
+function closeMobileMenu() {
+  const side = document.getElementById('side');
+  const overlay = document.querySelector('.sidebar-overlay');
+  side.classList.remove('open');
+  overlay.classList.remove('active');
+}
+
+function mobileNav(target, element) {
+  // Aktif sınıfı güncelle
+  document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  if (element) element.classList.add('active');
+  
+  // Hedefe git
+  if (target === 'ayarlar') {
+    ayarlarSayfasAc();
+  } else {
+    switchCat(target);
+  }
+  
+  // Mobil menüyü kapat (eğer açıksa)
+  closeMobileMenu();
+}
+
+// Sayfa yüklendiğinde aktif kategoriyi alt nav'da işaretle
+function updateMobileNavActive(cat) {
+  document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    const itemCat = item.getAttribute('data-cat');
+    item.classList.toggle('active', itemCat === cat);
+  });
+}
+
+// switchCat fonksiyonunu mobil nav ile senkronize et
+const _originalSwitchCatMobile = switchCat;
+switchCat = function(k) {
+  _originalSwitchCatMobile(k);
+  updateMobileNavActive(k);
+};
+
+// Ayarlar açıldığında alt nav'da "Ayarlar" aktif olsun
+const _originalAyarlariAc = ayarlarSayfasAc;
+ayarlarSayfasAc = function() {
+  _originalAyarlariAc();
+  document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    item.classList.remove('active');
+    if (item.onclick && item.onclick.toString().includes("'ayarlar'")) {
+      item.classList.add('active');
+    }
+  });
+};
+
+// Escape tuşu mobil menüyü de kapatsın
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeMobileMenu();
+  }
+});
+
+// Mobil algılama ve log
+if (window.innerWidth <= 768) {
+  console.log('📱 Mobil görünüm aktif');
+} else if (window.innerWidth <= 1024) {
+  console.log('📱 Tablet görünüm aktif');
+} else {
+  console.log('💻 Masaüstü görünüm aktif');
 }
 </script>
 </body>

@@ -40,7 +40,7 @@ filter:drop-shadow(0 0 3px rgba(var(--cr),.9)) drop-shadow(0 0 10px rgba(var(--c
 .navAd{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--muted)}
 .nav.active .navAd{color:var(--c);text-shadow:0 0 8px rgba(var(--cr),.6)}
 #surum{font-size:9px;color:#4a5262;letter-spacing:1px;padding:8px 0}
-#main{flex:1;overflow-y:auto;height:calc(100vh - var(--tb));
+#main{flex:1;overflow-y:auto;height:100vh;
 background:radial-gradient(1100px 380px at 75% -10%, rgba(var(--accent-r),.07), transparent)}
 #view{padding:24px 30px 40px;animation:giris .28s ease both}
 @keyframes giris{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -611,7 +611,7 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
   }
   
   #view {
-    padding: 70px 16px 100px; /* üstte hamburger, altta nav için boşluk */
+    padding: 70px 16px 140px; /* alt navigasyon + güvenli alan */
   }
   
   /* Header düzenle */
@@ -882,8 +882,9 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 
 .grid.list-view .card {
   flex-direction: row;
-  height: 90px;
-  overflow: hidden;
+  min-height: 80px;
+  max-height: none;
+  overflow: visible;
 }
 
 .grid.list-view .card .cover {
@@ -1010,6 +1011,16 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
   .view-toggle button {
     width: 40px;
     height: 36px;
+  }
+  /* Scroll garantisi */
+  body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  #view {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
+    min-height: 100vh;
   }
 }
 </style>

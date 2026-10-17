@@ -407,11 +407,32 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
     flex-shrink: 0;
   }
   
-  /* Kartları tek sütun yap */
-  .grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px;
-  }
+  /* Kartları 2 sütun yap (daha küçük) */
+.grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px;
+}
+
+.grid .card .body {
+  padding: 8px 10px 10px;
+}
+
+.grid .card .body h3 {
+  font-size: 13px;
+}
+
+.grid .card .meta {
+  font-size: 10px;
+}
+
+.grid .card .rating {
+  font-size: 12px;
+}
+
+.grid .card .time,
+.grid .card .bolumInfo {
+  font-size: 10px;
+}
   
   .card {
     border-radius: 12px;
@@ -853,6 +874,144 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 .sidebar-overlay {
   display: none;
 }
+/* ============ LİSTE GÖRÜNÜMÜ ============ */
+.grid.list-view {
+  grid-template-columns: 1fr !important;
+  gap: 8px;
+}
+
+.grid.list-view .card {
+  flex-direction: row;
+  height: 90px;
+  overflow: hidden;
+}
+
+.grid.list-view .card .cover {
+  width: 70px;
+  min-width: 70px;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.grid.list-view .card .cover .cap {
+  position: absolute;
+  inset: 0;
+}
+
+.grid.list-view .card .letter {
+  font-size: 28px;
+}
+
+.grid.list-view .card .body {
+  flex: 1;
+  padding: 10px 12px;
+  justify-content: center;
+  min-width: 0;
+}
+
+.grid.list-view .card .body h3 {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.grid.list-view .card .meta {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.grid.list-view .card .row {
+  margin-top: 2px;
+}
+
+.grid.list-view .card .rating,
+.grid.list-view .card .time,
+.grid.list-view .card .bolumInfo {
+  font-size: 11px;
+}
+
+.grid.list-view .card .badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  top: 4px;
+  right: 4px;
+}
+
+.grid.list-view .card .favori {
+  font-size: 14px;
+  top: 4px;
+  left: 4px;
+}
+
+.grid.list-view .card .progress {
+  height: 3px;
+}
+
+.grid.list-view .card .actions {
+  padding: 8px;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  transform: translateY(100%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent, rgba(5,8,12,.95));
+  padding-top: 20px;
+}
+
+.grid.list-view .card:hover .actions {
+  transform: translateY(0);
+}
+
+/* Toggle butonu stili */
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.view-toggle button {
+  width: 36px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.view-toggle button:hover {
+  color: var(--text);
+}
+
+.view-toggle button.active {
+  background: var(--accent);
+  color: #061016;
+  box-shadow: 0 0 10px rgba(var(--accent-r), 0.4);
+}
+
+.view-toggle button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Mobil için toggle butonu */
+@media (max-width: 768px) {
+  .view-toggle button {
+    width: 40px;
+    height: 36px;
+  }
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -993,7 +1152,28 @@ style="filter:drop-shadow(0 0 6px rgba(0,207,255,.55))"/>
 <button id="ekleBtn" class="btn solid" onclick="formAc()">+ OYUN EKLE</button>
 </header>
 <div class="toolbar">
-<input id="arama" placeholder="Oyun ara..." oninput="render()">
+  <input id="arama" placeholder="Oyun ara..." oninput="render()">
+  
+  <!-- GÖRÜNÜM DEĞİŞTİRME BUTONU -->
+  <div class="view-toggle">
+    <button id="viewGrid" class="active" onclick="setView('grid')" title="Kart görünümü">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+    </button>
+    <button id="viewList" onclick="setView('list')" title="Liste görünümü">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+        <line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/>
+        <line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div id="chips" class="chips"></div>
+</div>
 <div id="chips" class="chips"></div>
 </div>
 <div id="formWrap"></div>
@@ -3509,6 +3689,54 @@ if (window.innerWidth <= 768) {
 } else {
   console.log('💻 Masaüstü görünüm aktif');
 }
+// ============ GÖRÜNÜM DEĞİŞTİRME ============
+let currentView = store('neonHub_view') || 'grid';
+
+function setView(view) {
+  currentView = view;
+  store('neonHub_view', view);
+  
+  const grid = $('grid');
+  const gridBtn = $('viewGrid');
+  const listBtn = $('viewList');
+  
+  if (view === 'list') {
+    grid.classList.add('list-view');
+    gridBtn.classList.remove('active');
+    listBtn.classList.add('active');
+  } else {
+    grid.classList.remove('list-view');
+    gridBtn.classList.add('active');
+    listBtn.classList.remove('active');
+  }
+  
+  render();
+}
+
+// Sayfa yüklendiğinde tercihi uygula
+(function initView() {
+  const grid = $('grid');
+  const gridBtn = $('viewGrid');
+  const listBtn = $('viewList');
+  
+  if (currentView === 'list') {
+    grid.classList.add('list-view');
+    gridBtn.classList.remove('active');
+    listBtn.classList.add('active');
+  }
+})();
+
+// render() fonksiyonunu görünüm tercihine göre güncelle
+const _originalRender = render;
+render = function() {
+  _originalRender();
+  // Liste görünümünde grid'i yeniden uygula
+  if (currentView === 'list') {
+    $('grid').classList.add('list-view');
+  } else {
+    $('grid').classList.remove('list-view');
+  }
+};
 </script>
 </body>
 </html>

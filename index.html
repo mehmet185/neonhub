@@ -408,10 +408,18 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
     flex-shrink: 0;
   }
   
-  /* Kartları 2 sütun yap (daha küçük) */
+/* Kartları 2 sütun yap - FLEXBOX (garanti çalışır) */
 .grid {
-  grid-template-columns: repeat(2, 1fr) !important;
+  display: flex !important;
+  flex-wrap: wrap;
   gap: 10px;
+  grid-template-columns: none !important;
+}
+
+.grid .card {
+  width: calc(50% - 5px);
+  flex-shrink: 0;
+  height: auto;
 }
 
 .grid .card .body {
@@ -612,8 +620,7 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
   }
   
   #view {
-    padding: 70px 16px 160px;
-    min-height: 100%;
+    padding: 70px 16px 120px;
   }
   
   /* Header düzenle */
@@ -1037,21 +1044,6 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
   #view {
     padding-bottom: calc(140px + env(safe-area-inset-bottom));
     min-height: 100vh;
-  }
-    /* Grid'in son elemanına güvenli alan */
-  .grid {
-    padding-bottom: 20px;
-  }
-  
-  .grid::after {
-    content: "";
-    display: block;
-    height: 40px;
-  }
-  
-  /* List view için ekstra padding */
-  .grid.list-view {
-    padding-bottom: 30px;
   }
 }
 </style>

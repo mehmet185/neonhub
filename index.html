@@ -3849,6 +3849,18 @@ render = function() {
     $('grid').classList.remove('list-view');
   }
 };
+// GEÇİCİ DEBUG - boşluk yaratan elemanı bul (sonra sileceğiz)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const renkler = ['red', 'lime', 'yellow', 'magenta', 'orange', 'cyan'];
+    document.querySelectorAll('#view > *').forEach((el, i) => {
+      el.style.outline = '3px solid ' + renkler[i % renkler.length];
+    });
+    document.querySelectorAll('#grid > *').forEach((el, i) => {
+      el.style.outline = '2px dashed ' + renkler[(i + 2) % renkler.length];
+    });
+  }, 1500);
+});
 </script>
 </body>
 </html>

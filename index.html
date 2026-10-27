@@ -41,8 +41,7 @@ filter:drop-shadow(0 0 3px rgba(var(--cr),.9)) drop-shadow(0 0 10px rgba(var(--c
 .navAd{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--muted)}
 .nav.active .navAd{color:var(--c);text-shadow:0 0 8px rgba(var(--cr),.6)}
 #surum{font-size:9px;color:#4a5262;letter-spacing:1px;padding:8px 0}
-#main{flex:1;overflow-y:auto;overflow-x:hidden;height:100vh;
--webkit-overflow-scrolling:touch;
+#main{flex:1;overflow-y:auto;overflow-x:hidden;height:100vh;-webkit-overflow-scrolling:touch;
 background:radial-gradient(1100px 380px at 75% -10%, rgba(var(--accent-r),.07), transparent)}
 #view{padding:24px 30px 40px;animation:giris .28s ease both}
 @keyframes giris{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -230,8 +229,7 @@ box-shadow:0 0 12px rgba(var(--accent-r),.4)}
 .sezonTab .miniProgress{position:absolute;bottom:0;left:4px;right:4px;height:2px;background:rgba(0,0,0,.3);border-radius:1px}
 .sezonTab .miniProgressBar{height:100%;background:var(--accent);border-radius:1px;transition:width .3s}
 .epList{display:flex;flex-direction:column;gap:8px}
-.ep{background:var(--card);border:1px solid var(--line);border-radius:10px;
-transition:.2s;overflow:hidden}
+.ep{background:var(--card);border:1px solid var(--line);border-radius:10px;transition:.2s;overflow:hidden}
 .ep:hover{border-color:rgba(var(--accent-r),.5)}
 .ep.watched{background:rgba(var(--accent-r),.08);border-color:rgba(var(--accent-r),.3)}
 .ep.next{border-color:var(--accent);background:rgba(var(--accent-r),.12);
@@ -276,8 +274,7 @@ color:var(--muted);font-size:12px}
 .epFullSummary{font-size:13px;line-height:1.6;color:var(--text)}
 .epCrewGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
 .epCrew{background:var(--card);padding:8px 10px;border-radius:8px;border:1px solid var(--line)}
-.epCrew label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;
-margin-bottom:3px;display:block}
+.epCrew label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;display:block}
 .epCrew .value{font-size:12px;color:var(--text);font-weight:600}
 .epWatchInfo{display:flex;align-items:center;gap:8px;padding:8px 10px;
 background:rgba(var(--accent-r),.1);border:1px solid rgba(var(--accent-r),.3);
@@ -286,21 +283,17 @@ border-radius:8px;font-size:12px;color:var(--accent);margin-top:8px}
 .epLoading,.sezonEmpty,.modalEmpty{text-align:center;padding:30px;color:var(--muted);font-size:13px}
 .sezonActions{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
 .sezonActions button{padding:7px 12px;font-size:12px}
-.sezonProgress{flex:1;min-width:150px;height:6px;background:rgba(0,0,0,.4);border-radius:3px;
-overflow:hidden;margin:0 8px}
-.sezonProgressBar{height:100%;background:var(--accent);box-shadow:0 0 6px var(--accent);
-transition:width .4s ease}
+.sezonProgress{flex:1;min-width:150px;height:6px;background:rgba(0,0,0,.4);border-radius:3px;overflow:hidden;margin:0 8px}
+.sezonProgressBar{height:100%;background:var(--accent);box-shadow:0 0 6px var(--accent);transition:width .4s ease}
 .diziNoId{text-align:center;padding:40px;color:var(--muted)}
 .diziNoId h3{color:var(--accent);margin-bottom:10px;font-size:18px}
 .benzerBaslik{font-size:13px;font-weight:700;color:var(--accent);margin:20px 0 12px;
 letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
 .benzerBaslik:first-child{margin-top:0}
-.benzerBaslik::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px;
-box-shadow:0 0 6px var(--accent)}
+.benzerBaslik::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px;box-shadow:0 0 6px var(--accent)}
 .castGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:12px}
 .castCard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
-.castCard img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 8px;display:block;
-border:2px solid var(--line)}
+.castCard img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 8px;display:block;border:2px solid var(--line)}
 .castCard .castName{font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px;
 white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .castCard .castRole{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -319,6 +312,9 @@ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn-tamamlandi:hover{background:#00cfff !important;color:#061016 !important;box-shadow:0 0 14px rgba(0,207,255,.6) !important}
 .btn-oyna{background:rgba(255,225,77,.15) !important;border-color:#ffe14d !important;color:#ffe14d !important;font-weight:700 !important;box-shadow:0 0 8px rgba(255,225,77,.3) !important}
 .btn-oyna:hover{background:#ffe14d !important;color:#061016 !important;box-shadow:0 0 14px rgba(255,225,77,.6) !important}
+.btn-kabul{background:#4ade80 !important;border-color:#4ade80 !important;color:#061016 !important}
+.btn-reddet{background:rgba(255,90,60,.15) !important;border-color:#ff5a3c !important;color:#ff5a3c !important}
+.btn-iptal{background:rgba(255,176,32,.15) !important;border-color:#ffb020 !important;color:#ffb020 !important}
 .profile-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
 width:100%;padding:14px 6px;cursor:pointer;background:transparent;color:var(--muted);
 border:none;border-top:1px solid var(--line);margin-top:0;transition:background .2s;flex-shrink:0}
@@ -344,102 +340,95 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 -webkit-app-region:no-drag !important;
 }
 #arama:focus{box-shadow:0 0 0 2px rgba(var(--accent-r),.3)}
-
-/* ============ MOBİL UYUMLULUK ============ */
 .mobile-menu-btn,.mobile-nav,.sidebar-overlay{display:none}
 .sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999}
 .sidebar-overlay.active{display:block}
-
 @media (max-width: 1024px) and (min-width: 769px) {
-  #side{width:70px;min-width:70px}
-  .navAd{font-size:8px}
-  .navIkon svg{width:26px;height:26px}
-  #view{padding:20px}
+#side{width:70px;min-width:70px}
+.navAd{font-size:8px}
+.navIkon svg{width:26px;height:26px}
+#view{padding:20px}
 }
-
 @media (max-width: 768px) {
-  #side{position:fixed;left:-100%;top:0;z-index:1000;width:80%;max-width:300px;height:100vh;
-  transition:left 0.3s ease;box-shadow:2px 0 10px rgba(0,0,0,0.5)}
-  #side.open{left:0}
-  .mobile-menu-btn{display:flex !important;position:fixed;top:16px;left:16px;z-index:999;
-  width:44px;height:44px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
-  align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:var(--accent);
-  box-shadow:0 4px 12px rgba(0,0,0,0.3)}
-  #main{width:100%;margin-left:0}
-  #view{padding:70px 16px 120px}
-  header{flex-direction:column;align-items:stretch;gap:12px;margin-bottom:14px}
-  h1{font-size:22px;letter-spacing:3px}
-  .toolbar{flex-direction:column;align-items:stretch;gap:10px;margin-bottom:8px}
-  #arama{width:100%;font-size:15px;padding:12px 14px}
-  .chips{overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px;-webkit-overflow-scrolling:touch}
-  .chip{flex-shrink:0;padding:8px 14px;font-size:13px}
-  .modal{padding:0}
-  .modalBox{max-width:100%;max-height:100vh;height:100vh;border-radius:0}
-  .modalHero{height:220px}
-  .modalPoster{width:120px;height:160px}
-  .modalInfo h2{font-size:20px}
-  .btn{padding:12px 18px;font-size:14px;min-height:44px}
-  .actions{padding:40px 12px 12px}
-  .actions button{padding:10px;font-size:13px;min-height:40px}
-  .mobile-nav{display:flex !important;position:fixed;bottom:0;left:0;right:0;
-  background:var(--panel);border-top:1px solid var(--line);
-  padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:998;
-  justify-content:space-around;box-shadow:0 -2px 10px rgba(0,0,0,0.3)}
-  .mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;
-  padding:8px 12px;cursor:pointer;color:var(--muted);transition:color 0.2s;min-width:60px}
-  .mobile-nav-item.active{color:var(--accent)}
-  .mobile-nav-item svg{width:22px;height:22px;stroke:currentColor}
-  .mobile-nav-item span{font-size:10px;font-weight:600;letter-spacing:0.5px}
-  #formWrap{padding:16px;border-radius:12px;margin-bottom:16px}
-  #formWrap form{grid-template-columns:1fr}
-  #ayarlarSayfa{padding:16px}
-  #loginScreen{padding:16px}
-  #loginScreen > div{padding:28px 20px}
-  .profile-menu{bottom:80px;left:16px;right:16px;width:auto}
-  .sezonTabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
-  .sezonTab{flex-shrink:0;font-size:12px;padding:7px 12px}
-  .epExpandedContent{grid-template-columns:1fr}
-  .epImage{max-height:200px}
-  .castGrid{grid-template-columns:repeat(3,1fr);gap:8px}
-  .castCard{padding:8px}
-  .castCard img{width:60px;height:60px}
-  .castCard .castName{font-size:11px}
-  .castCard .castRole{font-size:10px}
-  .benzerGrid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .view-toggle{padding:2px;order:3}
-  .view-toggle button{width:40px;height:36px}
-  .grid:not(.list-view){display:grid !important;grid-template-columns:repeat(2,1fr) !important;
-  gap:10px !important;height:auto !important;min-height:0 !important;padding:0 !important}
-  .grid:not(.list-view) .card{width:100% !important;height:auto !important;min-height:0 !important}
-  .grid:not(.list-view) .card .cover{aspect-ratio:16/9 !important;height:auto !important}
-  .grid.list-view{display:flex !important;flex-direction:column !important;gap:8px !important;
-  height:auto !important;min-height:0 !important;padding:0 !important}
-  .grid.list-view .card{width:100% !important;flex-direction:row !important;height:90px !important;
-  min-height:90px !important;max-height:90px !important;overflow:hidden !important}
-  .grid.list-view .card .cover{width:70px !important;min-width:70px !important;
-  height:100% !important;aspect-ratio:auto !important}
-  .grid.list-view .card .letter{font-size:26px !important}
-  .grid.list-view .card .body{flex:1 !important;padding:8px 10px !important;justify-content:center !important}
-  .grid.list-view .card .body h3{font-size:14px !important}
-  .grid.list-view .card .meta{font-size:11px !important}
-  .grid.list-view .card .badge{font-size:9px !important;padding:2px 6px !important}
-  #view .card{animation:none !important;opacity:1 !important;transform:none !important}
-  #view{padding-top:60px !important}
-  header{margin-bottom:10px !important;min-height:0 !important}
-  .toolbar{margin-bottom:10px !important}
-  #formWrap{margin-bottom:10px !important}
-  #grid{margin-top:0 !important;padding-top:0 !important}
+#side{position:fixed;left:-100%;top:0;z-index:1000;width:80%;max-width:300px;height:100vh;
+transition:left 0.3s ease;box-shadow:2px 0 10px rgba(0,0,0,0.5)}
+#side.open{left:0}
+.mobile-menu-btn{display:flex !important;position:fixed;top:16px;left:16px;z-index:999;
+width:44px;height:44px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:var(--accent);
+box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+#main{width:100%;margin-left:0}
+#view{padding:70px 16px 120px}
+header{flex-direction:column;align-items:stretch;gap:12px;margin-bottom:14px}
+h1{font-size:22px;letter-spacing:3px}
+.toolbar{flex-direction:column;align-items:stretch;gap:10px;margin-bottom:8px}
+#arama{width:100%;font-size:15px;padding:12px 14px}
+.chips{overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.chip{flex-shrink:0;padding:8px 14px;font-size:13px}
+.modal{padding:0}
+.modalBox{max-width:100%;max-height:100vh;height:100vh;border-radius:0}
+.modalHero{height:220px}
+.modalPoster{width:120px;height:160px}
+.modalInfo h2{font-size:20px}
+.btn{padding:12px 18px;font-size:14px;min-height:44px}
+.actions{padding:40px 12px 12px}
+.actions button{padding:10px;font-size:13px;min-height:40px}
+.mobile-nav{display:flex !important;position:fixed;bottom:0;left:0;right:0;
+background:var(--panel);border-top:1px solid var(--line);
+padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:998;
+justify-content:space-around;box-shadow:0 -2px 10px rgba(0,0,0,0.3)}
+.mobile-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;
+padding:8px 12px;cursor:pointer;color:var(--muted);transition:color 0.2s;min-width:60px}
+.mobile-nav-item.active{color:var(--accent)}
+.mobile-nav-item svg{width:22px;height:22px;stroke:currentColor}
+.mobile-nav-item span{font-size:10px;font-weight:600;letter-spacing:0.5px}
+#formWrap{padding:16px;border-radius:12px;margin-bottom:16px}
+#formWrap form{grid-template-columns:1fr}
+#ayarlarSayfa{padding:16px}
+#loginScreen{padding:16px}
+#loginScreen > div{padding:28px 20px}
+.profile-menu{bottom:80px;left:16px;right:16px;width:auto}
+.sezonTabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+.sezonTab{flex-shrink:0;font-size:12px;padding:7px 12px}
+.epExpandedContent{grid-template-columns:1fr}
+.epImage{max-height:200px}
+.castGrid{grid-template-columns:repeat(3,1fr);gap:8px}
+.castCard{padding:8px}
+.castCard img{width:60px;height:60px}
+.castCard .castName{font-size:11px}
+.castCard .castRole{font-size:10px}
+.benzerGrid{grid-template-columns:repeat(2,1fr);gap:10px}
+.view-toggle{padding:2px;order:3}
+.view-toggle button{width:40px;height:36px}
+.grid:not(.list-view){display:grid !important;grid-template-columns:repeat(2,1fr) !important;
+gap:10px !important;height:auto !important;min-height:0 !important;padding:0 !important}
+.grid:not(.list-view) .card{width:100% !important;height:auto !important;min-height:0 !important}
+.grid:not(.list-view) .card .cover{aspect-ratio:16/9 !important;height:auto !important}
+.grid.list-view{display:flex !important;flex-direction:column !important;gap:8px !important;
+height:auto !important;min-height:0 !important;padding:0 !important}
+.grid.list-view .card{width:100% !important;flex-direction:row !important;height:90px !important;
+min-height:90px !important;max-height:90px !important;overflow:hidden !important}
+.grid.list-view .card .cover{width:70px !important;min-width:70px !important;
+height:100% !important;aspect-ratio:auto !important}
+.grid.list-view .card .letter{font-size:26px !important}
+.grid.list-view .card .body{flex:1 !important;padding:8px 10px !important;justify-content:center !important}
+.grid.list-view .card .body h3{font-size:14px !important}
+.grid.list-view .card .meta{font-size:11px !important}
+.grid.list-view .card .badge{font-size:9px !important;padding:2px 6px !important}
+#view .card{animation:none !important;opacity:1 !important;transform:none !important}
+#view{padding-top:60px !important}
+header{margin-bottom:10px !important;min-height:0 !important}
+.toolbar{margin-bottom:10px !important}
+#formWrap{margin-bottom:10px !important}
+#grid{margin-top:0 !important;padding-top:0 !important}
 }
-
 @media (max-width: 375px) {
-  h1{font-size:18px;letter-spacing:2px}
-  .mobile-nav-item{padding:8px 8px;min-width:50px}
-  .mobile-nav-item svg{width:20px;height:20px}
-  .mobile-nav-item span{font-size:9px}
-  .castGrid{grid-template-columns:repeat(2,1fr)}
+h1{font-size:18px;letter-spacing:2px}
+.mobile-nav-item{padding:8px 8px;min-width:50px}
+.mobile-nav-item svg{width:20px;height:20px}
+.mobile-nav-item span{font-size:9px}
+.castGrid{grid-template-columns:repeat(2,1fr)}
 }
-
-/* ============ LİSTE GÖRÜNÜMÜ ============ */
 .grid.list-view{grid-template-columns:1fr !important;gap:8px}
 .grid.list-view .card{flex-direction:row;min-height:80px;max-height:none;overflow:visible}
 .grid.list-view .card .cover{width:70px;min-width:70px;aspect-ratio:auto;height:100%}
@@ -457,18 +446,13 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 transform:translateY(100%);position:absolute;left:0;right:0;bottom:0;
 background:linear-gradient(180deg,transparent,rgba(5,8,12,.95));padding-top:20px}
 .grid.list-view .card:hover .actions{transform:translateY(0)}
-
 .view-toggle{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);
 border-radius:10px;padding:4px}
 .view-toggle button{width:36px;height:32px;border:none;background:transparent;color:var(--muted);
-border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-transition:all 0.2s}
+border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
 .view-toggle button:hover{color:var(--text)}
-.view-toggle button.active{background:var(--accent);color:#061016;
-box-shadow:0 0 10px rgba(var(--accent-r),0.4)}
+.view-toggle button.active{background:var(--accent);color:#061016;box-shadow:0 0 10px rgba(var(--accent-r),0.4)}
 .view-toggle button svg{width:16px;height:16px;stroke:currentColor;fill:none}
-
-/* ============ DASHBOARD V18 TEMASI (Light Glass) ============ */
 :root{--bg:#eef0f5;--panel:#ffffff;--card:#ffffff;--text:#17171c;--muted:#82828c;--line:#e6e6ee}
 ::-webkit-scrollbar-thumb{background:#d4d4de}
 body{background:radial-gradient(900px 400px at 80% -10%,rgba(var(--accent-r),.10),transparent),var(--bg)}
@@ -562,8 +546,6 @@ padding:0;box-shadow:none;font-size:12px;letter-spacing:1px}
 #logo{width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
 .profile-btn{width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;margin-top:4px}
 }
-
-/* ============ KOYU TEMA ============ */
 html[data-theme="dark"]{--bg:#0d0f14;--panel:#151a23;--card:#1b212c;--text:#e9edf3;--muted:#8a93a3;--line:#262d3a}
 html[data-theme="dark"] body{background:radial-gradient(1100px 380px at 75% -10%,rgba(var(--accent-r),.07),transparent),var(--bg)}
 html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#2a3140}
@@ -606,8 +588,6 @@ html[data-theme="dark"] .profile-menu{background:var(--panel);border-color:var(-
 html[data-theme="dark"] .mobile-nav{background:var(--panel);border-color:var(--line)}
 html[data-theme="dark"] .mobile-menu-btn{background:var(--panel);border-color:var(--line)}
 html[data-theme="dark"] .sidebar-overlay{background:rgba(0,0,0,.6)}
-
-/* ============ STEAM MODAL ============ */
 .steamListe{display:flex;flex-direction:column;gap:8px;max-height:52vh;overflow-y:auto;padding-right:4px}
 .steamSatir{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
 border-radius:12px;padding:8px 12px;cursor:pointer;transition:.15s}
@@ -622,6 +602,106 @@ background:rgba(74,222,128,.15);color:#4ade80;white-space:nowrap}
 .steamSatir.ekli{opacity:.55}
 .steamUst{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 #steamProxyInput{display:none !important}
+#profilSayfa{display:none;animation:giris .28s ease both}
+#profilSayfa.open{display:block}
+.profilHero{display:flex;align-items:center;gap:28px;padding:32px 36px;
+background:linear-gradient(135deg, var(--card), var(--panel));
+border:1px solid var(--line);border-radius:20px;margin-bottom:20px;
+box-shadow:0 12px 30px rgba(0,0,0,.15);position:relative;overflow:hidden}
+.profilHero::before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;
+border-radius:50%;background:radial-gradient(circle,rgba(var(--accent-r),.2),transparent 70%)}
+.profilAvatarWrap{position:relative;flex-shrink:0;z-index:1}
+.profilAvatar{width:120px;height:120px;border-radius:50%;
+background:linear-gradient(135deg,var(--accent),rgba(var(--accent-r),.5));
+display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;
+color:#fff;box-shadow:0 10px 24px rgba(var(--accent-r),.4);overflow:hidden;
+border:3px solid rgba(var(--accent-r),.3);cursor:pointer;transition:.2s}
+.profilAvatar:hover{transform:scale(1.03);box-shadow:0 12px 28px rgba(var(--accent-r),.5)}
+.profilAvatar img{width:100%;height:100%;object-fit:cover}
+.profilAvatarOverlay{position:absolute;inset:0;border-radius:50%;
+background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;
+opacity:0;transition:.2s;pointer-events:none;color:#fff;font-size:28px}
+.profilAvatarWrap:hover .profilAvatarOverlay{opacity:1}
+.profilInfo{flex:1;min-width:0;z-index:1}
+.profilAd{font-size:28px;font-weight:800;margin-bottom:6px;color:var(--text);letter-spacing:.5px}
+.profilEmail{font-size:14px;color:var(--muted);margin-bottom:8px;word-break:break-all}
+.profilMeta{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px}
+.profilMeta b{color:var(--accent)}
+.profilRozetler{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.profilRozet{display:inline-flex;align-items:center;gap:4px;
+padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;
+background:rgba(var(--accent-r),.1);border:1px solid rgba(var(--accent-r),.3);color:var(--accent)}
+.profilGrid{display:grid;grid-template-columns:1fr 1.5fr;gap:16px;margin-bottom:16px}
+.kutuphaneOzet{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.kutuphaneBaslik{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--accent);
+text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.kutuphaneBaslik::before{content:"";width:3px;height:12px;background:var(--accent);border-radius:2px}
+.ozetSatir{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ozetSatir:last-child{border-bottom:none}
+.ozetIkon{font-size:22px;width:34px;text-align:center}
+.ozetBilgi{flex:1;display:flex;flex-direction:column;gap:2px}
+.ozetUstSatir{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.ozetSayi{font-size:18px;font-weight:800;color:var(--text)}
+.ozetSure{font-size:13px;font-weight:700;color:var(--accent);white-space:nowrap}
+.ozetEtiket{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.ozetToplam{margin-top:12px;padding-top:12px;border-top:2px solid var(--line);
+display:flex;align-items:center;justify-content:space-between}
+.ozetToplam .etiket{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.ozetToplam .deger{font-size:18px;font-weight:800;color:var(--accent)}
+.arkadasKutu{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.arkadasBaslik{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--accent);
+text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.arkadasBaslik .cnt{background:var(--accent);color:#061016;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:800}
+.arkadasBaslik::before{content:"";width:3px;height:12px;background:var(--accent);border-radius:2px}
+.arkadasArama{display:flex;gap:8px;margin-bottom:12px}
+.arkadasArama input{flex:1}
+.arkadasArama button{flex-shrink:0}
+.arkadasAramaSonuc{margin-bottom:10px}
+.arkadasGrid{display:flex;flex-direction:column;gap:2px}
+.arkadasIsimSatir{padding:8px 12px;cursor:pointer;border-radius:8px;transition:.15s;
+font-size:14px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px}
+.arkadasIsimSatir:hover{background:rgba(var(--accent-r),.08)}
+.arkadasMenu button:hover{background:rgba(var(--accent-r),.1)}
+.istekKutu{background:rgba(var(--accent-r),.03);border:1px solid rgba(var(--accent-r),.15);
+border-radius:10px;padding:10px;margin-bottom:12px}
+.istekKutu.bekleyen{background:rgba(255,225,77,.04);border-color:rgba(255,225,77,.2)}
+.istekBaslik{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--muted);
+text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.istekBaslik .cnt{background:var(--accent);color:#061016;padding:1px 6px;border-radius:999px;font-size:9px}
+.istekSatir{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.istekSatir:last-child{border-bottom:none}
+.istekSatir .simge{width:32px;height:32px;border-radius:50%;
+background:linear-gradient(135deg,rgba(var(--accent-r),.3),rgba(var(--accent-r),.1));
+display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+.istekSatir .bilgi{flex:1;min-width:0}
+.istekSatir .ad{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.istekSatir .alt{font-size:10px;color:var(--muted)}
+.istekSatir .butonlar{display:flex;gap:4px}
+.istekSatir .butonlar button{padding:4px 8px;font-size:10px}
+.aramaSonucSatir{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--panel);
+border:1px solid var(--line);border-radius:8px;margin-bottom:6px}
+.aramaSonucSatir .simge{width:36px;height:36px;border-radius:50%;
+background:linear-gradient(135deg,rgba(var(--accent-r),.3),rgba(var(--accent-r),.1));
+display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+.editableField{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+padding:4px 10px;border-radius:8px;transition:.15s}
+.editableField:hover{background:rgba(var(--accent-r),.1)}
+.editableField .editIcon{font-size:12px;opacity:.6;transition:.15s}
+.editableField:hover .editIcon{opacity:1;color:var(--accent)}
+.usernameEditWrap{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.usernameEditWrap input{font-size:22px;font-weight:800;padding:8px 12px;
+background:var(--panel);border:2px solid var(--accent);border-radius:8px;
+color:var(--text);min-width:200px}
+.usernameEditWrap button{padding:8px 14px;font-size:12px}
+.usernameDurum{font-size:11px;margin-top:6px;min-height:16px}
+@media (max-width: 768px) {
+.profilGrid{grid-template-columns:1fr}
+.profilHero{flex-direction:column;text-align:center;padding:24px;gap:16px}
+.profilAvatar{width:100px;height:100px;font-size:40px}
+.profilAd{font-size:22px}
+.profilMeta{justify-content:center}
+.usernameEditWrap input{font-size:18px;min-width:160px}
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -677,7 +757,6 @@ const db = firebase.firestore();
     <span>Ayarlar</span>
   </div>
 </nav>
-
 <div id="loginScreen" style="position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px">
   <div style="background:var(--panel);padding:40px;border-radius:20px;max-width:420px;width:100%;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)">
     <div style="text-align:center;margin-bottom:24px">
@@ -707,7 +786,6 @@ const db = firebase.firestore();
     <button id="toggleModeBtn" onclick="toggleRegisterMode()" style="width:100%;padding:13px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:10px;font-size:14px;font-weight:700;cursor:pointer">Hesabım Yok, Kayıt Ol</button>
   </div>
 </div>
-
 <aside id="side">
   <div id="logo" title="NeonHub">
     <svg viewBox="0 0 24 24" fill="none">
@@ -730,7 +808,6 @@ const db = firebase.firestore();
     <button onclick="logout()" class="logout-btn">🚪 Çıkış Yap</button>
   </div>
 </aside>
-
 <main id="main">
   <div id="view">
     <header>
@@ -762,7 +839,6 @@ const db = firebase.firestore();
     <div id="ayarlarSayfa" style="display:none"></div>
   </div>
 </main>
-
 <div class="modal" id="diziModal">
   <div class="modalBox" style="max-width:1000px">
     <div class="modalHero">
@@ -808,7 +884,6 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
-
 <div class="modal" id="oyunModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -855,7 +930,6 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
-
 <div class="modal" id="filmModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -898,7 +972,6 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
-
 <div class="modal" id="onizlemeModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -920,9 +993,8 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
-
 <script>
-// ============ YARDIMCI ============
+// ============ YARDIMCI FONKSİYONLAR ============
 async function cloudYukle(collection, docId, data) {
   if (!auth.currentUser) return;
   try {
@@ -939,7 +1011,6 @@ async function cloudSil(collection, docId) {
       .delete();
   } catch(e) { console.error('Cloud delete hatası:', e); }
 }
-
 async function setPersistenceFromCheckbox() {
   const remember = document.getElementById('beniHatirla').checked;
   await auth.setPersistence(remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION);
@@ -1004,6 +1075,8 @@ async function registerWithUsername() {
     await db.collection('users').doc(userId).collection('profile').doc('info').set({
       username: username, email: email, createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
+    store('neonHub_username', username);
+    store('neonHub_kayitTarihi', new Date().toISOString());
     alert('✅ Kayıt başarılı! Hoş geldin ' + username);
   } catch(e) {
     if (e.code === 'auth/email-already-in-use') alert('❌ Bu email zaten kayıtlı');
@@ -1060,7 +1133,6 @@ function win(action){
     else if(action==='close') window.electronAPI.close();
   }
 }
-
 document.addEventListener('keydown', e=>{
   if(e.key==='F11'){
     e.preventDefault();
@@ -1076,7 +1148,6 @@ const SVG = {
   filmler:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="m10 15 4 2.5-4 2.5Z"/></svg>',
   diziler:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2"/><polyline points="17 2 12 7 7 2"/><path d="m10 12 4 2.5-4 2.5Z"/></svg>'
 };
-
 const ALAN = {
   tur:(ph="Tür")=>({k:"tur",ad:"Tür",ph}),
   puan:(ph="8.5")=>({k:"puan",ad:"Puan (0-10)",tip:"sayi",ph}),
@@ -1086,7 +1157,6 @@ const ALAN = {
   select:(k,ad,sec)=>({k,ad,tip:"select",sec}),
   metin:(k,ad,ph)=>({k,ad,ph})
 };
-
 const KAT = {
   oyunlar:{
     ad:"OYUNLAR", ek:"+ OYUN EKLE", renk:"#00cfff", rgb:"0,207,255",
@@ -1141,7 +1211,6 @@ const KAT = {
     sag:o=>o.sezon?o.sezon+" Sezon":""
   }
 };
-
 const RENKLER = {
   varsayilan:{ad:"Varsayılan", renk:null},
   cyan:{ad:"Cyan",renk:"#00cfff",rgb:"0,207,255"},
@@ -1153,11 +1222,9 @@ const RENKLER = {
   mor:{ad:"Mor",renk:"#a855f7",rgb:"168,85,247"},
   pembe:{ad:"Pembe",renk:"#ff4d9d",rgb:"255,77,157"}
 };
-
 const $=id=>document.getElementById(id);
 const store=(k,v)=>v===undefined?localStorage.getItem(k):localStorage.setItem(k,v);
 const json=(k,def)=>{try{return JSON.parse(store(k))||def}catch(e){return def}};
-
 let aktifCat="oyunlar", duzenlenenId=null, sonucCache=[], araTimer;
 let aktifDiziId=null, aktifOyunId=null, aktifFilmId=null;
 let onizlemeData=null;
@@ -1173,13 +1240,11 @@ const diziFavoriler=json("neonHub_diziFavoriler",{});
 const oyunRAWGCache={};
 const filmOMDbCache={};
 const diziTVMazeCache={};
-
 for(const k in KAT){
   let v=json(KAT[k].depo, null);
   if(!v && KAT[k].eskiDepo) v=json(KAT[k].eskiDepo, []);
   VERI[k]=v||[];
 }
-
 const temiz=s=>String(s).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 const temizHTML=s=>{
   if(!s) return "";
@@ -1192,7 +1257,6 @@ const bolumRengi=k=>{
   const key=bolumTemalari[k];
   return (key&&RENKLER[key]?.renk)?RENKLER[key]:{renk:KAT[k].renk,rgb:KAT[k].rgb};
 };
-
 function sureFormat(runtimeStr){
   if(!runtimeStr || runtimeStr==="N/A") return "";
   const min = parseInt(runtimeStr);
@@ -1201,6 +1265,12 @@ function sureFormat(runtimeStr){
   if(h>0 && m>0) return `${h} saat ${m} dk`;
   if(h>0) return `${h} saat`;
   return `${m} dk`;
+}
+function formatDk(dk){
+  const h=Math.floor(dk/60), m=dk%60;
+  if(h>0&&m>0) return h+' sa '+m+' dk';
+  if(h>0) return h+' sa';
+  return m+' dk';
 }
 function tarihFormatla(isoString){
   if(!isoString) return "";
@@ -1246,7 +1316,6 @@ async function apiFetch(url, timeout=8000){
     throw e;
   }
 }
-
 const API = {
   rawgKey:()=>(store("neonHub_rawgKey")||"").trim(),
   omdbKey:()=>(store("neonHub_omdbKey")||"").trim(),
@@ -1265,7 +1334,6 @@ const API = {
   },
   tvmaze:path=>apiFetch(`https://api.tvmaze.com${path}`)
 };
-
 function temaUygula(){
   const t=bolumRengi(aktifCat);
   document.documentElement.style.setProperty("--accent",t.renk);
@@ -1386,7 +1454,6 @@ function ayarlarSayfasAc(){
   if(hb) hb.textContent=u?("Giriş: "+u.email):"Giriş yapılmadı";
   s.style.animation="none"; void s.offsetWidth; s.style.animation="giris .28s ease both";
 }
-
 function buildNav(){
   $("nav").innerHTML=Object.entries(KAT).map(([k,c])=>`
     <button class="nav" data-cat="${k}" onclick="switchCat('${k}')">
@@ -1394,9 +1461,10 @@ function buildNav(){
     </button>`).join("");
   navRenkleri();
 }
-
 function switchCat(k){
   ayarlarGizle();
+  const s = $('profilSayfa');
+  if(s) s.classList.remove('open');
   aktifCat=k;
   const c=KAT[k];
   temaUygula();
@@ -1408,7 +1476,6 @@ function switchCat(k){
   formKapat();renderChips();render();
   const v=$("view");v.style.animation="none";void v.offsetWidth;v.style.animation="";
 }
-
 function renderChips(){
   const c=KAT[aktifCat];
   let f=filtreler[aktifCat];
@@ -1423,7 +1490,6 @@ function renderChips(){
   $("chips").innerHTML = html;
 }
 function filtre(f){filtreler[aktifCat]=f;renderChips();render();}
-
 function diziIstatistik(id){
   const db=bolumlerim[id]||{};
   const cache=json(`neonHub_sezonCache_${id}`,null);
@@ -1441,7 +1507,6 @@ function diziIstatistik(id){
   }
   return {toplam,izlenen,siradaki,yuzde:toplam?Math.round(izlenen/toplam*100):0};
 }
-
 function sezonIstatistik(id, sezonNum){
   const db=bolumlerim[id]||{};
   const cache=json(`neonHub_sezonCache_${id}`,null);
@@ -1454,7 +1519,6 @@ function sezonIstatistik(id, sezonNum){
   });
   return {toplam,izlenen,yuzde:toplam?Math.round(izlenen/toplam*100):0};
 }
-
 function render(){
   const c=KAT[aktifCat], f=filtreler[aktifCat], q=$("arama").value.trim().toLowerCase();
   const liste=VERI[aktifCat].filter(o=>(f==="all"||o.durum===f)&&o.ad.toLowerCase().includes(q));
@@ -1538,7 +1602,6 @@ function render(){
       </div></div>`;
   }).join("");
 }
-
 async function sil(id){
   if(!confirm("Bu kayıt silinsin mi?")) return;
   VERI[aktifCat]=VERI[aktifCat].filter(o=>o.id!==id);
@@ -1553,7 +1616,6 @@ async function sil(id){
   await cloudSil(aktifCat, id);
   render();
 }
-
 async function durumDegistir(id, yeniDurum){
   const kayit = VERI[aktifCat].find(o => o.id === id);
   if(!kayit) return;
@@ -1589,14 +1651,11 @@ async function durumDegistir(id, yeniDurum){
   }
   render();
 }
-
 function formAc(id){
   duzenlenenId=id||null;
   const c=KAT[aktifCat], o=id?VERI[aktifCat].find(x=>x.id===id):null;
   let h=`<form id="form" onsubmit="kaydet(event)">`;
-  
   if(aktifCat === "oyunlar" && o){
-    // MEVCUT OYUNU DÜZENLEME — Kaydet + Vazgeç (manuel süre/durum değiştirme için)
     h+=`<div style="background:var(--card);padding:16px;border-radius:12px;margin-bottom:12px;border:1px solid var(--line)">
       <div style="font-size:16px;font-weight:700;margin-bottom:4px">${temiz(o.ad)}</div>
       <div style="font-size:12px;color:var(--muted)">Sadece süre ve durumu değiştirebilirsin.</div>
@@ -1617,17 +1676,13 @@ function formAc(id){
     h+=`<div class="formBtns">
       <button type="button" class="btn" onclick="formKapat()">Vazgeç</button>
       <button type="submit" class="btn solid">Kaydet</button></div></form>`;
-      
   } else if(aktifCat === "oyunlar"){
-    // YENİ OYUN EKLEME — Sadece Vazgeç (sonuca tıklayınca otomatik eklenir)
     h+=`<label class="genis">🔍 RAWG'de oyun ara, sonuca tıkla → otomatik eklensin
       <input id="akilliArama" placeholder="${c.akilli.ph}" oninput="debounceAra()" autocomplete="off"></label>
     <div id="akilliSonuc" class="genis"></div>`;
     h+=`<div class="formBtns">
       <button type="button" class="btn" onclick="formKapat()">Vazgeç</button></div></form>`;
-      
   } else {
-    // YENİ FİLM/DİZİ EKLEME — Sadece Vazgeç (sonuca tıklayınca otomatik eklenir)
     const aramaEtiket = {
       filmler: "🔍 OMDb'de film ara, sonuca tıkla → otomatik eklensin",
       diziler: "🔍 TV Maze'de dizi ara, sonuca tıkla → otomatik eklensin"
@@ -1638,13 +1693,11 @@ function formAc(id){
     h+=`<div class="formBtns">
       <button type="button" class="btn" onclick="formKapat()">Vazgeç</button></div></form>`;
   }
-  
   $("formWrap").innerHTML=h;
   $("formWrap").classList.add("open");
   ($("akilliArama") || $("f_sure") || $("f_ad"))?.focus();
 }
 function formKapat(){$("formWrap").classList.remove("open");duzenlenenId=null;}
-
 async function kaydet(e){
   e.preventDefault();
   const c=KAT[aktifCat];
@@ -1703,7 +1756,6 @@ async function kaydet(e){
   await cloudYukle(aktifCat, veri.id, veri);
   formKapat();render();
 }
-
 function debounceAra(){
   clearTimeout(araTimer);
   const q=$("akilliArama").value.trim(), son=$("akilliSonuc");
@@ -1758,7 +1810,6 @@ function debounceAra(){
     }catch(e){son.innerHTML='<span class="meta">Hata: '+temiz(e.message)+"</span>";}
   },300);
 }
-
 async function secSonuc(i){
   const it=sonucCache[i], son=$("akilliSonuc");
   son.innerHTML='<span class="meta">Detaylar çekiliyor...</span>';
@@ -1766,11 +1817,8 @@ async function secSonuc(i){
     if(it.tip==="rawg"){
       const d=await API.rawg(`/games/${it.raw.id}`);
       oyunRAWGCache[d.id]=d;
-      
-      // OTOMATİK KAYDET - Oynayacaklarım'a ekle
       const yeniOyun = {
-        id: Date.now(),
-        ad: d.name || "",
+        id: Date.now(), ad: d.name || "",
         tur: d.genres?.map(g=>g.name).join(", ") || "",
         puan: d.rating ? String(d.rating) : "",
         sure: d.playtime ? String(Math.round(d.playtime)) : "",
@@ -1781,85 +1829,49 @@ async function secSonuc(i){
           d.platforms.some(p=>p.platform.name.toLowerCase().includes("xbox")) ? "Xbox" :
           d.platforms.some(p=>p.platform.name.toLowerCase().includes("nintendo")) ? "Switch" : "PC"
         ) : "",
-        durum: "wishlist",
-        rawgId: d.id
+        durum: "wishlist", rawgId: d.id
       };
-      
       VERI.oyunlar.unshift(yeniOyun);
       store("neonHub_oyunlar", JSON.stringify(VERI.oyunlar));
       cloudYukle("oyunlar", yeniOyun.id, yeniOyun);
-      
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.name)+'" Oynayacaklarım listesine eklendi!</span>';
-      
-      // Formu kapat ve listeyi yenile
-      setTimeout(()=>{
-        formKapat();
-        render();
-        updateDash();
-      }, 800);
-      
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     } else if(it.tip==="omdb"){
       const d=await API.omdb(`i=${it.raw.imdbID}&plot=short`);
       filmOMDbCache[d.imdbID]=d;
-      
-      // OTOMATİK KAYDET - İzleyeceklerim'e ekle
       const yeniFilm = {
-        id: Date.now(),
-        ad: d.Title || "",
-        tur: d.Genre || "",
+        id: Date.now(), ad: d.Title || "", tur: d.Genre || "",
         yil: d.Year ? d.Year.replace("–","").slice(0,4) : "",
         puan: (d.imdbRating && d.imdbRating!=="N/A") ? d.imdbRating : "",
         sure: (d.Runtime && d.Runtime!=="N/A") ? sureFormat(d.Runtime) : "",
         kapak: (d.Poster && d.Poster!=="N/A") ? d.Poster.replace("SX300","SX600") : "",
-        durum: "watchlist",
-        imdbId: d.imdbID
+        durum: "watchlist", imdbId: d.imdbID
       };
-      
       VERI.filmler.unshift(yeniFilm);
       store("neonHub_filmler", JSON.stringify(VERI.filmler));
       cloudYukle("filmler", yeniFilm.id, yeniFilm);
-      
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.Title)+'" İzleyeceklerim listesine eklendi!</span>';
-      
-      setTimeout(()=>{
-        formKapat();
-        render();
-        updateDash();
-      }, 800);
-      
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     } else if(it.tip==="tvmaze"){
       const diziData = it.raw;
-      
-      // OTOMATİK KAYDET - İzleyeceklerim'e ekle
       let sezonSayisi = "";
       try{
         const detay = await API.tvmaze(`/shows/${diziData.id}?embed=seasons`);
         sezonSayisi = detay._embedded?.seasons?.length || "";
       }catch(e){}
-      
       const yeniDizi = {
-        id: Date.now(),
-        ad: diziData.name || "",
-        tur: diziData.genres?.join(", ") || "",
+        id: Date.now(), ad: diziData.name || "", tur: diziData.genres?.join(", ") || "",
         yil: diziData.premiered ? diziData.premiered.slice(0,4) : "",
         sezon: sezonSayisi,
         puan: diziData.rating?.average ? String(diziData.rating.average) : "",
         kapak: diziData.image?.original || diziData.image?.medium || "",
-        durum: "watchlist",
-        tvmazeId: diziData.id
+        durum: "watchlist", tvmazeId: diziData.id
       };
-      
       VERI.diziler.unshift(yeniDizi);
       store("neonHub_diziler", JSON.stringify(VERI.diziler));
       cloudYukle("diziler", yeniDizi.id, yeniDizi);
-      
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(diziData.name)+'" İzleyeceklerim listesine eklendi!</span>';
-      
-      setTimeout(()=>{
-        formKapat();
-        render();
-        updateDash();
-      }, 800);
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     }
   }catch(e){
     son.innerHTML='<span class="meta">Hata: '+temiz(e.message)+"</span>";
@@ -1919,7 +1931,6 @@ async function diziModalAc(id){
   }
   diziDetayYukle(dizi);
 }
-
 async function diziDetayYukle(dizi){
   $("diziAciklama").textContent="Detaylar yükleniyor...";
   $("diziCast").innerHTML='<div class="modalEmpty">Yükleniyor...</div>';
@@ -1966,7 +1977,6 @@ async function diziDetayYukle(dizi){
     $("diziAciklama").innerHTML = '<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>";
   }
 }
-
 async function akilliBenzerDiziler(dizi){
   const sonuc = { evren: [], oyuncular: [], tur: [] };
   const eklenenIdler = new Set([dizi.id]);
@@ -2065,7 +2075,6 @@ async function akilliBenzerDiziler(dizi){
   }
   return sonuc;
 }
-
 function renderBenzerDiziler(sonuc){
   const kayitliTvmazeIds = VERI.diziler.map(d=>d.tvmazeId).filter(Boolean).map(Number);
   let html = "";
@@ -2099,7 +2108,6 @@ function renderBenzerDiziler(sonuc){
   }
   $("diziBenzer").innerHTML = html || '<div class="modalEmpty">Benzer dizi bulunamadı.</div>';
 }
-
 function diziTabGoster(tab, btn){
   document.querySelectorAll("#diziModal .modalTab").forEach(t=>t.classList.remove("active"));
   document.querySelectorAll("#diziModal .tabContent").forEach(c=>c.classList.remove("active"));
@@ -2116,7 +2124,6 @@ function diziFavoriToggle(){
   btn.textContent=diziFavoriler[aktifDiziId]?"★":"☆";
   render();
 }
-
 async function sezonYukle(num){
   document.querySelectorAll("#sezonTabs .sezonTab").forEach(t=>{
     const n=parseInt(t.textContent.match(/S(\d+)/)?.[1]);
@@ -2151,7 +2158,6 @@ async function sezonYukle(num){
   bolumleriRender(tum[sk]||[]);
   sezonTabsGuncelle();
 }
-
 function sezonTabsGuncelle(){
   if(!aktifDiziId) return;
   document.querySelectorAll("#sezonTabs .sezonTab").forEach(t=>{
@@ -2163,7 +2169,6 @@ function sezonTabsGuncelle(){
     }
   });
 }
-
 function bolumleriRender(bolumler){
   const db=bolumlerim[aktifDiziId]||{};
   const sorted=bolumler.map(ep=>{
@@ -2250,13 +2255,11 @@ function bolumleriRender(bolumler){
   }).join("")||'<div class="sezonEmpty">Bölüm yok.</div>';
   istatistikleriGuncelle();
 }
-
 function epGenislet(k){
   const epDiv = document.querySelector(`.ep[data-key="${k}"]`);
   if(!epDiv) return;
   epDiv.classList.toggle("expanded");
 }
-
 function bolumTikla(k){
   if(!bolumlerim[aktifDiziId]) bolumlerim[aktifDiziId]={};
   const mevcut = bolumVerisiOku(bolumlerim[aktifDiziId], k);
@@ -2274,7 +2277,6 @@ function bolumTikla(k){
   sifirlaButonunuGuncelle();
   render();
 }
-
 function sezonuIsaretle(w){
   if(!bolumlerim[aktifDiziId]) bolumlerim[aktifDiziId]={};
   const ck=`neonHub_sezonCache_${aktifDiziId}`;
@@ -2295,7 +2297,6 @@ function sezonuIsaretle(w){
   sifirlaButonunuGuncelle();
   render();
 }
-
 function istatistikleriGuncelle(){
   const db=bolumlerim[aktifDiziId]||{};
   const tum=json(`neonHub_sezonCache_${aktifDiziId}`,{});
@@ -2311,7 +2312,6 @@ function istatistikleriGuncelle(){
   $("modalSiradaki").textContent=siradaki||"Tamamlandı! 🎉";
   sifirlaButonunuGuncelle();
 }
-
 function diziDurumunuGuncelle(){
   if(!aktifDiziId) return;
   const ist = diziIstatistik(aktifDiziId);
@@ -2333,16 +2333,13 @@ function diziDurumunuGuncelle(){
     }
   }
 }
-
 function tumunuSifirla(){
   if(!aktifDiziId) return;
   const dizi = VERI.diziler.find(d => d.id === aktifDiziId);
   if(!dizi) return;
   const ist = diziIstatistik(aktifDiziId);
   if(ist.izlenen === 0) return;
-  if(!confirm(`"${dizi.ad}" dizisindeki TÜM izleme ilerlemeniz silinecek.
-${ist.izlenen}/${ist.toplam} bölüm sıfırlanacak.
-Emin misiniz?`)) return;
+  if(!confirm(`"${dizi.ad}" dizisindeki TÜM izleme ilerlemeniz silinecek.\n${ist.izlenen}/${ist.toplam} bölüm sıfırlanacak.\nEmin misiniz?`)) return;
   delete bolumlerim[aktifDiziId];
   store("neonHub_bolumlerim",JSON.stringify(bolumlerim));
   dizi.durum = "watchlist";
@@ -2356,7 +2353,6 @@ Emin misiniz?`)) return;
   sifirlaButonunuGuncelle();
   render();
 }
-
 function sifirlaButonunuGuncelle(){
   if(!aktifDiziId) return;
   const btn = $("btnTumunuSifirla");
@@ -2364,7 +2360,6 @@ function sifirlaButonunuGuncelle(){
   const ist = diziIstatistik(aktifDiziId);
   btn.style.display = ist.izlenen > 0 ? "inline-block" : "none";
 }
-
 function diziModalKapat(){
   $("diziModal").classList.remove("open");
   document.body.style.overflow="";
@@ -2400,7 +2395,6 @@ async function oyunModalAc(id){
   document.body.style.overflow="hidden";
   await oyunDetayYukle(oyun);
 }
-
 async function oyunDetayYukle(oyun){
   if(!API.rawgKey()){
     $("oyunAciklama").innerHTML='<span style="color:#ffe14d">⚠ RAWG anahtarı yok.</span>';
@@ -2467,7 +2461,6 @@ async function oyunDetayYukle(oyun){
     $("oyunAciklama").innerHTML='<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>";
   }
 }
-
 async function akilliBenzerOyunlar(oyun){
   const sonuc = { seri: [], gelistirici: [], tur: [] };
   const eklenenIdler = new Set([oyun.id]);
@@ -2521,7 +2514,6 @@ async function akilliBenzerOyunlar(oyun){
   }
   return sonuc;
 }
-
 function renderBenzerOyunlar(sonuc){
   const kayitliRawgIds = VERI.oyunlar.map(o=>o.rawgId).filter(Boolean);
   let html = "";
@@ -2542,7 +2534,6 @@ function renderBenzerOyunlar(sonuc){
   if(sonuc.tur?.length){ html += `<div class="benzerBaslik">🎯 Aynı Türden</div><div class="benzerGrid">`+sonuc.tur.map(g=>oyunKart(g,'')).join("")+`</div>`; }
   $("oyunBenzer").innerHTML = html || '<div class="modalEmpty">Benzer oyun bulunamadı.</div>';
 }
-
 function oyunTabGoster(tab, btn){
   document.querySelectorAll("#oyunModal .modalTab").forEach(t=>t.classList.remove("active"));
   document.querySelectorAll("#oyunModal .tabContent").forEach(c=>c.classList.remove("active"));
@@ -2604,7 +2595,6 @@ async function filmModalAc(id){
   document.body.style.overflow="hidden";
   await filmDetayYukle(film);
 }
-
 async function filmDetayYukle(film){
   if(!API.omdbKey()){
     $("filmAciklama").innerHTML='<span style="color:#ffe14d">⚠ OMDb anahtarı yok.</span>';
@@ -2653,7 +2643,6 @@ async function filmDetayYukle(film){
     $("filmAciklama").innerHTML='<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>";
   }
 }
-
 async function akilliBenzerFilmler(film){
   const sonuc = { seri: [], yonetmen: [], oyuncular: [], tur: [] };
   const eklenenIdler = new Set([film.imdbID]);
@@ -2756,7 +2745,6 @@ async function akilliBenzerFilmler(film){
   }
   return sonuc;
 }
-
 function renderBenzerFilmler(sonuc){
   const kayitliImdbIds = VERI.filmler.map(f=>f.imdbId).filter(Boolean);
   let html = "";
@@ -2777,7 +2765,6 @@ function renderBenzerFilmler(sonuc){
   if(sonuc.tur?.length){ html += `<div class="benzerBaslik">🎯 Aynı Türden</div><div class="benzerGrid">`+sonuc.tur.map(g=>filmKart(g,'')).join("")+`</div>`; }
   $("filmBenzer").innerHTML = html || '<div class="modalEmpty">Benzer film bulunamadı.</div>';
 }
-
 function filmTabGoster(tab, btn){
   document.querySelectorAll("#filmModal .modalTab").forEach(t=>t.classList.remove("active"));
   document.querySelectorAll("#filmModal .tabContent").forEach(c=>c.classList.remove("active"));
@@ -2838,7 +2825,6 @@ async function benzerOyunAc(rawgId){
     btn.textContent = "+ Kütüphaneme Ekle"; btn.classList.remove("eklendi"); btn.disabled = false;
   }catch(e){ $("onizlemeAciklama").innerHTML = '<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>"; }
 }
-
 async function benzerFilmAc(imdbId){
   if(!API.omdbKey()) return;
   const mevcut = VERI.filmler.find(f=>f.imdbId===imdbId);
@@ -2864,7 +2850,6 @@ async function benzerFilmAc(imdbId){
     btn.textContent = "+ Kütüphaneme Ekle"; btn.classList.remove("eklendi"); btn.disabled = false;
   }catch(e){ $("onizlemeAciklama").innerHTML = '<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>"; }
 }
-
 async function benzerDiziAc(tvmazeId){
   const mevcut = VERI.diziler.find(d=>d.tvmazeId==tvmazeId);
   if(mevcut){ diziModalKapat(); setTimeout(()=>diziModalAc(mevcut.id), 200); return; }
@@ -2891,7 +2876,6 @@ async function benzerDiziAc(tvmazeId){
     btn.textContent = "+ Kütüphaneme Ekle"; btn.classList.remove("eklendi"); btn.disabled = false;
   }catch(e){ $("onizlemeAciklama").innerHTML = '<span style="color:#ff5a3c">Hata: '+temiz(e.message)+"</span>"; }
 }
-
 function onizlemeEkle(){
   if(!onizlemeData) return;
   const btn = $("onizlemeEkleBtn");
@@ -2954,7 +2938,6 @@ function onizlemeEkle(){
     setTimeout(()=>onizlemeModalKapat(), 1200);
   }
 }
-
 function onizlemeModalKapat(){
   $("onizlemeModal").classList.remove("open");
   if(!$("oyunModal").classList.contains("open") && !$("filmModal").classList.contains("open") && !$("diziModal").classList.contains("open")){
@@ -2975,9 +2958,10 @@ document.addEventListener("keydown",e=>{
     else if($("diziModal").classList.contains("open")) diziModalKapat();
     else if($("oyunModal").classList.contains("open")) oyunModalKapat();
     else if($("filmModal").classList.contains("open")) filmModalKapat();
+    else if(profilAcik) profilSayfasKapat();
+    else if($('avatarModal')) avatarModalKapat();
   }
 });
-
 $("diziModal").addEventListener("click",e=>{if(e.target===$("diziModal")) diziModalKapat();});
 $("oyunModal").addEventListener("click",e=>{if(e.target===$("oyunModal")) oyunModalKapat();});
 $("filmModal").addEventListener("click",e=>{if(e.target===$("filmModal")) filmModalKapat();});
@@ -3007,15 +2991,10 @@ try{
 }catch(e){}
 switchCat("oyunlar");
 
-// ============ PROFİL ============
+// ============ PROFİL MENÜSÜ ============
 function toggleProfileMenu() {
   const menu = $('profileMenu');
   menu.classList.toggle('active');
-}
-function openProfile() {
-  const u = auth.currentUser;
-  alert('👤 Profil Bilgileri\nEmail: ' + (u ? u.email : '-') + '\n\n💡 Detaylı profil sayfası yakında!');
-  toggleProfileMenu();
 }
 function openSettings() {
   toggleProfileMenu();
@@ -3027,11 +3006,10 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ============ MANUEL SYNC v2 ============
+// ============ MANUEL SYNC ============
 cloudYukle = function(){ return Promise.resolve(); };
 cloudSet  = function(){ return Promise.resolve(); };
 cloudSil  = function(){ return Promise.resolve(); };
-
 let _sonCekme = 0;
 async function cloudDanYukle(sessiz){
   if(!auth.currentUser) return;
@@ -3046,23 +3024,35 @@ async function cloudDanYukle(sessiz){
       const snap = await db.collection('users').doc(uid).collection(cat).get();
       const cloudItems = snap.docs.map(d=>({id:isNaN(d.id)?d.id:Number(d.id), ...d.data()})).filter(o=>!tomb.has(o.id));
       const cloudIds = new Set(cloudItems.map(o=>o.id));
-      const localOnly = VERI[cat].filter(o=>!cloudIds.has(o.id) && !tomb.has(o.id));
-      VERI[cat] = cloudItems.concat(localOnly);
+      const localMap = {};
+      VERI[cat].forEach(o => { localMap[o.id] = o; });
+      const merged = cloudItems.map(cloudItem => {
+        return localMap[cloudItem.id] || cloudItem;
+      });
+      const localOnly = VERI[cat].filter(o => !cloudIds.has(o.id) && !tomb.has(o.id));
+      VERI[cat] = merged.concat(localOnly);
       store(KAT[cat].depo, JSON.stringify(VERI[cat]));
     }
     const bSnap = await db.collection('users').doc(uid).collection('bolumler').get();
     bSnap.forEach(doc=>{
       const id = isNaN(doc.id)?doc.id:Number(doc.id);
-      bolumlerim[id] = Object.assign({}, bolumlerim[id]||{}, doc.data()||{});
+      if(!bolumlerim[id] || Object.keys(bolumlerim[id]).length === 0){
+        bolumlerim[id] = doc.data()||{};
+      } else {
+        const cloudData = doc.data() || {};
+        for(const k in cloudData){
+          if(!bolumlerim[id][k]) bolumlerim[id][k] = cloudData[k];
+        }
+      }
     });
     store("neonHub_bolumlerim", JSON.stringify(bolumlerim));
     const nSnap = await db.collection('users').doc(uid).collection('notlar').get();
     nSnap.forEach(doc=>{
       const id = isNaN(doc.id)?doc.id:Number(doc.id);
       const d = doc.data()||{};
-      if(d.tip==='oyun') oyunNotlarim[id]=d.metin;
-      else if(d.tip==='film') filmNotlarim[id]=d.metin;
-      else if(d.tip==='dizi') diziNotlarim[id]=d.metin;
+      if(d.tip==='oyun' && !oyunNotlarim[id]) oyunNotlarim[id]=d.metin;
+      else if(d.tip==='film' && !filmNotlarim[id]) filmNotlarim[id]=d.metin;
+      else if(d.tip==='dizi' && !diziNotlarim[id]) diziNotlarim[id]=d.metin;
     });
     store("neonHub_oyunNotlarim",JSON.stringify(oyunNotlarim));
     store("neonHub_filmNotlarim",JSON.stringify(filmNotlarim));
@@ -3070,9 +3060,9 @@ async function cloudDanYukle(sessiz){
     const fSnap = await db.collection('users').doc(uid).collection('favoriler').get();
     fSnap.forEach(doc=>{
       const map = doc.data()||{};
-      if(doc.id==='oyunlar'){ for(const k in oyunFavoriler) delete oyunFavoriler[k]; Object.assign(oyunFavoriler,map); }
-      else if(doc.id==='filmler'){ for(const k in filmFavoriler) delete filmFavoriler[k]; Object.assign(filmFavoriler,map); }
-      else if(doc.id==='diziler'){ for(const k in diziFavoriler) delete diziFavoriler[k]; Object.assign(diziFavoriler,map); }
+      if(doc.id==='oyunlar'){ for(const k in map) oyunFavoriler[k] = map[k]; }
+      else if(doc.id==='filmler'){ for(const k in map) filmFavoriler[k] = map[k]; }
+      else if(doc.id==='diziler'){ for(const k in map) diziFavoriler[k] = map[k]; }
     });
     store("neonHub_oyunFavoriler",JSON.stringify(oyunFavoriler));
     store("neonHub_filmFavoriler",JSON.stringify(filmFavoriler));
@@ -3082,7 +3072,6 @@ async function cloudDanYukle(sessiz){
     if(!sessiz) alert('❌ Veri çekilemedi: '+e.message);
   }
 }
-
 async function cloudaYukle(){
   const uid = auth.currentUser.uid;
   const ops = [];
@@ -3107,7 +3096,6 @@ async function cloudaYukle(){
   }
   return ops.length;
 }
-
 function syncDurumYaz(){
   const btn=$('syncBtn'); if(!btn || btn.disabled) return;
   const t=store("neonHub_sonSync");
@@ -3123,7 +3111,6 @@ function syncDurumYaz(){
     btn.title='Verilerin henüz cloud\'a kaydedilmedi\nTıkla → tüm verilerin güvende olsun';
   }
 }
-
 async function manuelSync(){
   if(!auth.currentUser){ alert('Önce giriş yapmalısın!'); return; }
   const btn=$('syncBtn');
@@ -3143,7 +3130,6 @@ async function manuelSync(){
     alert('❌ Senkron başarısız: '+e.message);
   }
 }
-
 (function(){
   const ekle=$('ekleBtn');
   if(!ekle) return;
@@ -3165,12 +3151,10 @@ async function manuelSync(){
   wrap.appendChild(b);
   syncDurumYaz();
 })();
-
 auth.onAuthStateChanged((user)=>{
   if(user){ cloudDanYukle(true); syncDurumYaz(); }
   else { _sonCekme = 0; }
 });
-
 const _manualSil = sil;
 sil = async function(id){
   const cat = aktifCat;
@@ -3226,6 +3210,41 @@ ayarlarSayfasAc = function() {
       item.classList.add('active');
     }
   });
+  // Veri yönetimi kartını ekle
+  const s = $('ayarlarSayfa');
+  if(s && !s.querySelector('#veriYonetimKart')){
+    const grid = s.children[1];
+    if(grid){
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.id = 'veriYonetimKart';
+      div.style.cursor = 'default';
+      div.innerHTML = `<div class="body">
+        <h3>📦 Veri Yönetimi</h3>
+        <p class="meta" style="margin:6px 0 12px">Verilerini yedekle veya geri yükle</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="btn" onclick="profilVeriDisaAktar()">📤 Dışa Aktar</button>
+          <button class="btn" onclick="profilVeriIceAktar()">📥 İçe Aktar</button>
+        </div>
+      </div>`;
+      grid.appendChild(div);
+    }
+  }
+  // Tema kartını ekle
+  if(s && !s.querySelector('#temaKart')){
+    const grid = s.children[1];
+    if(grid){
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.id = 'temaKart';
+      div.style.cursor = 'default';
+      div.innerHTML = '<div class="body"><h3>🌓 Görünüm Teması</h3>'+
+        '<p class="meta" style="margin:6px 0 12px">Açık veya koyu tema arasında geçiş yap</p>'+
+        '<div class="temaListe" id="temaModListe"></div></div>';
+      grid.prepend(div);
+      temaModYaz();
+    }
+  }
 };
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
@@ -3282,53 +3301,111 @@ render = function() {
   }
 })();
 
-function formatDk(dk){
-  const h=Math.floor(dk/60), m=dk%60;
-  if(h>0&&m>0) return h+' sa '+m+' dk';
-  if(h>0) return h+' sa';
-  return m+' dk';
-}
-
+// TEK updateDash FONKSİYONU
 function updateDash(){
   const banner=$('dashBanner'), stats=$('dashStats');
   if(!banner||!stats) return;
+  const profilAcik = $('profilSayfa') && $('profilSayfa').classList.contains('open');
   const ayarlarAcik=$('ayarlarSayfa').style.display==='block';
-  banner.style.display=ayarlarAcik?'none':'flex';
-  stats.style.display=ayarlarAcik?'none':'grid';
-  if(ayarlarAcik) return;
+  banner.style.display=(ayarlarAcik||profilAcik)?'none':'flex';
+  stats.style.display=(ayarlarAcik||profilAcik)?'none':'grid';
+  if(ayarlarAcik||profilAcik) return;
   const u=auth.currentUser;
   const isim=u?((u.displayName||u.email||'Misafir').split('@')[0]):'Misafir';
   const sanat={oyunlar:'🎮',filmler:'🎬',diziler:'📺'}[aktifCat]||'🎮';
   banner.innerHTML='<div><div class="dbTitle">Hoş geldin, '+temiz(isim)+' 👋</div>'+
     '<div class="dbSub">Oyunlarını, filmlerini ve dizilerini tek yerden takip et</div></div>'+
     '<div class="dbArt">'+sanat+'</div>';
-  const toplam=VERI.oyunlar.length+VERI.filmler.length+VERI.diziler.length;
-  const fav=Object.keys(oyunFavoriler).length+Object.keys(filmFavoriler).length+Object.keys(diziFavoriler).length;
-  let ortaKart='';
-  if(aktifCat==='oyunlar'){
-    const oynuyorum=VERI.oyunlar.filter(o=>o.durum==='playing').length;
-    ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">🎮</span>Oynuyorum</div><div class="scVal">'+oynuyorum+'</div><div class="scSub">şu an aktif oyun</div></div>';
-  } else if(aktifCat==='filmler'){
-    const bittiFilm=VERI.filmler.filter(f=>f.durum==='watched').length;
-    ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">🎬</span>Bitti</div><div class="scVal">'+bittiFilm+'</div><div class="scSub">tamamlanan film</div></div>';
-  } else {
-    const bittiDizi=VERI.diziler.filter(d=>d.durum==='completed').length;
-    ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">📺</span>Bitti</div><div class="scVal">'+bittiDizi+'</div><div class="scSub">tamamlanan dizi</div></div>';
+  const simdi = Date.now();
+  const birHaftaOnce = simdi - (7 * 24 * 60 * 60 * 1000);
+  let haftaKart = '';
+  if(aktifCat === 'oyunlar'){
+    const oson = json('neonHub_oyunSonOynanma', {});
+    let haftaSaat = 0;
+    for(const id in oson){
+      if(oson[id] >= birHaftaOnce){
+        const oyun = VERI.oyunlar.find(o=>o.id==id);
+        if(oyun && oyun.sure){
+          const saat = parseFloat(oyun.sure);
+          if(!isNaN(saat)) haftaSaat += saat;
+        }
+      }
+    }
+    haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
+      '<div class="scVal">'+haftaSaat.toFixed(1)+' saat</div>'+
+      '<div class="scSub">son 7 günde oynandı</div></div>';
+  } else if(aktifCat === 'filmler'){
+    const fd = json('neonHub_filmDegisim', {});
+    let haftaFilm = 0;
+    for(const id in fd){
+      if(fd[id] >= birHaftaOnce){
+        const f = VERI.filmler.find(x=>x.id==id);
+        if(f && f.durum === 'watched') haftaFilm++;
+      }
+    }
+    haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
+      '<div class="scVal">'+haftaFilm+' film</div>'+
+      '<div class="scSub">son 7 günde izlenen</div></div>';
+  } else if(aktifCat === 'diziler'){
+    let haftaBolum = 0;
+    for(const id in bolumlerim){
+      const m = bolumlerim[id];
+      for(const k in m){
+        const v = bolumVerisiOku(m, k);
+        if(v.watched && v.date){
+          if(new Date(v.date).getTime() >= birHaftaOnce) haftaBolum++;
+        }
+      }
+    }
+    haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
+      '<div class="scVal">'+haftaBolum+' bölüm</div>'+
+      '<div class="scSub">son 7 günde izlenen</div></div>';
   }
-  let sureCard='';
+  const f = filtreler[aktifCat];
+  const c = KAT[aktifCat];
+  let ortaKart = '';
+  const ikon = aktifCat==='oyunlar'?'🎮':(aktifCat==='filmler'?'🎬':'📺');
+  if(f === 'all' || !f || !c.durumlar[f]){
+    ortaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>Tüm Kayıtlar</div>'+
+      '<div class="scVal">'+VERI[aktifCat].length+'</div>'+
+      '<div class="scSub">'+c.ad.toLowerCase()+'</div></div>';
+  } else {
+    const durumAdi = c.durumlar[f].ad;
+    const sayi = VERI[aktifCat].filter(o=>o.durum===f).length;
+    ortaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>'+temiz(durumAdi)+'</div>'+
+      '<div class="scVal">'+sayi+'</div>'+
+      '<div class="scSub">bu listedeki kayıt</div></div>';
+  }
+  let favSay = 0, favAlt = '';
+  if(aktifCat==='oyunlar'){
+    favSay = Object.keys(oyunFavoriler).filter(id => VERI.oyunlar.some(o=>o.id==id)).length;
+    favAlt = 'favori oyun';
+  } else if(aktifCat==='filmler'){
+    favSay = Object.keys(filmFavoriler).filter(id => VERI.filmler.some(f=>f.id==id)).length;
+    favAlt = 'favori film';
+  } else if(aktifCat==='diziler'){
+    favSay = Object.keys(diziFavoriler).filter(id => VERI.diziler.some(d=>d.id==id)).length;
+    favAlt = 'favori dizi';
+  }
+  const favKart = '<div class="statCard"><div class="scTop"><span class="scIcon">⭐</span>Favoriler</div>'+
+    '<div class="scVal">'+favSay+'</div>'+
+    '<div class="scSub">'+favAlt+'</div></div>';
+  let sureCard = '';
   if(aktifCat==='oyunlar'){
     let saat=0; VERI.oyunlar.forEach(o=>{ const n=parseFloat(o.sure); if(!isNaN(n)) saat+=n; });
-    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>Oyun Süresi</div><div class="scVal">'+saat+' sa</div><div class="scSub">toplam oynama</div></div>';
+    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>Oyun Süresi</div>'+
+      '<div class="scVal">'+saat+' sa</div><div class="scSub">toplam oynama</div></div>';
   } else if(aktifCat==='filmler'){
     let dk=0;
-    VERI.filmler.forEach(f=>{
-      if(f.durum!=='watched') return;
-      const s=f.sure||'';
+    VERI.filmler.forEach(fr=>{
+      if(fr.durum!=='watched') return;
+      const s=fr.sure||'';
       const h=parseInt((s.match(/(\d+)\s*saat/)||[])[1]||0,10);
       const m=parseInt((s.match(/(\d+)\s*dk/)||[])[1]||0,10);
       dk+=h*60+m;
     });
-    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen filmler</div></div>';
+    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div>'+
+      '<div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen filmler</div></div>';
   } else {
     let dk=0;
     for(const id in bolumlerim){
@@ -3340,13 +3417,52 @@ function updateDash(){
       }));
       for(const k in m){ if(bolumVerisiOku(m,k).watched) dk+=rtMap[k]||0; }
     }
-    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen bölümler</div></div>';
+    sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div>'+
+      '<div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen bölümler</div></div>';
   }
-  stats.innerHTML=
-    '<div class="statCard"><div class="scTop"><span class="scIcon">🗂️</span>Toplam Kayıt</div><div class="scVal">'+toplam+'</div><div class="scSub">oyun + film + dizi</div></div>'+
-    ortaKart+
-    '<div class="statCard"><div class="scTop"><span class="scIcon">⭐</span>Favoriler</div><div class="scVal">'+fav+'</div><div class="scSub">favori listelerin</div></div>'+
-    sureCard;
+  stats.innerHTML = haftaKart + ortaKart + favKart + sureCard;
+}
+
+// durumDegistir override — timestamp kaydet
+const _origDurumDegistir = durumDegistir;
+durumDegistir = async function(id, yeniDurum){
+  const now = Date.now();
+  if(aktifCat === 'oyunlar'){
+    if(yeniDurum === 'playing' || yeniDurum === 'completed'){
+      const oson = json('neonHub_oyunSonOynanma', {});
+      oson[id] = now;
+      store('neonHub_oyunSonOynanma', JSON.stringify(oson));
+    }
+  } else if(aktifCat === 'filmler'){
+    if(yeniDurum === 'watched'){
+      const fd = json('neonHub_filmDegisim', {});
+      fd[id] = now;
+      store('neonHub_filmDegisim', JSON.stringify(fd));
+    }
+  }
+  return _origDurumDegistir(id, yeniDurum);
+};
+
+// Chip değiştiğinde de çalışsın
+const _origFiltre = filtre;
+filtre = function(f){ _origFiltre(f); updateDash(); };
+
+// Favori toggle edildiğinde de çalışsın
+['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
+  if(typeof window[fn] === 'function'){
+    const orig = window[fn];
+    window[fn] = function(){ orig.apply(this, arguments); updateDash(); };
+  }
+});
+
+// Bölüm tıklandığında da çalışsın
+if(typeof bolumTikla === 'function'){
+  const _origBT = bolumTikla;
+  bolumTikla = function(k){ _origBT(k); updateDash(); };
+}
+if(typeof sezonuIsaretle === 'function'){
+  const _origSI = sezonuIsaretle;
+  sezonuIsaretle = function(w){ _origSI(w); updateDash(); };
 }
 
 const _dashRender = render;
@@ -3377,30 +3493,11 @@ function temaModYaz(){
     '<button class="temaButon '+(cur==='dark'?'aktif':'')+'" onclick="setTemaMod(\'dark\')">'+
     '<span class="temaDot" style="background:#151a23;color:#151a23"></span><span>🌙 Koyu</span></button>';
 }
-function temaKartEkle(){
-  const s = $('ayarlarSayfa');
-  if(!s || !s.children[1]) return;
-  const grid = s.children[1];
-  if($('temaKart')) { temaModYaz(); return; }
-  const div = document.createElement('div');
-  div.className = 'card';
-  div.id = 'temaKart';
-  div.style.cursor = 'default';
-  div.innerHTML = '<div class="body"><h3>🌓 Görünüm Teması</h3>'+
-    '<p class="meta" style="margin:6px 0 12px">Açık veya koyu tema arasında geçiş yap</p>'+
-    '<div class="temaListe" id="temaModListe"></div></div>';
-  grid.prepend(div);
-  temaModYaz();
-}
-const _temaAyarAc = ayarlarSayfasAc;
-ayarlarSayfasAc = function(){
-  _temaAyarAc();
-  temaKartEkle();
-};
 temaUygulaMod();
 
 // ============ STEAM ENTEGRASYONU ============
 let steamOyunlar = [], steamPlayer = null;
+const STEAM_PROXY_VARSAYILAN = 'https://neonhub-steam.neonhub.workers.dev';
 function steamKartEkle(){
   const s=$('ayarlarSayfa'); if(!s||!s.children[1]) return;
   const grid=s.children[1];
@@ -3418,7 +3515,7 @@ function steamKartEkle(){
     '<button type="button" class="btn" style="flex:1;padding:8px" onclick="steamSaatGuncelle()">🔄 Saatleri Güncelle</button></div>'+
     '<div style="margin-top:10px;font-size:11px" class="muted">Gerekli: Steam profili → Gizlilik → "Oyun detayları: Herkese Açık"</div></div>';
   grid.appendChild(div);
-  $('steamProxyInput').value=store('neonHub_steamProxy')||'';
+  $('steamProxyInput').value=store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
   $('steamIdInput').value=store('neonHub_steamId')||'';
   steamDurumYaz();
 }
@@ -3431,7 +3528,6 @@ function steamDurumYaz(){
 }
 const _steamAyarAc = ayarlarSayfasAc;
 ayarlarSayfasAc = function(){ _steamAyarAc(); steamKartEkle(); };
-
 async function steamBaglan(){
   const proxy=($('steamProxyInput').value||'').trim().replace(/\/$/,'');
   const id=($('steamIdInput').value||'').trim();
@@ -3451,7 +3547,6 @@ async function steamBaglan(){
 }
 function steamToplamSaat(){ let t=0; steamOyunlar.forEach(g=>t+=(g.playtime||0)); return Math.round(t); }
 function steamEkliMi(appid){ return VERI.oyunlar.some(o=>o.steamAppId==appid); }
-
 function steamModalAc(){
   if(!steamOyunlar.length){ alert('Önce Bağlan butonuna bas (Ayarlar → 🎮 Steam Hesabı).'); return; }
   let m=$('steamModal');
@@ -3476,7 +3571,7 @@ function steamModalAc(){
   m.classList.add('open');
   document.body.style.overflow='hidden';
 }
-function steamModalKapat(){ const m=$('steamModal'); if(m) m.classList.remove('open'); document.body.style.overflow=''; }
+function steamModalKapat(){ const m=$('steamModal'); if(m) m.remove(); document.body.style.overflow=''; }
 function steamListeYaz(){
   $('steamListe').innerHTML=steamOyunlar.map((g,i)=>{
     const ekli=steamEkliMi(g.appid);
@@ -3533,487 +3628,550 @@ async function steamSaatGuncelle(){
   }catch(e){ alert('❌ Güncelleme hatası: '+e.message); }
 }
 
-// Steam proxy varsayılan (kullanıcı görmez)
-const STEAM_PROXY_VARSAYILAN = 'https://neonhub-steam.neonhub.workers.dev';
-(function(){
-  if(!store('neonHub_steamProxy')) store('neonHub_steamProxy', STEAM_PROXY_VARSAYILAN);
-  const _sk = steamKartEkle;
-  steamKartEkle = function(){
-    _sk();
-    const inp = $('steamProxyInput');
-    if(inp && !inp.value.trim()) inp.value = store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
-  };
-  const _sb = steamBaglan;
-  steamBaglan = async function(){
-    const inp = $('steamProxyInput');
-    if(inp && !inp.value.trim()) inp.value = store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
-    await _sb();
-  };
-})();
-// ============ FİNAL DASHBOARD OVERRIDE — v7 ============
-// Hem 2. kartı chip'e göre, hem 3. kartı kategoriye göre değiştirir
-(function(){
-  updateDash = function(){
-    const banner=$('dashBanner'), stats=$('dashStats');
-    if(!banner||!stats) return;
-    const ayarlarAcik=$('ayarlarSayfa').style.display==='block';
-    banner.style.display=ayarlarAcik?'none':'flex';
-    stats.style.display=ayarlarAcik?'none':'grid';
-    if(ayarlarAcik) return;
-    
-    const u=auth.currentUser;
-    const isim=u?((u.displayName||u.email||'Misafir').split('@')[0]):'Misafir';
-    const sanat={oyunlar:'🎮',filmler:'🎬',diziler:'📺'}[aktifCat]||'🎮';
-    banner.innerHTML='<div><div class="dbTitle">Hoş geldin, '+temiz(isim)+' 👋</div>'+
-      '<div class="dbSub">Oyunlarını, filmlerini ve dizilerini tek yerden takip et</div></div>'+
-      '<div class="dbArt">'+sanat+'</div>';
-    
-    const toplam=VERI.oyunlar.length+VERI.filmler.length+VERI.diziler.length;
-    const c = KAT[aktifCat];
-    
-    // 2. KART: AKTİF FİLTREYE (CHIP'E) GÖRE DEĞİŞİR
-    const f = filtreler[aktifCat];
-    let ortaKart='';
-    const ikon = aktifCat==='oyunlar'?'🎮':(aktifCat==='filmler'?'🎬':'📺');
-    if(f === 'all' || !f || !c.durumlar[f]){
-      ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>Tüm Kayıtlar</div><div class="scVal">'+VERI[aktifCat].length+'</div><div class="scSub">'+c.ad.toLowerCase()+'</div></div>';
-    } else {
-      const durumAdi = c.durumlar[f].ad;
-      const sayi = VERI[aktifCat].filter(o=>o.durum===f).length;
-      ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>'+temiz(durumAdi)+'</div><div class="scVal">'+sayi+'</div><div class="scSub">bu listedeki kayıt</div></div>';
-    }
-    
-    // 3. KART: SADECE AKTİF KATEGORİNİN FAVORİLERİ
-    let favSay=0, favIkon='⭐', favAlt='';
-    if(aktifCat==='oyunlar'){
-      favSay = Object.keys(oyunFavoriler).filter(id => VERI.oyunlar.some(o=>o.id==id)).length;
-      favIkon = '🎮'; favAlt = 'favori oyun';
-    } else if(aktifCat==='filmler'){
-      favSay = Object.keys(filmFavoriler).filter(id => VERI.filmler.some(f=>f.id==id)).length;
-      favIkon = '🎬'; favAlt = 'favori film';
-    } else if(aktifCat==='diziler'){
-      favSay = Object.keys(diziFavoriler).filter(id => VERI.diziler.some(d=>d.id==id)).length;
-      favIkon = '📺'; favAlt = 'favori dizi';
-    }
-    const favKart='<div class="statCard"><div class="scTop"><span class="scIcon">'+favIkon+'</span>Favoriler</div><div class="scVal">'+favSay+'</div><div class="scSub">'+favAlt+'</div></div>';
-    
-    // 4. KART: kategoriye göre süre
-    let sureCard='';
-    if(aktifCat==='oyunlar'){
-      let saat=0; VERI.oyunlar.forEach(o=>{ const n=parseFloat(o.sure); if(!isNaN(n)) saat+=n; });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>Oyun Süresi</div><div class="scVal">'+saat+' sa</div><div class="scSub">toplam oynama</div></div>';
-    } else if(aktifCat==='filmler'){
-      let dk=0;
-      VERI.filmler.forEach(fr=>{
-        if(fr.durum!=='watched') return;
-        const s=fr.sure||'';
-        const h=parseInt((s.match(/(\d+)\s*saat/)||[])[1]||0,10);
-        const m=parseInt((s.match(/(\d+)\s*dk/)||[])[1]||0,10);
-        dk+=h*60+m;
-      });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen filmler</div></div>';
-    } else if(aktifCat==='diziler'){
-      let dk=0;
-      for(const id in bolumlerim){
-        const m=bolumlerim[id];
-        const cache=json('neonHub_sezonCache_'+id,{});
-        const rtMap={};
-        Object.values(cache).forEach(arr=>(arr||[]).forEach(ep=>{
-          rtMap['S'+String(ep.season).padStart(2,'0')+'E'+String(ep.number).padStart(2,'0')]=ep.runtime||0;
-        }));
-        for(const k in m){ if(bolumVerisiOku(m,k).watched) dk+=rtMap[k]||0; }
-      }
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen bölümler</div></div>';
-    }
-    
-    stats.innerHTML=
-      '<div class="statCard"><div class="scTop"><span class="scIcon">🗂️</span>Toplam Kayıt</div><div class="scVal">'+toplam+'</div><div class="scSub">oyun + film + dizi</div></div>'+
-      ortaKart+
-      favKart+
-      sureCard;
-  };
-  
-  // Chip/filtre değiştiğinde de updateDash çalışsın
-  if(typeof filtre === 'function'){
-    const _origFiltre = filtre;
-    filtre = function(f){
-      _origFiltre(f);
-      updateDash();
-    };
+// ============ PROFİL SAYFASI (TEK, TEMİZ VERSİYON) ============
+let profilAcik = false;
+const MOCK_ARKADASLAR = [
+  {id: 'ahmet123', ad: 'ahmet123', avatar: '', oyun: 8, film: 12, dizi: 5},
+  {id: 'zeynep456', ad: 'zeynep456', avatar: '', oyun: 3, film: 7, dizi: 2},
+  {id: 'can789', ad: 'can789', avatar: '', oyun: 15, film: 4, dizi: 8}
+];
+const MOCK_GELEN_ISTEKLER = [
+  {id: 'mehmet99', ad: 'mehmet99', ortak: 5},
+  {id: 'ayse2024', ad: 'ayse2024', ortak: 2}
+];
+const MOCK_GIDEN_ISTEKLER = [{id: 'ali55', ad: 'ali55'}];
+const MOCK_KULLANICILAR = [
+  {id: 'hasan01', ad: 'hasan01'},
+  {id: 'elif_k', ad: 'elif_k'},
+  {id: 'burak99', ad: 'burak99'},
+  {id: 'selin_m', ad: 'selin_m'}
+];
+
+function openProfile(){
+  toggleProfileMenu();
+  const u = auth.currentUser;
+  if(!u){ alert('Önce giriş yapmalısın.'); return; }
+  const h = document.querySelector('#view > header'); if(h) h.style.display='none';
+  const t = document.querySelector('#view > .toolbar'); if(t) t.style.display='none';
+  const f = $('formWrap'); if(f){ f.style.display='none'; f.classList.remove('open'); }
+  const g = $('grid'); if(g) g.style.display='none';
+  const a = $('ayarlarSayfa'); if(a) a.style.display='none';
+  const db = $('dashBanner'); if(db) db.style.display='none';
+  const ds = $('dashStats'); if(ds) ds.style.display='none';
+  let s = $('profilSayfa');
+  if(!s){
+    s = document.createElement('div');
+    s.id = 'profilSayfa';
+    $('view').appendChild(s);
   }
+  s.classList.add('open');
+  profilAcik = true;
+  profilSayfasiniYenile();
+  updateDash();
+}
+
+function profilSayfasiniYenile(){
+  const s = $('profilSayfa');
+  if(!s) return;
+  const u = auth.currentUser;
+  const username = store('neonHub_username') || (u?.email ? u.email.split('@')[0] : 'Misafir');
+  const email = u?.email || '-';
+  const createdAt = store('neonHub_kayitTarihi');
+  const uyelikGun = createdAt ? Math.floor((Date.now() - new Date(createdAt).getTime()) / (1000*60*60*24)) : 125;
+  const localAvatar = store('neonHub_avatar');
+  const googleAvatar = u?.photoURL || '';
+  const avatarUrl = localAvatar || googleAvatar;
+  const basHarf = (username[0] || 'U').toUpperCase();
   
-  // Favori toggle edildiğinde de çalışsın
-  ['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
-    if(typeof window[fn] === 'function'){
-      const orig = window[fn];
-      window[fn] = function(){
-        orig.apply(this, arguments);
-        updateDash();
-      };
+  // Kütüphane istatistikleri — ayrı süreler
+  const oyunSay = VERI.oyunlar.length;
+  const filmSay = VERI.filmler.length;
+  const diziSay = VERI.diziler.length;
+  let oyunSaat = 0;
+  VERI.oyunlar.forEach(o => { const n = parseFloat(o.sure); if(!isNaN(n)) oyunSaat += n; });
+  let filmDk = 0;
+  VERI.filmler.forEach(f => {
+    if(f.durum === 'watched'){
+      const s = f.sure || '';
+      const h = parseInt((s.match(/(\d+)\s*saat/) || [])[1] || 0, 10);
+      const m = parseInt((s.match(/(\d+)\s*dk/) || [])[1] || 0, 10);
+      filmDk += h * 60 + m;
     }
   });
-  
-  updateDash();
-})();
-// ============ FAVORİLER KARTI SİMGESİ: HEP YILDIZ ============
-(function(){
-  const _origUpdateDash = updateDash;
-  updateDash = function(){
-    const banner=$('dashBanner'), stats=$('dashStats');
-    if(!banner||!stats) return;
-    const ayarlarAcik=$('ayarlarSayfa').style.display==='block';
-    banner.style.display=ayarlarAcik?'none':'flex';
-    stats.style.display=ayarlarAcik?'none':'grid';
-    if(ayarlarAcik) return;
-    const u=auth.currentUser;
-    const isim=u?((u.displayName||u.email||'Misafir').split('@')[0]):'Misafir';
-    const sanat={oyunlar:'🎮',filmler:'🎬',diziler:'📺'}[aktifCat]||'🎮';
-    banner.innerHTML='<div><div class="dbTitle">Hoş geldin, '+temiz(isim)+' 👋</div>'+
-      '<div class="dbSub">Oyunlarını, filmlerini ve dizilerini tek yerden takip et</div></div>'+
-      '<div class="dbArt">'+sanat+'</div>';
-    const toplam=VERI.oyunlar.length+VERI.filmler.length+VERI.diziler.length;
-    const c = KAT[aktifCat];
-    const f = filtreler[aktifCat];
-    let ortaKart='';
-    const ikon = aktifCat==='oyunlar'?'🎮':(aktifCat==='filmler'?'🎬':'📺');
-    if(f === 'all' || !f || !c.durumlar[f]){
-      ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>Tüm Kayıtlar</div><div class="scVal">'+VERI[aktifCat].length+'</div><div class="scSub">'+c.ad.toLowerCase()+'</div></div>';
-    } else {
-      const durumAdi = c.durumlar[f].ad;
-      const sayi = VERI[aktifCat].filter(o=>o.durum===f).length;
-      ortaKart='<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>'+temiz(durumAdi)+'</div><div class="scVal">'+sayi+'</div><div class="scSub">bu listedeki kayıt</div></div>';
-    }
-    // 3. KART: ⭐ YILDIZ + kategoriye göre alt yazı
-    let favSay=0, favAlt='';
-    if(aktifCat==='oyunlar'){
-      favSay = Object.keys(oyunFavoriler).filter(id => VERI.oyunlar.some(o=>o.id==id)).length;
-      favAlt = 'favori oyun';
-    } else if(aktifCat==='filmler'){
-      favSay = Object.keys(filmFavoriler).filter(id => VERI.filmler.some(f=>f.id==id)).length;
-      favAlt = 'favori film';
-    } else if(aktifCat==='diziler'){
-      favSay = Object.keys(diziFavoriler).filter(id => VERI.diziler.some(d=>d.id==id)).length;
-      favAlt = 'favori dizi';
-    }
-    const favKart='<div class="statCard"><div class="scTop"><span class="scIcon">⭐</span>Favoriler</div><div class="scVal">'+favSay+'</div><div class="scSub">'+favAlt+'</div></div>';
-    let sureCard='';
-    if(aktifCat==='oyunlar'){
-      let saat=0; VERI.oyunlar.forEach(o=>{ const n=parseFloat(o.sure); if(!isNaN(n)) saat+=n; });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>Oyun Süresi</div><div class="scVal">'+saat+' sa</div><div class="scSub">toplam oynama</div></div>';
-    } else if(aktifCat==='filmler'){
-      let dk=0;
-      VERI.filmler.forEach(fr=>{
-        if(fr.durum!=='watched') return;
-        const s=fr.sure||'';
-        const h=parseInt((s.match(/(\d+)\s*saat/)||[])[1]||0,10);
-        const m=parseInt((s.match(/(\d+)\s*dk/)||[])[1]||0,10);
-        dk+=h*60+m;
-      });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen filmler</div></div>';
-    } else {
-      let dk=0;
-      for(const id in bolumlerim){
-        const m=bolumlerim[id];
-        const cache=json('neonHub_sezonCache_'+id,{});
-        const rtMap={};
-        Object.values(cache).forEach(arr=>(arr||[]).forEach(ep=>{
-          rtMap['S'+String(ep.season).padStart(2,'0')+'E'+String(ep.number).padStart(2,'0')]=ep.runtime||0;
-        }));
-        for(const k in m){ if(bolumVerisiOku(m,k).watched) dk+=rtMap[k]||0; }
-      }
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div><div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen bölümler</div></div>';
-    }
-    stats.innerHTML=
-      '<div class="statCard"><div class="scTop"><span class="scIcon">🗂️</span>Toplam Kayıt</div><div class="scVal">'+toplam+'</div><div class="scSub">oyun + film + dizi</div></div>'+
-      ortaKart+
-      favKart+
-      sureCard;
-  };
-  if(typeof filtre === 'function'){
-    const _origFiltre = filtre;
-    filtre = function(f){ _origFiltre(f); updateDash(); };
+  let diziDk = 0;
+  for(const id in bolumlerim){
+    const m = bolumlerim[id];
+    const cache = json('neonHub_sezonCache_' + id, {});
+    const rtMap = {};
+    Object.values(cache).forEach(arr => (arr || []).forEach(ep => {
+      rtMap['S' + String(ep.season).padStart(2, '0') + 'E' + String(ep.number).padStart(2, '0')] = ep.runtime || 0;
+    }));
+    for(const k in m){ if(bolumVerisiOku(m, k).watched) diziDk += rtMap[k] || 0; }
   }
-  ['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
-    if(typeof window[fn] === 'function'){
-      const orig = window[fn];
-      window[fn] = function(){ orig.apply(this, arguments); updateDash(); };
-    }
+  function sureFormatla(dk){
+    const h = Math.floor(dk / 60), m = dk % 60;
+    if(h > 0 && m > 0) return h + ' sa ' + m + ' dk';
+    if(h > 0) return h + ' sa';
+    return m + ' dk';
+  }
+  const filmSureStr = filmDk > 0 ? sureFormatla(filmDk) : '0 dk';
+  const diziSureStr = diziDk > 0 ? sureFormatla(diziDk) : '0 dk';
+  const oyunSureStr = oyunSaat > 0 ? oyunSaat.toFixed(1) + ' sa' : '0 sa';
+  const toplamSaat = oyunSaat + (filmDk / 60) + (diziDk / 60);
+  
+  // Rozetler
+  const toplamKayit = oyunSay + filmSay + diziSay;
+  const rozetler = [];
+  if(toplamKayit >= 1) rozetler.push('🌱 İlk Adım');
+  if(toplamKayit >= 10) rozetler.push('⭐ Koleksiyoncu');
+  if(toplamSaat >= 100) rozetler.push('🔥 100 Saat');
+  if(VERI.oyunlar.filter(o=>o.durum==='completed').length >= 5) rozetler.push('🎮 Oyuncu');
+  if(VERI.filmler.filter(f=>f.durum==='watched').length >= 10) rozetler.push('🎬 Sinema Sever');
+  
+  s.innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+      <button class="btn" onclick="profilSayfasKapat()">← Geri Dön</button>
+      <h1 style="font-size:22px;letter-spacing:3px">👤 PROFİLİM</h1>
+    </div>
+    <div class="profilHero">
+      <div class="profilAvatarWrap" onclick="profilResmiDegistir()" title="Profil resmini değiştir">
+        <div class="profilAvatar">
+          ${avatarUrl ? `<img src="${temiz(avatarUrl)}" alt="" onerror="this.style.display='none';this.parentNode.innerHTML='${basHarf}'">` : basHarf}
+        </div>
+        <div class="profilAvatarOverlay">📷</div>
+      </div>
+      <div class="profilInfo">
+        <div id="usernameDisplay" class="editableField" onclick="kullaniciAdiDuzenleBaslat()">
+          <span class="profilAd" id="usernameText">${temiz(username)}</span>
+          <span class="editIcon">✏️</span>
+        </div>
+        <div id="usernameEditArea" style="display:none"></div>
+        <div class="profilEmail">${temiz(email)}</div>
+        <div class="profilMeta">
+          <span>🏅 <b>${uyelikGun}</b> gündür üye</span>
+          <span>🆔 <b style="font-family:monospace">${(u?.uid || 'xxxx').substring(0,8)}...</b></span>
+        </div>
+        ${rozetler.length > 0 ? `
+          <div class="profilRozetler">
+            ${rozetler.map(r => `<span class="profilRozet">${r}</span>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+    </div>
+    <div class="profilGrid">
+      <div class="kutuphaneOzet">
+        <div class="kutuphaneBaslik">📊 Kütüphane</div>
+        <div class="ozetSatir">
+          <div class="ozetIkon">🎮</div>
+          <div class="ozetBilgi">
+            <div class="ozetUstSatir">
+              <span class="ozetSayi">${oyunSay} <span class="ozetEtiket" style="font-size:11px">oyun</span></span>
+              <span class="ozetSure">${oyunSureStr}</span>
+            </div>
+            <div class="ozetEtiket">toplam oynama</div>
+          </div>
+        </div>
+        <div class="ozetSatir">
+          <div class="ozetIkon">🎬</div>
+          <div class="ozetBilgi">
+            <div class="ozetUstSatir">
+              <span class="ozetSayi">${filmSay} <span class="ozetEtiket" style="font-size:11px">film</span></span>
+              <span class="ozetSure">${filmSureStr}</span>
+            </div>
+            <div class="ozetEtiket">izlenen süre</div>
+          </div>
+        </div>
+        <div class="ozetSatir">
+          <div class="ozetIkon">📺</div>
+          <div class="ozetBilgi">
+            <div class="ozetUstSatir">
+              <span class="ozetSayi">${diziSay} <span class="ozetEtiket" style="font-size:11px">dizi</span></span>
+              <span class="ozetSure">${diziSureStr}</span>
+            </div>
+            <div class="ozetEtiket">izlenen bölüm süresi</div>
+          </div>
+        </div>
+        <div class="ozetToplam">
+          <span class="etiket">🕐 Toplam</span>
+          <span class="deger">${sureFormatla(Math.round(toplamSaat * 60))}</span>
+        </div>
+      </div>
+      <div class="arkadasKutu">
+        <div class="arkadasBaslik">
+          <span>👥 Arkadaşlar</span>
+          <span class="cnt">${MOCK_ARKADASLAR.length}</span>
+        </div>
+        <div class="arkadasArama">
+          <input id="arkadasAramaInput" placeholder="Kullanıcı adı ara..." oninput="arkadasAra()" autocomplete="off">
+          <button class="btn" onclick="arkadasAra()" type="button">🔍 Ara</button>
+        </div>
+        <div id="arkadasAramaSonuc"></div>
+        ${MOCK_GELEN_ISTEKLER.length > 0 ? `
+          <div class="istekKutu bekleyen">
+            <div class="istekBaslik">📨 Gelen İstekler <span class="cnt">${MOCK_GELEN_ISTEKLER.length}</span></div>
+            ${MOCK_GELEN_ISTEKLER.map(i => `
+              <div class="istekSatir">
+                <div class="simge">${i.ad[0].toUpperCase()}</div>
+                <div class="bilgi">
+                  <div class="ad">${temiz(i.ad)}</div>
+                  <div class="alt">${i.ortak} ortak</div>
+                </div>
+                <div class="butonlar">
+                  <button class="btn btn-kabul" onclick="arkadasKabul('${i.id}')">✓</button>
+                  <button class="btn btn-reddet" onclick="arkadasReddet('${i.id}')">✗</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+        ${MOCK_GIDEN_ISTEKLER.length > 0 ? `
+          <div class="istekKutu">
+            <div class="istekBaslik">📤 Gönderilen <span class="cnt">${MOCK_GIDEN_ISTEKLER.length}</span></div>
+            ${MOCK_GIDEN_ISTEKLER.map(i => `
+              <div class="istekSatir">
+                <div class="simge">${i.ad[0].toUpperCase()}</div>
+                <div class="bilgi">
+                  <div class="ad">${temiz(i.ad)}</div>
+                  <div class="alt">⏳ Bekleniyor</div>
+                </div>
+                <div class="butonlar">
+                  <button class="btn btn-iptal" onclick="arkadasIptal('${i.id}')">✗</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : ''}
+        <div class="arkadasGrid">
+          ${MOCK_ARKADASLAR.map(a => `
+            <div class="arkadasIsimSatir" onclick="arkadasMenuAc('${a.id}', this)">
+              <span style="color:var(--muted);font-size:12px">•</span>
+              <span>${temiz(a.ad)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+  s.style.animation='none'; void s.offsetWidth; s.style.animation='giris .28s ease both';
+}
+
+function profilSayfasKapat(){
+  const s = $('profilSayfa');
+  if(s) s.classList.remove('open');
+  profilAcik = false;
+  const h = document.querySelector('#view > header'); if(h) h.style.display='';
+  const t = document.querySelector('#view > .toolbar'); if(t) t.style.display='';
+  const f = $('formWrap'); if(f) f.style.display='';
+  const g = $('grid'); if(g) g.style.display='';
+  const db = $('dashBanner'); if(db) db.style.display='flex';
+  const ds = $('dashStats'); if(ds) ds.style.display='grid';
+  switchCat(aktifCat);
+  updateDash();
+}
+
+// Arkadaş menüsü
+function arkadasMenuAc(id, element){
+  const eskiMenu = document.querySelector('.arkadasMenu');
+  if(eskiMenu) eskiMenu.remove();
+  const arkadas = MOCK_ARKADASLAR.find(a => a.id === id);
+  if(!arkadas) return;
+  const menu = document.createElement('div');
+  menu.className = 'arkadasMenu';
+  menu.style.cssText = 'position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:1000;min-width:180px;animation:giris .15s ease;';
+  menu.innerHTML = `
+    <button onclick="arkadasProfilGor('${id}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:var(--text);cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">👁️ Profilini Gör</button>
+    <button onclick="arkadasCikar('${id}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:#ff5a3c;cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">✗ Arkadaşlıktan Çıkar</button>
+  `;
+  menu.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('mouseenter', () => btn.style.background = 'rgba(var(--accent-r),.1)');
+    btn.addEventListener('mouseleave', () => btn.style.background = 'none');
   });
-  updateDash();
-})();
-// ============ 1. KART v9: "BU HAFTA OYNANAN SAAT" (oyunlar için) ============
-(function(){
-  // Zaman damgası store'u (son oynanma takibi için)
-  const oyunSonOynanma = json('neonHub_oyunSonOynanma', {});
-  
-  // durumDegistir'i override et — her değişimde timestamp kaydet
-  if(typeof durumDegistir === 'function' && !durumDegistir.__overridden9){
-    const _origDD = durumDegistir;
-    durumDegistir = async function(id, yeniDurum){
-      const now = Date.now();
-      if(aktifCat === 'oyunlar'){
-        // Oynuyorum veya Bitirdim durumlarında timestamp kaydet
-        if(yeniDurum === 'playing' || yeniDurum === 'completed'){
-          oyunSonOynanma[id] = now;
-          store('neonHub_oyunSonOynanma', JSON.stringify(oyunSonOynanma));
-        }
+  const rect = element.getBoundingClientRect();
+  menu.style.top = (rect.bottom + 4) + 'px';
+  menu.style.left = rect.left + 'px';
+  document.body.appendChild(menu);
+  setTimeout(() => {
+    document.addEventListener('click', function kapat(e){
+      if(!menu.contains(e.target) && e.target !== element){
+        menu.remove();
+        document.removeEventListener('click', kapat);
       }
-      return _origDD(id, yeniDurum);
-    };
-    durumDegistir.__overridden9 = true;
+    });
+  }, 10);
+}
+
+function arkadasAra(){
+  const input = $('arkadasAramaInput');
+  const sonuc = $('arkadasAramaSonuc');
+  if(!input || !sonuc) return;
+  const q = input.value.trim().toLowerCase();
+  if(q.length < 2){ sonuc.innerHTML = ''; return; }
+  const bulunanlar = MOCK_KULLANICILAR.filter(k =>
+    k.ad.toLowerCase().includes(q) && !MOCK_ARKADASLAR.some(a => a.id === k.id)
+  );
+  if(bulunanlar.length === 0){
+    sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">Kullanıcı bulunamadı.</div>';
+    return;
   }
-  
-  // updateDash'ı override et — "Bu Hafta" kartı güncelle
-  updateDash = function(){
-    const banner=$('dashBanner'), stats=$('dashStats');
-    if(!banner||!stats) return;
-    const ayarlarAcik=$('ayarlarSayfa').style.display==='block';
-    banner.style.display=ayarlarAcik?'none':'flex';
-    stats.style.display=ayarlarAcik?'none':'grid';
-    if(ayarlarAcik) return;
-    
-    const u=auth.currentUser;
-    const isim=u?((u.displayName||u.email||'Misafir').split('@')[0]):'Misafir';
-    const sanat={oyunlar:'🎮',filmler:'🎬',diziler:'📺'}[aktifCat]||'🎮';
-    banner.innerHTML='<div><div class="dbTitle">Hoş geldin, '+temiz(isim)+' 👋</div>'+
-      '<div class="dbSub">Oyunlarını, filmlerini ve dizilerini tek yerden takip et</div></div>'+
-      '<div class="dbArt">'+sanat+'</div>';
-    
-    const simdi = Date.now();
-    const birHaftaOnce = simdi - (7 * 24 * 60 * 60 * 1000);
-    
-    // 1. KART: BU HAFTA (kategoriye özel)
-    let haftaKart = '';
-    if(aktifCat === 'oyunlar'){
-      const oson = json('neonHub_oyunSonOynanma', {});
-      let haftaSaat = 0;
-      for(const id in oson){
-        if(oson[id] >= birHaftaOnce){
-          const oyun = VERI.oyunlar.find(o=>o.id==id);
-          if(oyun && oyun.sure){
-            const saat = parseFloat(oyun.sure);
-            if(!isNaN(saat)) haftaSaat += saat;
-          }
-        }
-      }
-      haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
-        '<div class="scVal">'+haftaSaat.toFixed(1)+' saat</div>'+
-        '<div class="scSub">son 7 günde oynandı</div></div>';
-    } else if(aktifCat === 'filmler'){
-      const fd = json('neonHub_filmDegisim', {});
-      let haftaFilm = 0;
-      for(const id in fd){
-        if(fd[id] >= birHaftaOnce){
-          const f = VERI.filmler.find(x=>x.id==id);
-          if(f && f.durum === 'watched') haftaFilm++;
-        }
-      }
-      haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
-        '<div class="scVal">'+haftaFilm+' film</div>'+
-        '<div class="scSub">son 7 günde izlenen</div></div>';
-    } else if(aktifCat === 'diziler'){
-      let haftaBolum = 0;
-      for(const id in bolumlerim){
-        const m = bolumlerim[id];
-        for(const k in m){
-          const v = bolumVerisiOku(m, k);
-          if(v.watched && v.date){
-            if(new Date(v.date).getTime() >= birHaftaOnce) haftaBolum++;
-          }
-        }
-      }
-      haftaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">🗓️</span>Bu Hafta</div>'+
-        '<div class="scVal">'+haftaBolum+' bölüm</div>'+
-        '<div class="scSub">son 7 günde izlenen</div></div>';
-    }
-    
-    // 2. KART: Chip'e göre (aktif filtre)
-    const f = filtreler[aktifCat];
-    const c = KAT[aktifCat];
-    let ortaKart = '';
-    const ikon = aktifCat==='oyunlar'?'🎮':(aktifCat==='filmler'?'🎬':'📺');
-    if(f === 'all' || !f || !c.durumlar[f]){
-      ortaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>Tüm Kayıtlar</div>'+
-        '<div class="scVal">'+VERI[aktifCat].length+'</div>'+
-        '<div class="scSub">'+c.ad.toLowerCase()+'</div></div>';
-    } else {
-      const durumAdi = c.durumlar[f].ad;
-      const sayi = VERI[aktifCat].filter(o=>o.durum===f).length;
-      ortaKart = '<div class="statCard"><div class="scTop"><span class="scIcon">'+ikon+'</span>'+temiz(durumAdi)+'</div>'+
-        '<div class="scVal">'+sayi+'</div>'+
-        '<div class="scSub">bu listedeki kayıt</div></div>';
-    }
-    
-    // 3. KART: Favoriler (sadece aktif kategori, yıldız ikonu)
-    let favSay = 0, favAlt = '';
-    if(aktifCat==='oyunlar'){
-      favSay = Object.keys(oyunFavoriler).filter(id => VERI.oyunlar.some(o=>o.id==id)).length;
-      favAlt = 'favori oyun';
-    } else if(aktifCat==='filmler'){
-      favSay = Object.keys(filmFavoriler).filter(id => VERI.filmler.some(f=>f.id==id)).length;
-      favAlt = 'favori film';
-    } else if(aktifCat==='diziler'){
-      favSay = Object.keys(diziFavoriler).filter(id => VERI.diziler.some(d=>d.id==id)).length;
-      favAlt = 'favori dizi';
-    }
-    const favKart = '<div class="statCard"><div class="scTop"><span class="scIcon">⭐</span>Favoriler</div>'+
-      '<div class="scVal">'+favSay+'</div>'+
-      '<div class="scSub">'+favAlt+'</div></div>';
-    
-    // 4. KART: kategoriye göre süre
-    let sureCard = '';
-    if(aktifCat==='oyunlar'){
-      let saat=0; VERI.oyunlar.forEach(o=>{ const n=parseFloat(o.sure); if(!isNaN(n)) saat+=n; });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>Oyun Süresi</div>'+
-        '<div class="scVal">'+saat+' sa</div><div class="scSub">toplam oynama</div></div>';
-    } else if(aktifCat==='filmler'){
-      let dk=0;
-      VERI.filmler.forEach(fr=>{
-        if(fr.durum!=='watched') return;
-        const s=fr.sure||'';
-        const h=parseInt((s.match(/(\d+)\s*saat/)||[])[1]||0,10);
-        const m=parseInt((s.match(/(\d+)\s*dk/)||[])[1]||0,10);
-        dk+=h*60+m;
-      });
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div>'+
-        '<div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen filmler</div></div>';
-    } else {
-      let dk=0;
-      for(const id in bolumlerim){
-        const m=bolumlerim[id];
-        const cache=json('neonHub_sezonCache_'+id,{});
-        const rtMap={};
-        Object.values(cache).forEach(arr=>(arr||[]).forEach(ep=>{
-          rtMap['S'+String(ep.season).padStart(2,'0')+'E'+String(ep.number).padStart(2,'0')]=ep.runtime||0;
-        }));
-        for(const k in m){ if(bolumVerisiOku(m,k).watched) dk+=rtMap[k]||0; }
-      }
-      sureCard='<div class="statCard"><div class="scTop"><span class="scIcon">⏱️</span>İzlenen Süre</div>'+
-        '<div class="scVal">'+formatDk(dk)+'</div><div class="scSub">izlenen bölümler</div></div>';
-    }
-    
-    stats.innerHTML = haftaKart + ortaKart + favKart + sureCard;
-  };
-  
-  // Chip değiştiğinde de çalışsın
-  if(typeof filtre === 'function' && !filtre.__overridden9){
-    const _origFiltre = filtre;
-    filtre = function(f){ _origFiltre(f); updateDash(); };
-    filtre.__overridden9 = true;
+  sonuc.innerHTML = bulunanlar.map(k => `
+    <div class="aramaSonucSatir">
+      <div class="simge">${k.ad[0].toUpperCase()}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:600">${temiz(k.ad)}</div>
+      </div>
+      <button class="btn small solid" onclick="arkadasIstekGonder('${k.id}')">➕ İstek</button>
+    </div>
+  `).join('');
+}
+
+function arkadasIstekGonder(id){
+  alert(`✅ "${id}" kullanıcısına istek gönderildi! (Mock)`);
+  const sonuc = $('arkadasAramaSonuc');
+  if(sonuc) sonuc.innerHTML = '';
+  const input = $('arkadasAramaInput');
+  if(input) input.value = '';
+}
+
+function arkadasProfilGor(id){
+  const a = MOCK_ARKADASLAR.find(x => x.id === id);
+  if(a) alert(`👤 ${a.ad}\n🎮 ${a.oyun} oyun • 🎬 ${a.film} film • 📺 ${a.dizi} dizi`);
+}
+
+function arkadasKabul(id){
+  const idx = MOCK_GELEN_ISTEKLER.findIndex(i => i.id === id);
+  if(idx > -1){
+    const istek = MOCK_GELEN_ISTEKLER[idx];
+    MOCK_GELEN_ISTEKLER.splice(idx, 1);
+    MOCK_ARKADASLAR.push({id: istek.id, ad: istek.ad, avatar: '', oyun: 0, film: 0, dizi: 0});
+    profilSayfasiniYenile();
   }
-  // Favori toggle edildiğinde de çalışsın
-  ['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
-    if(typeof window[fn] === 'function' && !window[fn].__overridden9){
-      const orig = window[fn];
-      window[fn] = function(){ orig.apply(this, arguments); updateDash(); };
-      window[fn].__overridden9 = true;
+}
+
+function arkadasReddet(id){
+  if(!confirm('İsteği reddetmek istediğinden emin misin?')) return;
+  const idx = MOCK_GELEN_ISTEKLER.findIndex(i => i.id === id);
+  if(idx > -1){ MOCK_GELEN_ISTEKLER.splice(idx, 1); profilSayfasiniYenile(); }
+}
+
+function arkadasIptal(id){
+  if(!confirm('İsteği iptal etmek istediğinden emin misin?')) return;
+  const idx = MOCK_GIDEN_ISTEKLER.findIndex(i => i.id === id);
+  if(idx > -1){ MOCK_GIDEN_ISTEKLER.splice(idx, 1); profilSayfasiniYenile(); }
+}
+
+function arkadasCikar(id){
+  if(!confirm('Arkadaşlıktan çıkarmak istediğinden emin misin?')) return;
+  const idx = MOCK_ARKADASLAR.findIndex(a => a.id === id);
+  if(idx > -1){ MOCK_ARKADASLAR.splice(idx, 1); profilSayfasiniYenile(); }
+}
+
+// Kullanıcı adı düzenleme
+function kullaniciAdiDuzenleBaslat(){
+  const display = $('usernameDisplay');
+  const editArea = $('usernameEditArea');
+  if(!display || !editArea) return;
+  const currentUsername = store('neonHub_username') || (auth.currentUser?.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
+  display.style.display = 'none';
+  editArea.style.display = 'block';
+  editArea.innerHTML = `
+    <div class="usernameEditWrap">
+      <input type="text" id="usernameInput" value="${temiz(currentUsername)}" placeholder="Yeni kullanıcı adı" maxlength="20" autocomplete="off">
+      <button class="btn solid" onclick="kullaniciAdiKaydet()">💾</button>
+      <button class="btn" onclick="kullaniciAdiVazgec()">✗</button>
+    </div>
+    <div id="usernameDurum" class="usernameDurum muted"></div>
+  `;
+  const input = $('usernameInput');
+  if(input){
+    input.focus();
+    input.select();
+    input.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') kullaniciAdiKaydet();
+      if(e.key === 'Escape') kullaniciAdiVazgec();
+    });
+  }
+}
+
+function kullaniciAdiVazgec(){
+  const display = $('usernameDisplay');
+  const editArea = $('usernameEditArea');
+  if(display) display.style.display = '';
+  if(editArea){
+    editArea.style.display = 'none';
+    editArea.innerHTML = '';
+  }
+}
+
+async function kullaniciAdiKaydet(){
+  const input = $('usernameInput');
+  const durum = $('usernameDurum');
+  if(!input) return;
+  const yeniAd = input.value.trim();
+  const eskiAd = store('neonHub_username') || (auth.currentUser?.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
+  if(!yeniAd){ if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Boş olamaz</span>'; return; }
+  if(!/^[a-zA-Z0-9_]{3,20}$/.test(yeniAd)){ if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ 3-20 karakter, harf/rakam/_</span>'; return; }
+  if(yeniAd === eskiAd){ kullaniciAdiVazgec(); return; }
+  if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Kontrol ediliyor...</span>';
+  try{
+    const mevcutDoc = await db.collection('usernames').doc(yeniAd.toLowerCase()).get();
+    if(mevcutDoc.exists){
+      const mevcutData = mevcutDoc.data();
+      if(mevcutData.userId !== auth.currentUser.uid){
+        if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Bu ad zaten alınmış</span>';
+        return;
+      }
     }
-  });
-  // Bölüm tıklandığında da çalışsın (diziler için)
-  if(typeof bolumTikla === 'function' && !bolumTikla.__overridden9){
-    const _origBT = bolumTikla;
-    bolumTikla = function(k){ _origBT(k); updateDash(); };
-    bolumTikla.__overridden9 = true;
-  }
-  if(typeof sezonuIsaretle === 'function' && !sezonuIsaretle.__overridden9){
-    const _origSI = sezonuIsaretle;
-    sezonuIsaretle = function(w){ _origSI(w); updateDash(); };
-    sezonuIsaretle.__overridden9 = true;
-  }
-  
-  updateDash();
-})();
-// ============ SENKRON FİX: YEREL DEĞİŞİKLİKLERİ KORU ============
-(function(){
-  // cloudDanYukle'yi override et — yerel değişiklikleri koru
-  const _origCloudDanYukle = cloudDanYukle;
-  cloudDanYukle = async function(sessiz){
-    if(!auth.currentUser) return;
-    const now = Date.now();
-    if(now - _sonCekme < 3000) return;
-    _sonCekme = now;
+    if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Kaydediliyor...</span>';
     const uid = auth.currentUser.uid;
-    try{
-      const tSnap = await db.collection('users').doc(uid).collection('silinenler').get();
-      const tomb = new Set(tSnap.docs.map(d=>isNaN(d.id)?d.id:Number(d.id)));
-      
-      for(const cat of ['oyunlar','filmler','diziler']){
-        const snap = await db.collection('users').doc(uid).collection(cat).get();
-        const cloudItems = snap.docs.map(d=>({id:isNaN(d.id)?d.id:Number(d.id), ...d.data()})).filter(o=>!tomb.has(o.id));
-        const cloudIds = new Set(cloudItems.map(o=>o.id));
-        
-        // YEREL KAYITLARI MAP'LE (ID → kayıt)
-        const localMap = {};
-        VERI[cat].forEach(o => { localMap[o.id] = o; });
-        
-        // MERGE: cloud'dan gelen her kayıt için, yerelde varsa YEREL OLANI KULLAN
-        const merged = cloudItems.map(cloudItem => {
-          return localMap[cloudItem.id] || cloudItem;
-        });
-        
-        // Sadece yerelde olan (cloud'da olmayan) kayıtları ekle
-        const localOnly = VERI[cat].filter(o => !cloudIds.has(o.id) && !tomb.has(o.id));
-        
-        VERI[cat] = merged.concat(localOnly);
-        store(KAT[cat].depo, JSON.stringify(VERI[cat]));
-      }
-      
-      // Bölümler, notlar, favoriler — aynı mantık
-      const bSnap = await db.collection('users').doc(uid).collection('bolumler').get();
-      bSnap.forEach(doc=>{
-        const id = isNaN(doc.id)?doc.id:Number(doc.id);
-        // Yerel veri varsa koru, yoksa cloud'dan al
-        if(!bolumlerim[id] || Object.keys(bolumlerim[id]).length === 0){
-          bolumlerim[id] = doc.data()||{};
-        } else {
-          // Merge: cloud'daki her bölüm için, yerelde varsa yerel olanı kullan
-          const cloudData = doc.data() || {};
-          for(const k in cloudData){
-            if(!bolumlerim[id][k]) bolumlerim[id][k] = cloudData[k];
-          }
-        }
-      });
-      store("neonHub_bolumlerim", JSON.stringify(bolumlerim));
-      
-      const nSnap = await db.collection('users').doc(uid).collection('notlar').get();
-      nSnap.forEach(doc=>{
-        const id = isNaN(doc.id)?doc.id:Number(doc.id);
-        const d = doc.data()||{};
-        if(d.tip==='oyun' && !oyunNotlarim[id]) oyunNotlarim[id]=d.metin;
-        else if(d.tip==='film' && !filmNotlarim[id]) filmNotlarim[id]=d.metin;
-        else if(d.tip==='dizi' && !diziNotlarim[id]) diziNotlarim[id]=d.metin;
-      });
-      store("neonHub_oyunNotlarim",JSON.stringify(oyunNotlarim));
-      store("neonHub_filmNotlarim",JSON.stringify(filmNotlarim));
-      store("neonHub_diziNotlarim",JSON.stringify(diziNotlarim));
-      
-      const fSnap = await db.collection('users').doc(uid).collection('favoriler').get();
-      fSnap.forEach(doc=>{
-        const map = doc.data()||{};
-        if(doc.id==='oyunlar'){
-          // Merge: yerel + cloud
-          for(const k in map) oyunFavoriler[k] = map[k];
-        }
-        else if(doc.id==='filmler'){
-          for(const k in map) filmFavoriler[k] = map[k];
-        }
-        else if(doc.id==='diziler'){
-          for(const k in map) diziFavoriler[k] = map[k];
-        }
-      });
-      store("neonHub_oyunFavoriler",JSON.stringify(oyunFavoriler));
-      store("neonHub_filmFavoriler",JSON.stringify(filmFavoriler));
-      store("neonHub_diziFavoriler",JSON.stringify(diziFavoriler));
-      
-      render();
-      if(typeof updateDash === 'function') updateDash();
-      console.log('✅ Cloud verileri çekildi (yerel değişiklikler korundu)');
-    }catch(e){
-      console.error('❌ Çekme hatası:', e);
-      if(!sessiz) alert('❌ Veri çekilemedi: '+e.message);
+    try{ await db.collection('usernames').doc(eskiAd.toLowerCase()).delete(); }catch(e){}
+    await db.collection('usernames').doc(yeniAd.toLowerCase()).set({
+      email: auth.currentUser.email, userId: uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    await db.collection('users').doc(uid).collection('profile').doc('info').set({
+      username: yeniAd, email: auth.currentUser.email,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, {merge: true});
+    store('neonHub_username', yeniAd);
+    const textEl = $('usernameText');
+    if(textEl) textEl.textContent = yeniAd;
+    if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Değiştirildi!</span>';
+    setTimeout(() => kullaniciAdiVazgec(), 800);
+  }catch(e){
+    if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Hata: '+temiz(e.message)+'</span>';
+  }
+}
+
+// Profil resmi değiştirme
+function profilResmiDegistir(){
+  const modal = document.createElement('div');
+  modal.className = 'modal open';
+  modal.id = 'avatarModal';
+  modal.innerHTML = `
+    <div class="modalBox" style="max-width:420px">
+      <button class="modalClose" onclick="avatarModalKapat()">×</button>
+      <div class="modalBody" style="padding-top:56px">
+        <h2 style="font-size:20px;letter-spacing:2px;margin-bottom:16px">📷 Profil Resmi</h2>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="btn" onclick="avatarYukle()">📁 Bilgisayardan Yükle</button>
+          ${auth.currentUser?.photoURL ? `<button class="btn" onclick="avatarGoogleKullan()">🔵 Google Fotoğrafını Kullan</button>` : ''}
+          ${store('neonHub_avatar') ? `<button class="btn danger" onclick="avatarKaldir()">🗑️ Özel Resmi Kaldır</button>` : ''}
+        </div>
+        <div id="avatarDurum" class="muted" style="margin-top:16px;font-size:12px;text-align:center"></div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', (e) => { if(e.target === modal) avatarModalKapat(); });
+  document.body.style.overflow = 'hidden';
+}
+
+function avatarModalKapat(){
+  const m = $('avatarModal');
+  if(m) m.remove();
+  if(!$('oyunModal')?.classList.contains('open') && 
+     !$('filmModal')?.classList.contains('open') && 
+     !$('diziModal')?.classList.contains('open') &&
+     !$('steamModal')?.classList.contains('open')){
+    document.body.style.overflow = '';
+  }
+}
+
+function avatarYukle(){
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = 'image/*';
+  input.onchange = async (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    if(file.size > 2 * 1024 * 1024){
+      const durum = $('avatarDurum');
+      if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ 2MB\'dan küçük olmalı</span>';
+      return;
     }
+    const durum = $('avatarDurum');
+    if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Yükleniyor...</span>';
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      store('neonHub_avatar', ev.target.result);
+      profilSayfasiniYenile();
+      if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Güncellendi!</span>';
+      setTimeout(() => avatarModalKapat(), 800);
+    };
+    reader.readAsDataURL(file);
   };
-})();
+  input.click();
+}
+
+function avatarGoogleKullan(){
+  localStorage.removeItem('neonHub_avatar');
+  profilSayfasiniYenile();
+  const durum = $('avatarDurum');
+  if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Google kullanılıyor!</span>';
+  setTimeout(() => avatarModalKapat(), 800);
+}
+
+function avatarKaldir(){
+  if(!confirm('Özel resmi kaldırmak istediğinden emin misin?')) return;
+  localStorage.removeItem('neonHub_avatar');
+  profilSayfasiniYenile();
+  setTimeout(() => avatarModalKapat(), 400);
+}
+
+// Veri yönetimi
+function profilVeriDisaAktar(){
+  const veri = {
+    versiyon: '1.0',
+    tarih: new Date().toISOString(),
+    kullanici: auth.currentUser?.email || '-',
+    oyunlar: VERI.oyunlar,
+    filmler: VERI.filmler,
+    diziler: VERI.diziler,
+    bolumler: bolumlerim,
+    favoriler: { oyunlar: oyunFavoriler, filmler: filmFavoriler, diziler: diziFavoriler },
+    notlar: { oyunlar: oyunNotlarim, filmler: filmNotlarim, diziler: diziNotlarim }
+  };
+  const blob = new Blob([JSON.stringify(veri, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `neonhub-yedek-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  alert('✅ Verilerin JSON dosyası olarak indirildi!');
+}
+
+function profilVeriIceAktar(){
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = async (e) => {
+    const file = e.target.files[0];
+    if(!file) return;
+    if(!confirm('⚠️ Mevcut verilerin üzerine yazılacak. Devam?')) return;
+    try {
+      const text = await file.text();
+      const veri = JSON.parse(text);
+      if(!veri.versiyon){ alert('❌ Geçersiz dosya!'); return; }
+      VERI.oyunlar = veri.oyunlar || [];
+      VERI.filmler = veri.filmler || [];
+      VERI.diziler = veri.diziler || [];
+      Object.assign(bolumlerim, veri.bolumler || {});
+      Object.assign(oyunFavoriler, veri.favoriler?.oyunlar || {});
+      Object.assign(filmFavoriler, veri.favoriler?.filmler || {});
+      Object.assign(diziFavoriler, veri.favoriler?.diziler || {});
+      Object.assign(oyunNotlarim, veri.notlar?.oyunlar || {});
+      Object.assign(filmNotlarim, veri.notlar?.filmler || {});
+      Object.assign(diziNotlarim, veri.notlar?.diziler || {});
+      store(KAT.oyunlar.depo, JSON.stringify(VERI.oyunlar));
+      store(KAT.filmler.depo, JSON.stringify(VERI.filmler));
+      store(KAT.diziler.depo, JSON.stringify(VERI.diziler));
+      store('neonHub_bolumlerim', JSON.stringify(bolumlerim));
+      alert('✅ Veriler geri yüklendi! Sayfa yenileniyor...');
+      location.reload();
+    } catch(err) { alert('❌ Hata: ' + err.message); }
+  };
+  input.click();
+}
 </script>
 </body>
 </html>

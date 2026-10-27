@@ -1046,6 +1046,69 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
     min-height: 100vh;
   }
 }
+/* ============ MOBİL GRID/LİSTE — TEMİZ SÜRÜM (hepsini ezer) ============ */
+@media (max-width: 768px) {
+  /* GRID MODU: 2 sütun, kompakt */
+  .grid:not(.list-view) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  .grid:not(.list-view) .card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .grid:not(.list-view) .card .cover {
+    aspect-ratio: 16/9 !important;
+    height: auto !important;
+  }
+
+  /* LİSTE MODU: tek sütun, yatay kompakt kart */
+  .grid.list-view {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  .grid.list-view .card {
+    width: 100% !important;
+    flex-direction: row !important;
+    height: 90px !important;
+    min-height: 90px !important;
+    max-height: 90px !important;
+    overflow: hidden !important;
+  }
+  .grid.list-view .card .cover {
+    width: 70px !important;
+    min-width: 70px !important;
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+  .grid.list-view .card .letter {
+    font-size: 26px !important;
+  }
+  .grid.list-view .card .body {
+    flex: 1 !important;
+    padding: 8px 10px !important;
+    justify-content: center !important;
+  }
+  .grid.list-view .card .body h3 {
+    font-size: 14px !important;
+  }
+  .grid.list-view .card .meta {
+    font-size: 11px !important;
+  }
+  .grid.list-view .card .badge {
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+  }
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>

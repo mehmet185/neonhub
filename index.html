@@ -1035,16 +1035,9 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
     width: 40px;
     height: 36px;
   }
-  /* Scroll garantisi */
-  body {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
   #view {
-    padding-bottom: calc(140px + env(safe-area-inset-bottom));
-    min-height: 100vh;
-  }
+ padding-bottom: calc(120px + env(safe-area-inset-bottom));
+ }
 }
 /* ============ MOBİL GRID/LİSTE — TEMİZ SÜRÜM (hepsini ezer) ============ */
 @media (max-width: 768px) {
@@ -1284,8 +1277,6 @@ style="filter:drop-shadow(0 0 6px rgba(0,207,255,.55))"/>
     </button>
   </div>
   
-  <div id="chips" class="chips"></div>
-</div>
 <div id="chips" class="chips"></div>
 </div>
 <div id="formWrap"></div>
@@ -3849,18 +3840,6 @@ render = function() {
     $('grid').classList.remove('list-view');
   }
 };
-// GEÇİCİ DEBUG - boşluk yaratan elemanı bul (sonra sileceğiz)
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const renkler = ['red', 'lime', 'yellow', 'magenta', 'orange', 'cyan'];
-    document.querySelectorAll('#view > *').forEach((el, i) => {
-      el.style.outline = '3px solid ' + renkler[i % renkler.length];
-    });
-    document.querySelectorAll('#grid > *').forEach((el, i) => {
-      el.style.outline = '2px dashed ' + renkler[(i + 2) % renkler.length];
-    });
-  }, 1500);
-});
 </script>
 </body>
 </html>

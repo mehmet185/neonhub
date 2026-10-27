@@ -1109,6 +1109,21 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
     padding: 2px 6px !important;
   }
 }
+/* ============ BOŞLUK FİX ============ */
+@media (max-width: 768px) {
+  /* Kart giriş animasyonunu kapat (boşluk şüphelisi) */
+  #view .card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Tüm dikey boşlukları sıfırla */
+  #view { padding-top: 60px !important; }
+  header { margin-bottom: 10px !important; min-height: 0 !important; }
+  .toolbar { margin-bottom: 10px !important; }
+  #formWrap { margin-bottom: 10px !important; }
+  #grid { margin-top: 0 !important; padding-top: 0 !important; }
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>

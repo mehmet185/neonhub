@@ -2009,22 +2009,22 @@ async function apiFetch(url, timeout=8000){
   }
 }
 const API = {
-  rawgKey:()=>(store("neonHub_rawgKey")||"").trim(),
-  omdbKey:()=>(store("neonHub_omdbKey")||"").trim(),
-  async rawg(path){
-    const key=this.rawgKey();
-    if(!key) throw new Error("RAWG anahtarı yok");
-    const sep=path.includes("?")?"&":"?";
+  _rk: '6a179e8b693e4086922ef8720dc55103',
+  _ok: '3e48aa1d',
+  rawgKey() { return this._rk; },
+  omdbKey() { return this._ok; },
+  async rawg(path) {
+    const key = this.rawgKey();
+    const sep = path.includes("?") ? "&" : "?";
     return apiFetch(`https://api.rawg.io/api${path}${sep}key=${key}`);
   },
-  async omdb(params){
-    const key=this.omdbKey();
-    if(!key) throw new Error("OMDb anahtarı yok");
-    const d=await apiFetch(`https://www.omdbapi.com/?apikey=${key}&${params}`);
-    if(d.Response==="False") throw new Error(d.Error||"OMDb hata");
+  async omdb(params) {
+    const key = this.omdbKey();
+    const d = await apiFetch(`https://www.omdbapi.com/?apikey=${key}&${params}`);
+    if (d.Response === "False") throw new Error(d.Error || "OMDb hata");
     return d;
   },
-  tvmaze:path=>apiFetch(`https://api.tvmaze.com${path}`)
+  tvmaze: path => apiFetch(`https://api.tvmaze.com${path}`)
 };
 function temaUygula(){
   const t=bolumRengi(aktifCat);
@@ -2056,19 +2056,6 @@ function setTema(key){
   temaUygula();navRenkleri();renderTemaListe();renderChips();render();
 }
 function zoomAyarla(v){store("neonHub_zoom",v);document.documentElement.style.setProperty("--zoom",v);render();}
-function saveKey(api){
-  const v=$(`${api}Key`).value.trim();
-  if(v) store(`neonHub_${api}Key`,v);
-  else localStorage.removeItem(`neonHub_${api}Key`);
-  durumYaz(api);
-}
-function durumYaz(api){
-  const key=API[api+"Key"]();
-  $(`${api}Durum`).innerHTML=key
-    ?'<span style="color:#4ade80">✔ Aktif.</span>'
-    :'<span style="color:#ffe14d">⚠ Anahtar yok.</span>';
-  $(`${api}Key`).value=key;
-}
 function ayarlarGizle(){
 const s=document.getElementById("ayarlarSayfa");
 if(s && s.style.display==="block"){

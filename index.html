@@ -385,8 +385,6 @@ padding:8px 12px;cursor:pointer;color:var(--muted);transition:color 0.2s;min-wid
 #formWrap{padding:16px;border-radius:12px;margin-bottom:16px}
 #formWrap form{grid-template-columns:1fr}
 #ayarlarSayfa{padding:16px}
-#loginScreen{padding:16px}
-#loginScreen > div{padding:28px 20px}
 .profile-menu{bottom:80px;left:16px;right:16px;width:auto}
 .sezonTabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
 .sezonTab{flex-shrink:0;font-size:12px;padding:7px 12px}
@@ -503,8 +501,6 @@ input,select,textarea{background:#fff;border:1px solid var(--line);color:var(--t
 .oyunAciklama,.filmAciklama,.diziAciklama,.infoCard,.ep,.castCard,.benzerCard,.sonuc,.temaButon{
 background:#fff;border:1px solid var(--line);box-shadow:0 6px 18px rgba(20,20,50,.06)}
 .ep.watched{background:rgba(var(--accent-r),.10)}
-#loginScreen{background:var(--bg)}
-#loginScreen > div{background:#fff;border:1px solid var(--line);box-shadow:0 30px 80px rgba(20,20,50,.15)}
 #dashBanner{display:flex;align-items:center;justify-content:space-between;gap:16px;
 background:linear-gradient(100deg,rgba(var(--accent-r),.28),rgba(var(--accent-r),.10) 55%,#ffffff 100%),#fff;
 border-radius:24px;padding:20px 24px;margin:4px 0 14px;position:relative;overflow:hidden;
@@ -577,8 +573,6 @@ html[data-theme="dark"] .oyunAciklama,html[data-theme="dark"] .filmAciklama,html
 html[data-theme="dark"] .infoCard,html[data-theme="dark"] .ep,html[data-theme="dark"] .castCard,
 html[data-theme="dark"] .benzerCard,html[data-theme="dark"] .sonuc,html[data-theme="dark"] .temaButon{
 background:var(--card);border-color:var(--line);box-shadow:none}
-html[data-theme="dark"] #loginScreen{background:var(--bg)}
-html[data-theme="dark"] #loginScreen > div{background:var(--panel);border-color:var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}
 html[data-theme="dark"] #dashBanner{background:linear-gradient(100deg,rgba(var(--accent-r),.22),rgba(var(--accent-r),.07) 55%,var(--card) 100%),var(--card);box-shadow:0 12px 30px rgba(0,0,0,.35)}
 html[data-theme="dark"] .dbTitle{color:var(--text)}
 html[data-theme="dark"] .statCard{background:var(--card);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.3)}
@@ -661,7 +655,6 @@ text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;just
 .arkadasIsimSatir{padding:8px 12px;cursor:pointer;border-radius:8px;transition:.15s;
 font-size:14px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px}
 .arkadasIsimSatir:hover{background:rgba(var(--accent-r),.08)}
-.arkadasMenu button:hover{background:rgba(var(--accent-r),.1)}
 .istekKutu{background:rgba(var(--accent-r),.03);border:1px solid rgba(var(--accent-r),.15);
 border-radius:10px;padding:10px;margin-bottom:12px}
 .istekKutu.bekleyen{background:rgba(255,225,77,.04);border-color:rgba(255,225,77,.2)}
@@ -701,6 +694,152 @@ color:var(--text);min-width:200px}
 .profilAd{font-size:22px}
 .profilMeta{justify-content:center}
 .usernameEditWrap input{font-size:18px;min-width:160px}
+}
+/* ============ BIÇAK ANİMASYONLU GİRİŞ EKRANI ============ */
+@property --ia{syntax:'<length-percentage>';inherits:true;initial-value:50%}
+@property --ib{syntax:'<length-percentage>';inherits:true;initial-value:114%}
+#loginScreen{position:fixed;inset:0;z-index:9999;display:flex;padding:20px;overflow:auto;
+background:radial-gradient(900px 480px at 78% -12%,rgba(var(--accent-r),.16),transparent 70%),
+radial-gradient(700px 420px at 6% 112%,rgba(var(--accent-r),.09),transparent 70%),var(--bg)}
+.girisKart{--kLine:rgba(128,134,150,.45);position:relative;margin:auto;width:min(940px,100%);height:560px;
+border-radius:26px;overflow:hidden;
+background:radial-gradient(520px 320px at 0% 0%,rgba(var(--accent-r),.07),transparent 70%),var(--panel);
+border:1px solid var(--line);
+box-shadow:0 40px 90px rgba(15,15,35,.22),0 0 0 1px rgba(var(--accent-r),.08);
+animation:girisKartAc .7s cubic-bezier(.2,.8,.2,1) .25s both}
+html[data-theme="dark"] .girisKart{box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 70px rgba(var(--accent-r),.10)}
+@keyframes girisKartAc{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.girisSahne{position:absolute;inset:0;
+--Aa:50%;--Ab:114%;--Ma:-14%;--Mb:128%;--Ba:-22%;--Bb:42%;
+--ia:var(--Aa);--ib:var(--Ab)}
+.girisSahne[data-mod="kayit"]{--ia:var(--Ba);--ib:var(--Bb)}
+.girisSahne.gecisIleri{animation:bicakIleri 1.1s forwards}
+.girisSahne.gecisGeri{animation:bicakGeri 1.1s forwards}
+@keyframes bicakIleri{
+0%{--ia:var(--Aa);--ib:var(--Ab);animation-timing-function:cubic-bezier(.65,0,.35,1)}
+42%{--ia:var(--Ma);--ib:var(--Mb);animation-timing-function:cubic-bezier(.25,.8,.25,1)}
+100%{--ia:var(--Ba);--ib:var(--Bb)}}
+@keyframes bicakGeri{
+0%{--ia:var(--Ba);--ib:var(--Bb);animation-timing-function:cubic-bezier(.65,0,.35,1)}
+42%{--ia:var(--Ma);--ib:var(--Mb);animation-timing-function:cubic-bezier(.25,.8,.25,1)}
+100%{--ia:var(--Aa);--ib:var(--Ab)}}
+.bicak{position:absolute;inset:0;z-index:3;
+clip-path:polygon(var(--ia) 0,var(--ib) 0,calc(var(--ib) + 14%) 100%,calc(var(--ia) + 14%) 100%);
+background:
+radial-gradient(110% 100% at 88% -15%,rgba(var(--accent-r),.30),transparent 58%),
+radial-gradient(110% 100% at 12% -15%,rgba(var(--accent-r),.24),transparent 58%),
+radial-gradient(90% 70% at 50% 120%,rgba(var(--accent-r),.12),transparent 65%),
+repeating-linear-gradient(0deg,rgba(var(--accent-r),.035) 0 1px,transparent 1px 38px),
+repeating-linear-gradient(90deg,rgba(var(--accent-r),.035) 0 1px,transparent 1px 38px),
+linear-gradient(160deg,#0c121a,#070a0f)}
+.kenarKatman{position:absolute;inset:0;z-index:2;pointer-events:none;
+filter:drop-shadow(0 0 7px rgba(var(--accent-r),.8))}
+.bicakKenar{position:absolute;inset:0;
+clip-path:polygon(calc(var(--ia) - 3px) 0,calc(var(--ib) + 3px) 0,calc(var(--ib) + 14% + 3px) 100%,calc(var(--ia) + 14% - 3px) 100%);
+background:linear-gradient(180deg,rgba(var(--accent-r),.35),var(--accent) 25%,var(--accent) 75%,rgba(var(--accent-r),.35))}
+.mesaj{position:absolute;top:50%;opacity:0;pointer-events:none;transform:translateY(calc(-50% + 14px));
+transition:opacity .3s ease .35s,transform .3s ease .35s}
+.mesajGiris{left:70%;width:25%}
+.mesajKayit{left:7%;width:30%}
+.girisSahne[data-mod="giris"] .mesajGiris,.girisSahne[data-mod="kayit"] .mesajKayit{
+opacity:1;transform:translateY(-50%);
+transition:opacity .5s ease .6s,transform .6s cubic-bezier(.2,.8,.2,1) .6s}
+.mesajEtiket{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:3px;
+color:var(--accent);text-transform:uppercase;margin-bottom:14px;text-shadow:0 0 8px rgba(var(--accent-r),.6)}
+.mesajEtiket svg{width:16px;height:16px;flex-shrink:0;filter:drop-shadow(0 0 5px rgba(0,207,255,.6))}
+.mesajBaslik{font-size:clamp(24px,3.3vw,36px);line-height:1.12;font-weight:800;letter-spacing:.5px;
+color:#fff;margin:0 0 14px}
+.mesajBaslik em{display:block;font-style:italic;font-weight:700;color:var(--accent);
+text-shadow:0 0 10px rgba(var(--accent-r),.7),0 0 30px rgba(var(--accent-r),.4)}
+.mesajAlt{font-size:13px;line-height:1.65;color:rgba(233,237,243,.62)}
+.girisPanel{position:absolute;top:0;bottom:0;z-index:1;display:flex;flex-direction:column;justify-content:center;
+opacity:0;visibility:hidden;transition:opacity 0s .46s,visibility 0s .46s}
+.girisSahne[data-mod="giris"] .panelGiris,.girisSahne[data-mod="kayit"] .panelKayit{
+opacity:1;visibility:visible;transition:opacity .5s ease .5s,visibility 0s 0s}
+.panelGiris{left:6%;width:37%}
+.panelKayit{left:61%;right:6%}
+.formBaslik{position:relative;font-size:22px;font-weight:800;letter-spacing:.5px;color:var(--text);
+padding-bottom:12px;margin:0 0 20px}
+.formBaslik::after{content:"";position:absolute;left:0;bottom:0;width:28px;height:3px;border-radius:2px;
+background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-r),.85)}
+.alan{position:relative;margin-bottom:16px}
+#loginScreen .alan input{display:block;width:100%;background:transparent;border:0;
+border-bottom:1.5px solid var(--kLine);border-radius:0;box-shadow:none;
+padding:21px 30px 7px 0;font-size:14px;color:var(--text);outline:none;
+transition:border-color .25s,box-shadow .25s}
+#loginScreen .alan input:focus{border-bottom-color:var(--accent);
+box-shadow:0 1px 0 0 var(--accent),0 8px 14px -9px rgba(var(--accent-r),.9)}
+#loginScreen .alan input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--panel) inset;
+-webkit-text-fill-color:var(--text);caret-color:var(--text)}
+.alanEtiket{position:absolute;left:0;top:20px;font-size:14px;color:var(--muted);pointer-events:none;
+transition:top .2s ease,font-size .2s ease,color .2s ease,letter-spacing .2s ease;white-space:nowrap}
+.alan input:focus + .alanEtiket,.alan input:not(:placeholder-shown) + .alanEtiket,
+.alan input:-webkit-autofill + .alanEtiket{top:2px;font-size:10.5px;letter-spacing:.6px}
+.alan input:focus + .alanEtiket{color:var(--accent)}
+.alanIkon{position:absolute;right:0;top:21px;width:17px;height:17px;fill:none;stroke:currentColor;
+stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:var(--muted);transition:color .2s;
+pointer-events:none}
+.alan input:focus ~ .alanIkon{color:var(--accent)}
+.gozBtn{pointer-events:auto;cursor:pointer;background:none;border:0;padding:0}
+.gozBtn:hover{color:var(--text)}
+.gozBtn svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.7;
+stroke-linecap:round;stroke-linejoin:round}
+.gozBtn .gozKapali{display:none}
+.gozBtn.acik .gozAcik{display:none}
+.gozBtn.acik .gozKapali{display:block}
+.hatirla{display:flex;align-items:center;gap:8px;margin:2px 0 8px;cursor:pointer;user-select:none;
+font-size:12px;color:var(--muted)}
+.hatirla input{width:16px;height:16px;flex-shrink:0;cursor:pointer;accent-color:var(--accent)}
+.formMesaj{min-height:18px;margin:0 0 8px;font-size:12px;line-height:1.4;color:#ff5a3c}
+.formMesaj[data-tur="bilgi"]{color:var(--muted)}
+.formMesaj.goster{animation:mesajTitre .4s ease}
+@keyframes mesajTitre{0%,100%{transform:none}20%{transform:translateX(-5px)}60%{transform:translateX(5px)}}
+.girisBtn{display:block;width:100%;height:46px;border:0;border-radius:999px;cursor:pointer;
+font-family:inherit;font-size:14px;font-weight:800;letter-spacing:.6px;background:var(--accent);color:#061016;
+box-shadow:0 10px 26px -8px rgba(var(--accent-r),.7),inset 0 1px 0 rgba(255,255,255,.35);
+transition:transform .2s,box-shadow .2s}
+.girisBtn:hover{transform:translateY(-2px);box-shadow:0 14px 32px -8px rgba(var(--accent-r),.9),inset 0 1px 0 rgba(255,255,255,.35)}
+.girisBtn:active{transform:none}
+.ayirac{display:flex;align-items:center;gap:12px;margin:16px 0 14px;font-size:11px;color:var(--muted);
+letter-spacing:1px;text-transform:uppercase}
+.ayirac::before,.ayirac::after{content:"";flex:1;height:1px;background:var(--kLine);opacity:.6}
+.googleBtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:44px;
+border-radius:999px;border:1.5px solid var(--kLine);background:transparent;color:var(--text);cursor:pointer;
+font-family:inherit;font-size:13px;font-weight:700;transition:border-color .2s,box-shadow .2s}
+.googleBtn:hover{border-color:var(--accent);box-shadow:0 0 16px rgba(var(--accent-r),.3)}
+.googleBtn svg{width:18px;height:18px;flex-shrink:0}
+.gecisSatir{margin:16px 0 0;font-size:12.5px;color:var(--muted)}
+.gecisSatir button{background:none;border:0;border-bottom:2px solid var(--accent);padding:0 0 1px;cursor:pointer;
+font-family:inherit;font-size:inherit;font-weight:800;color:var(--text);transition:color .2s}
+.gecisSatir button:hover{color:var(--accent)}
+.guc{display:flex;align-items:center;gap:4px;margin:-6px 0 12px}
+.guc i{flex:0 0 22px;height:3px;border-radius:2px;background:var(--kLine);opacity:.7;
+transition:background .25s,box-shadow .25s,opacity .25s}
+.guc span{margin-left:8px;font-size:11px;color:var(--muted)}
+.guc[data-seviye="1"] i:nth-child(-n+1){background:#ff5a3c;opacity:1}
+.guc[data-seviye="2"] i:nth-child(-n+2){background:#ffb020;opacity:1}
+.guc[data-seviye="3"] i:nth-child(-n+3){background:#4ade80;opacity:1}
+.guc[data-seviye="4"] i:nth-child(-n+4){background:var(--accent);opacity:1;box-shadow:0 0 8px rgba(var(--accent-r),.8)}
+@media (prefers-reduced-motion:reduce){
+.girisSahne.gecisIleri,.girisSahne.gecisGeri{animation-duration:.01s}
+.girisPanel,.mesaj{transition-duration:.01s !important;transition-delay:0s !important}
+.girisKart{animation:none}
+}
+@media (max-width:780px){
+#loginScreen{padding:16px}
+.girisKart{width:min(460px,100%);height:700px}
+.girisSahne{--Aa:0px;--Ab:150px;--Ma:0px;--Mb:112%;--Ba:0px;--Bb:150px}
+.bicak{clip-path:polygon(0 0,100% 0,100% var(--ib),0 calc(var(--ib) + 26px))}
+.bicakKenar{clip-path:polygon(0 0,100% 0,100% calc(var(--ib) + 3px),0 calc(var(--ib) + 29px));
+background:linear-gradient(90deg,rgba(var(--accent-r),.35),var(--accent) 25%,var(--accent) 75%,rgba(var(--accent-r),.35))}
+.mesaj,.mesajGiris,.mesajKayit{left:8%;right:8%;width:auto;top:0;height:150px;display:flex;flex-direction:column;
+justify-content:center;transform:translateY(14px)}
+.girisSahne[data-mod="giris"] .mesajGiris,.girisSahne[data-mod="kayit"] .mesajKayit{transform:none}
+.mesajBaslik{font-size:26px;margin:0}
+.mesajBaslik em{display:inline}
+.mesajAlt{display:none}
+.panelGiris,.panelKayit{left:8%;right:8%;width:auto;top:176px;padding-bottom:12px}
+#loginScreen .alan input{font-size:16px}
 }
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -757,35 +896,92 @@ const db = firebase.firestore();
     <span>Ayarlar</span>
   </div>
 </nav>
-<div id="loginScreen" style="position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px">
-  <div style="background:var(--panel);padding:40px;border-radius:20px;max-width:420px;width:100%;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)">
-    <div style="text-align:center;margin-bottom:24px">
-      <div style="font-size:36px;font-weight:800;letter-spacing:6px;color:var(--accent);text-shadow:0 0 8px rgba(var(--accent-r),.6)">NEONHUB</div>
-      <p style="color:var(--muted);margin-top:8px;font-size:13px">Oyunlarını, filmlerini ve dizilerini takip et</p>
-    </div>
-    <button onclick="loginWithGoogle()" style="width:100%;padding:13px;background:#fff;color:#000;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:16px">🔵 Google ile Giriş Yap</button>
-    <div style="display:flex;align-items:center;gap:10px;margin:20px 0">
-      <div style="flex:1;height:1px;background:var(--line)"></div>
-      <span style="color:var(--muted);font-size:12px">veya</span>
-      <div style="flex:1;height:1px;background:var(--line)"></div>
-    </div>
-    <div id="registerFields" style="display:none">
-      <input id="registerUsername" type="text" placeholder="Kullanıcı Adı (harf, rakam, _)" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:10px;box-sizing:border-box">
-      <input id="registerEmail" type="email" placeholder="Email (kurtarma için)" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:10px;box-sizing:border-box">
-    </div>
-    <div id="loginFields">
-      <input id="loginUsername" type="text" placeholder="Email veya Kullanıcı Adı" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:10px;box-sizing:border-box">
-    </div>
-    <input id="loginPassword" type="password" placeholder="Şifre" style="width:100%;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);margin-bottom:12px;box-sizing:border-box">
-    <label style="display:flex;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer;user-select:none">
-      <input type="checkbox" id="beniHatirla" checked style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex-shrink:0">
-      <span style="font-size:12px;color:var(--muted)">Beni hatırla</span>
-    </label>
-    <button id="loginBtn" onclick="loginWithCredentials()" style="width:100%;padding:13px;background:var(--accent);color:#061016;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Giriş Yap</button>
-    <button id="registerBtn" onclick="registerWithUsername()" style="display:none;width:100%;padding:13px;background:var(--accent);color:#061016;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Kayıt Ol</button>
-    <button id="toggleModeBtn" onclick="toggleRegisterMode()" style="width:100%;padding:13px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:10px;font-size:14px;font-weight:700;cursor:pointer">Hesabım Yok, Kayıt Ol</button>
-  </div>
+
+<div id="loginScreen">
+<div class="girisKart">
+<div class="girisSahne" id="girisSahne" data-mod="giris">
+<section class="girisPanel panelGiris" aria-label="Giriş yap">
+<h2 class="formBaslik">Giriş Yap</h2>
+<form onsubmit="event.preventDefault();loginWithCredentials()" novalidate>
+<div class="alan">
+<input id="loginUsername" name="username" type="text" placeholder=" " autocomplete="username" autocapitalize="none" spellcheck="false">
+<label class="alanEtiket" for="loginUsername">Email veya Kullanıcı Adı</label>
+<svg class="alanIkon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
 </div>
+<div class="alan">
+<input id="loginPassword" name="password" type="password" placeholder=" " autocomplete="current-password">
+<label class="alanEtiket" for="loginPassword">Şifre</label>
+<button type="button" class="alanIkon gozBtn" onclick="sifreGoster('loginPassword',this)" aria-label="Şifreyi göster">
+<svg class="gozAcik" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></svg>
+<svg class="gozKapali" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>
+</button>
+</div>
+<label class="hatirla"><input type="checkbox" id="beniHatirla" checked><span>Beni hatırla</span></label>
+<p class="formMesaj" id="girisMesaj" role="alert"></p>
+<button type="submit" class="girisBtn" id="loginBtn">Giriş Yap</button>
+</form>
+<div class="ayirac">veya</div>
+<button type="button" class="googleBtn" onclick="loginWithGoogle()">
+<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+Google ile devam et
+</button>
+<p class="gecisSatir">NeonHub'da yeni misin? <button type="button" onclick="toggleRegisterMode()">Hesap oluştur</button></p>
+</section>
+<section class="girisPanel panelKayit" aria-label="Hesap oluştur" aria-hidden="true" inert>
+<h2 class="formBaslik">Hesap Oluştur</h2>
+<form onsubmit="event.preventDefault();registerWithUsername()" novalidate>
+<div class="alan">
+<input id="registerUsername" name="new-username" type="text" placeholder=" " autocomplete="username" autocapitalize="none" spellcheck="false">
+<label class="alanEtiket" for="registerUsername">Kullanıcı Adı (harf, rakam, _)</label>
+<svg class="alanIkon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+</div>
+<div class="alan">
+<input id="registerEmail" name="email" type="email" placeholder=" " autocomplete="email" spellcheck="false">
+<label class="alanEtiket" for="registerEmail">Email (kurtarma için)</label>
+<svg class="alanIkon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+</div>
+<div class="alan">
+<input id="registerPassword" name="new-password" type="password" placeholder=" " autocomplete="new-password">
+<label class="alanEtiket" for="registerPassword">Şifre</label>
+<button type="button" class="alanIkon gozBtn" onclick="sifreGoster('registerPassword',this)" aria-label="Şifreyi göster">
+<svg class="gozAcik" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></svg>
+<svg class="gozKapali" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/></svg>
+</button>
+</div>
+<div class="guc" id="gucKutu" data-seviye="0" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="gucYazi">En az 6 karakter</span></div>
+<p class="formMesaj" id="kayitMesaj" role="alert"></p>
+<button type="submit" class="girisBtn" id="registerBtn">Kayıt Ol</button>
+</form>
+<div class="ayirac">veya</div>
+<button type="button" class="googleBtn" onclick="loginWithGoogle()">
+<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+Google ile devam et
+</button>
+<p class="gecisSatir">Zaten hesabın var mı? <button type="button" onclick="toggleRegisterMode()">Giriş yap</button></p>
+</section>
+<div class="kenarKatman" aria-hidden="true"><i class="bicakKenar"></i></div>
+<div class="bicak">
+<div class="mesaj mesajGiris">
+<div class="mesajEtiket">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><defs><linearGradient id="lgGiris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00cfff"/><stop offset=".5" stop-color="#ffe14d"/><stop offset="1" stop-color="#ff5a3c"/></linearGradient></defs><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" stroke="url(#lgGiris)" stroke-width="1.8" stroke-linejoin="round"/></svg>
+NeonHub
+</div>
+<h2 class="mesajBaslik">Tekrar <em>hoş geldin.</em></h2>
+<p class="mesajAlt">Oyunların, filmlerin ve dizilerin tam bıraktığın yerde seni bekliyor.</p>
+</div>
+<div class="mesaj mesajKayit">
+<div class="mesajEtiket">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" stroke="url(#lgGiris)" stroke-width="1.8" stroke-linejoin="round"/></svg>
+NeonHub
+</div>
+<h2 class="mesajBaslik">Koleksiyonunu <em>başlat.</em></h2>
+<p class="mesajAlt">Tek hesap, tüm cihazlar. Oyun, film ve dizi arşivin bulutta güvende.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <aside id="side">
   <div id="logo" title="NeonHub">
     <svg viewBox="0 0 24 24" fill="none">
@@ -797,7 +993,7 @@ const db = firebase.firestore();
     </svg>
   </div>
   <nav id="nav"></nav>
-  <div id="surum">v6.0</div>
+  <div id="surum">v7.0</div>
   <button class="profile-btn" onclick="toggleProfileMenu(event)">
     <span class="profile-icon">👤</span>
     <span class="profile-name">PROFİL</span>
@@ -839,6 +1035,7 @@ const db = firebase.firestore();
     <div id="ayarlarSayfa" style="display:none"></div>
   </div>
 </main>
+
 <div class="modal" id="diziModal">
   <div class="modalBox" style="max-width:1000px">
     <div class="modalHero">
@@ -884,6 +1081,7 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
+
 <div class="modal" id="oyunModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -930,6 +1128,7 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
+
 <div class="modal" id="filmModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -972,6 +1171,7 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
+
 <div class="modal" id="onizlemeModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -993,8 +1193,9 @@ const db = firebase.firestore();
     </div>
   </div>
 </div>
+
 <script>
-// ============ YARDIMCI FONKSİYONLAR ============
+// ============ YARDIMCI ============
 async function cloudYukle(collection, docId, data) {
   if (!auth.currentUser) return;
   try {
@@ -1024,48 +1225,112 @@ async function loginWithGoogle() {
     await setPersistenceFromCheckbox();
     const provider = new firebase.auth.GoogleAuthProvider();
     await auth.signInWithPopup(provider);
-  } catch(e) { alert('Giriş hatası: ' + e.message); }
+  } catch(e) { authMesaj('Giriş hatası: ' + e.message); }
 }
+
 let isRegisterMode = false;
-function toggleRegisterMode() {
-  isRegisterMode = !isRegisterMode;
-  document.getElementById('registerFields').style.display = isRegisterMode ? 'block' : 'none';
-  document.getElementById('loginFields').style.display = isRegisterMode ? 'none' : 'block';
-  document.getElementById('loginBtn').style.display = isRegisterMode ? 'none' : 'block';
-  document.getElementById('registerBtn').style.display = isRegisterMode ? 'block' : 'none';
-  document.getElementById('toggleModeBtn').textContent = isRegisterMode ? 'Zaten Hesabım Var, Giriş Yap' : 'Hesabım Yok, Kayıt Ol';
+const GECIS_MS = 1100;
+
+function girisPaneliDurumu() {
+  const giris = document.querySelector('.panelGiris'), kayit = document.querySelector('.panelKayit');
+  giris.inert = isRegisterMode;  kayit.inert = !isRegisterMode;
+  giris.setAttribute('aria-hidden', String(isRegisterMode));
+  kayit.setAttribute('aria-hidden', String(!isRegisterMode));
 }
+
+function toggleRegisterMode() {
+  const sahne = document.getElementById('girisSahne');
+  if (!sahne || sahne.classList.contains('gecisVar')) return;
+  isRegisterMode = !isRegisterMode;
+  authMesajTemizle();
+  sahne.classList.remove('gecisIleri', 'gecisGeri');
+  void sahne.offsetWidth;
+  sahne.classList.add('gecisVar', isRegisterMode ? 'gecisIleri' : 'gecisGeri');
+  sahne.dataset.mod = isRegisterMode ? 'kayit' : 'giris';
+  girisPaneliDurumu();
+  let bitti = false;
+  const bitir = () => {
+    if (bitti) return;
+    bitti = true;
+    clearTimeout(yedek);
+    sahne.removeEventListener('animationend', animBitti);
+    sahne.classList.remove('gecisVar', 'gecisIleri', 'gecisGeri');
+    if (window.matchMedia('(pointer:fine)').matches) {
+      document.getElementById(isRegisterMode ? 'registerUsername' : 'loginUsername').focus({ preventScroll: true });
+    }
+  };
+  const animBitti = (e) => { if (e.target === sahne) bitir(); };
+  sahne.addEventListener('animationend', animBitti);
+  const yedek = setTimeout(bitir, GECIS_MS + 300);
+}
+
+function sifreGoster(inputId, btn) {
+  const alan = document.getElementById(inputId);
+  const goster = alan.type === 'password';
+  alan.type = goster ? 'text' : 'password';
+  btn.classList.toggle('acik', goster);
+  btn.setAttribute('aria-label', goster ? 'Şifreyi gizle' : 'Şifreyi göster');
+}
+
+function sifreGucu(s) {
+  if (!s) return { seviye: 0, yazi: 'En az 6 karakter' };
+  if (s.length < 6) return { seviye: 1, yazi: 'Çok kısa — en az 6 karakter' };
+  const puan = 1 + (s.length >= 10) + (/[a-z]/.test(s) && /[A-Z]/.test(s)) + /\d/.test(s) + /[^A-Za-z0-9]/.test(s);
+  if (puan <= 2) return { seviye: 2, yazi: 'Kabul edilebilir' };
+  if (puan === 3) return { seviye: 3, yazi: 'İyi' };
+  return { seviye: 4, yazi: 'Güçlü' };
+}
+
+document.getElementById('registerPassword').addEventListener('input', (e) => {
+  const g = sifreGucu(e.target.value);
+  document.getElementById('gucKutu').dataset.seviye = g.seviye;
+  document.getElementById('gucYazi').textContent = g.yazi;
+});
+
+function authMesaj(metin, tur) {
+  const el = document.getElementById(isRegisterMode ? 'kayitMesaj' : 'girisMesaj');
+  if (!el) { alert(metin); return; }
+  el.textContent = String(metin).replace(/^(❌|✅|⚠️)\s*/u, '');
+  el.dataset.tur = tur || 'hata';
+  el.classList.remove('goster'); void el.offsetWidth; el.classList.add('goster');
+}
+function authMesajTemizle() {
+  document.querySelectorAll('.formMesaj').forEach(el => { el.textContent = ''; el.classList.remove('goster'); });
+}
+document.querySelectorAll('#loginScreen input').forEach(i => i.addEventListener('input', authMesajTemizle));
+
 async function loginWithCredentials() {
   const input = document.getElementById('loginUsername').value.trim();
   const password = document.getElementById('loginPassword').value;
-  if (!input || !password) { alert('Kullanıcı adı/email ve şifre gerekli'); return; }
+  if (!input || !password) { authMesaj('Kullanıcı adı/email ve şifre gerekli'); return; }
   try {
     let email = input;
     if (!input.includes('@')) {
       const usernameDoc = await db.collection('usernames').doc(input.toLowerCase()).get();
-      if (!usernameDoc.exists) { alert('❌ Kullanıcı adı bulunamadı'); return; }
+      if (!usernameDoc.exists) { authMesaj('❌ Kullanıcı adı bulunamadı'); return; }
       email = usernameDoc.data().email;
     }
     await setPersistenceFromCheckbox();
     await auth.signInWithEmailAndPassword(email, password);
   } catch(e) {
-    if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') alert('❌ Yanlış email/kullanıcı adı veya şifre');
-    else if (e.code === 'auth/invalid-email') alert('❌ Geçersiz email formatı');
-    else alert('❌ Giriş hatası: ' + e.message);
+    if (e.code === 'auth/user-not-found' || e.code === 'auth/wrong-password' || e.code === 'auth/invalid-credential') authMesaj('❌ Yanlış email/kullanıcı adı veya şifre');
+    else if (e.code === 'auth/invalid-email') authMesaj('❌ Geçersiz email formatı');
+    else authMesaj('❌ Giriş hatası: ' + e.message);
   }
 }
+
 async function registerWithUsername() {
   const username = document.getElementById('registerUsername').value.trim();
   const email = document.getElementById('registerEmail').value.trim();
-  const password = document.getElementById('loginPassword').value;
-  if (!username || !email || !password) { alert('Tüm alanları doldurun'); return; }
-  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) { alert('❌ Kullanıcı adı 3-20 karakter olmalı'); return; }
-  if (password.length < 6) { alert('❌ Şifre en az 6 karakter olmalı'); return; }
+  const password = document.getElementById('registerPassword').value;
+  if (!username || !email || !password) { authMesaj('Tüm alanları doldurun'); return; }
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) { authMesaj('❌ Kullanıcı adı 3-20 karakter olmalı (harf, rakam, _)'); return; }
+  if (password.length < 6) { authMesaj('❌ Şifre en az 6 karakter olmalı'); return; }
   try {
     const usernameDoc = await db.collection('usernames').doc(username.toLowerCase()).get();
-    if (usernameDoc.exists) { alert('❌ Bu kullanıcı adı zaten alınmış'); return; }
+    if (usernameDoc.exists) { authMesaj('❌ Bu kullanıcı adı zaten alınmış'); return; }
     const methods = await auth.fetchSignInMethodsForEmail(email);
-    if (methods.length > 0) { alert('❌ Bu email zaten kayıtlı'); return; }
+    if (methods.length > 0) { authMesaj('❌ Bu email zaten kayıtlı'); return; }
     await setPersistenceFromCheckbox();
     const userCredential = await auth.createUserWithEmailAndPassword(email, password);
     const userId = userCredential.user.uid;
@@ -1077,13 +1342,15 @@ async function registerWithUsername() {
     });
     store('neonHub_username', username);
     store('neonHub_kayitTarihi', new Date().toISOString());
-    alert('✅ Kayıt başarılı! Hoş geldin ' + username);
+    authMesaj('✅ Kayıt başarılı! Yönlendiriliyorsun...', 'bilgi');
+    setTimeout(() => location.reload(), 1200);
   } catch(e) {
-    if (e.code === 'auth/email-already-in-use') alert('❌ Bu email zaten kayıtlı');
-    else if (e.code === 'auth/invalid-email') alert('❌ Geçersiz email formatı');
-    else alert('❌ Kayıt hatası: ' + e.message);
+    if (e.code === 'auth/email-already-in-use') authMesaj('❌ Bu email zaten kayıtlı');
+    else if (e.code === 'auth/invalid-email') authMesaj('❌ Geçersiz email formatı');
+    else authMesaj('❌ Kayıt hatası: ' + e.message);
   }
 }
+
 async function logout() {
   if (confirm('Çıkış yapmak istediğinden emin misin?')) { await auth.signOut(); }
 }
@@ -1225,6 +1492,7 @@ const RENKLER = {
 const $=id=>document.getElementById(id);
 const store=(k,v)=>v===undefined?localStorage.getItem(k):localStorage.setItem(k,v);
 const json=(k,def)=>{try{return JSON.parse(store(k))||def}catch(e){return def}};
+
 let aktifCat="oyunlar", duzenlenenId=null, sonucCache=[], araTimer;
 let aktifDiziId=null, aktifOyunId=null, aktifFilmId=null;
 let onizlemeData=null;
@@ -1454,6 +1722,7 @@ function ayarlarSayfasAc(){
   if(hb) hb.textContent=u?("Giriş: "+u.email):"Giriş yapılmadı";
   s.style.animation="none"; void s.offsetWidth; s.style.animation="giris .28s ease both";
 }
+
 function buildNav(){
   $("nav").innerHTML=Object.entries(KAT).map(([k,c])=>`
     <button class="nav" data-cat="${k}" onclick="switchCat('${k}')">
@@ -1835,7 +2104,7 @@ async function secSonuc(i){
       store("neonHub_oyunlar", JSON.stringify(VERI.oyunlar));
       cloudYukle("oyunlar", yeniOyun.id, yeniOyun);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.name)+'" Oynayacaklarım listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
     } else if(it.tip==="omdb"){
       const d=await API.omdb(`i=${it.raw.imdbID}&plot=short`);
       filmOMDbCache[d.imdbID]=d;
@@ -1851,7 +2120,7 @@ async function secSonuc(i){
       store("neonHub_filmler", JSON.stringify(VERI.filmler));
       cloudYukle("filmler", yeniFilm.id, yeniFilm);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.Title)+'" İzleyeceklerim listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
     } else if(it.tip==="tvmaze"){
       const diziData = it.raw;
       let sezonSayisi = "";
@@ -1871,14 +2140,13 @@ async function secSonuc(i){
       store("neonHub_diziler", JSON.stringify(VERI.diziler));
       cloudYukle("diziler", yeniDizi.id, yeniDizi);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(diziData.name)+'" İzleyeceklerim listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
     }
   }catch(e){
     son.innerHTML='<span class="meta">Hata: '+temiz(e.message)+"</span>";
   }
 }
 
-// ============ DIZI MODAL ============
 async function diziModalAc(id){
   aktifDiziId=id;
   const dizi=VERI.diziler.find(d=>d.id===id);
@@ -2366,7 +2634,6 @@ function diziModalKapat(){
   aktifDiziId=null;
 }
 
-// ============ OYUN MODAL ============
 async function oyunModalAc(id){
   aktifOyunId=id;
   const oyun=VERI.oyunlar.find(o=>o.id===id);
@@ -2566,7 +2833,6 @@ function oyunModalKapat(){
   aktifOyunId=null;
 }
 
-// ============ FILM MODAL ============
 async function filmModalAc(id){
   aktifFilmId=id;
   const film=VERI.filmler.find(f=>f.id===id);
@@ -2797,7 +3063,6 @@ function filmModalKapat(){
   aktifFilmId=null;
 }
 
-// ============ ÖNİZLEME ============
 async function benzerOyunAc(rawgId){
   if(!API.rawgKey()) return;
   const mevcut = VERI.oyunlar.find(o=>o.rawgId==rawgId);
@@ -3010,6 +3275,7 @@ document.addEventListener('click', (e) => {
 cloudYukle = function(){ return Promise.resolve(); };
 cloudSet  = function(){ return Promise.resolve(); };
 cloudSil  = function(){ return Promise.resolve(); };
+
 let _sonCekme = 0;
 async function cloudDanYukle(sessiz){
   if(!auth.currentUser) return;
@@ -3443,11 +3709,11 @@ durumDegistir = async function(id, yeniDurum){
   return _origDurumDegistir(id, yeniDurum);
 };
 
-// Chip değiştiğinde de çalışsın
+// filtre override
 const _origFiltre = filtre;
 filtre = function(f){ _origFiltre(f); updateDash(); };
 
-// Favori toggle edildiğinde de çalışsın
+// favori toggle override
 ['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
   if(typeof window[fn] === 'function'){
     const orig = window[fn];
@@ -3455,7 +3721,7 @@ filtre = function(f){ _origFiltre(f); updateDash(); };
   }
 });
 
-// Bölüm tıklandığında da çalışsın
+// bolumTikla override
 if(typeof bolumTikla === 'function'){
   const _origBT = bolumTikla;
   bolumTikla = function(k){ _origBT(k); updateDash(); };
@@ -3627,8 +3893,23 @@ async function steamSaatGuncelle(){
     alert(guncel?('✅ '+guncel+' oyunun oynama saati güncellendi.'):'ℹ️ Değişiklik yok, saatler zaten güncel.');
   }catch(e){ alert('❌ Güncelleme hatası: '+e.message); }
 }
+(function(){
+  if(!store('neonHub_steamProxy')) store('neonHub_steamProxy', STEAM_PROXY_VARSAYILAN);
+  const _sk = steamKartEkle;
+  steamKartEkle = function(){
+    _sk();
+    const inp = $('steamProxyInput');
+    if(inp && !inp.value.trim()) inp.value = store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
+  };
+  const _sb = steamBaglan;
+  steamBaglan = async function(){
+    const inp = $('steamProxyInput');
+    if(inp && !inp.value.trim()) inp.value = store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
+    await _sb();
+  };
+})();
 
-// ============ PROFİL SAYFASI (TEK, TEMİZ VERSİYON) ============
+// ============ PROFİL SAYFASI (TEMİZ, TE VERSİYON) ============
 let profilAcik = false;
 const MOCK_ARKADASLAR = [
   {id: 'ahmet123', ad: 'ahmet123', avatar: '', oyun: 8, film: 12, dizi: 5},

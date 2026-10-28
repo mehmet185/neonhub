@@ -4176,7 +4176,7 @@ if(typeof sezonuIsaretle === 'function'){
 const _dashRender = render;
 render = function(){ _dashRender(); updateDash(); };
 const _dashAyarAc = ayarlarSayfasAc;
-ayarlarSayfasAc = function(){ _dashAyarAc(); updateDash(); };
+ayarlarSayfasAc = function(klasor){ _dashAyarAc(klasor); updateDash(); };
 const _dashAyarKapat = ayarlarSayfasKapat;
 ayarlarSayfasKapat = function(){ _dashAyarKapat(); updateDash(); };
 updateDash();

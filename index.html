@@ -3909,24 +3909,8 @@ async function steamSaatGuncelle(){
   };
 })();
 
-// ============ PROFİL SAYFASI (TEMİZ, TE VERSİYON) ============
+// ============ PROFİL SAYFASI — GERÇEK FIREBASE SİSTEMİ ============
 let profilAcik = false;
-const MOCK_ARKADASLAR = [
-  {id: 'ahmet123', ad: 'ahmet123', avatar: '', oyun: 8, film: 12, dizi: 5},
-  {id: 'zeynep456', ad: 'zeynep456', avatar: '', oyun: 3, film: 7, dizi: 2},
-  {id: 'can789', ad: 'can789', avatar: '', oyun: 15, film: 4, dizi: 8}
-];
-const MOCK_GELEN_ISTEKLER = [
-  {id: 'mehmet99', ad: 'mehmet99', ortak: 5},
-  {id: 'ayse2024', ad: 'ayse2024', ortak: 2}
-];
-const MOCK_GIDEN_ISTEKLER = [{id: 'ali55', ad: 'ali55'}];
-const MOCK_KULLANICILAR = [
-  {id: 'hasan01', ad: 'hasan01'},
-  {id: 'elif_k', ad: 'elif_k'},
-  {id: 'burak99', ad: 'burak99'},
-  {id: 'selin_m', ad: 'selin_m'}
-];
 
 function openProfile(){
   toggleProfileMenu();
@@ -3937,7 +3921,7 @@ function openProfile(){
   const f = $('formWrap'); if(f){ f.style.display='none'; f.classList.remove('open'); }
   const g = $('grid'); if(g) g.style.display='none';
   const a = $('ayarlarSayfa'); if(a) a.style.display='none';
-  const db = $('dashBanner'); if(db) db.style.display='none';
+  const db2 = $('dashBanner'); if(db2) db2.style.display='none';
   const ds = $('dashStats'); if(ds) ds.style.display='none';
   let s = $('profilSayfa');
   if(!s){
@@ -3951,20 +3935,22 @@ function openProfile(){
   updateDash();
 }
 
-function profilSayfasiniYenile(){
+async function profilSayfasiniYenile(){
   const s = $('profilSayfa');
   if(!s) return;
   const u = auth.currentUser;
-  const username = store('neonHub_username') || (u?.email ? u.email.split('@')[0] : 'Misafir');
-  const email = u?.email || '-';
+  if(!u) return;
+  
+  const username = store('neonHub_username') || (u.email ? u.email.split('@')[0] : 'Misafir');
+  const email = u.email || '-';
   const createdAt = store('neonHub_kayitTarihi');
-  const uyelikGun = createdAt ? Math.floor((Date.now() - new Date(createdAt).getTime()) / (1000*60*60*24)) : 125;
+  const uyelikGun = createdAt ? Math.floor((Date.now() - new Date(createdAt).getTime()) / (1000*60*60*24)) : 0;
   const localAvatar = store('neonHub_avatar');
-  const googleAvatar = u?.photoURL || '';
+  const googleAvatar = u.photoURL || '';
   const avatarUrl = localAvatar || googleAvatar;
   const basHarf = (username[0] || 'U').toUpperCase();
   
-  // Kütüphane istatistikleri — ayrı süreler
+  // Kütüphane istatistikleri
   const oyunSay = VERI.oyunlar.length;
   const filmSay = VERI.filmler.length;
   const diziSay = VERI.diziler.length;
@@ -3973,9 +3959,9 @@ function profilSayfasiniYenile(){
   let filmDk = 0;
   VERI.filmler.forEach(f => {
     if(f.durum === 'watched'){
-      const s = f.sure || '';
-      const h = parseInt((s.match(/(\d+)\s*saat/) || [])[1] || 0, 10);
-      const m = parseInt((s.match(/(\d+)\s*dk/) || [])[1] || 0, 10);
+      const sr = f.sure || '';
+      const h = parseInt((sr.match(/(\d+)\s*saat/) || [])[1] || 0, 10);
+      const m = parseInt((sr.match(/(\d+)\s*dk/) || [])[1] || 0, 10);
       filmDk += h * 60 + m;
     }
   });
@@ -4009,6 +3995,22 @@ function profilSayfasiniYenile(){
   if(VERI.oyunlar.filter(o=>o.durum==='completed').length >= 5) rozetler.push('🎮 Oyuncu');
   if(VERI.filmler.filter(f=>f.durum==='watched').length >= 10) rozetler.push('🎬 Sinema Sever');
   
+  // Firebase'den arkadaş verilerini çek
+  let arkadaslar = [], gelenIstekler = [], gidenIstekler = [];
+  try {
+    const uid = u.uid;
+    const [arkSnap, gelenSnap, gidenSnap] = await Promise.all([
+      db.collection('users').doc(uid).collection('friends').get(),
+      db.collection('users').doc(uid).collection('friendRequests').doc('incoming').collection('items').get(),
+      db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').get()
+    ]);
+    arkadaslar = arkSnap.docs.map(d => ({id: d.id, ...d.data()}));
+    gelenIstekler = gelenSnap.docs.map(d => ({id: d.id, ...d.data()}));
+    gidenIstekler = gidenSnap.docs.map(d => ({id: d.id, ...d.data()}));
+  } catch(e) {
+    console.error('Arkadaş verileri çekilemedi:', e);
+  }
+  
   s.innerHTML = `
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
       <button class="btn" onclick="profilSayfasKapat()">← Geri Dön</button>
@@ -4030,7 +4032,7 @@ function profilSayfasiniYenile(){
         <div class="profilEmail">${temiz(email)}</div>
         <div class="profilMeta">
           <span>🏅 <b>${uyelikGun}</b> gündür üye</span>
-          <span>🆔 <b style="font-family:monospace">${(u?.uid || 'xxxx').substring(0,8)}...</b></span>
+          <span>🆔 <b style="font-family:monospace">${u.uid.substring(0,8)}...</b></span>
         </div>
         ${rozetler.length > 0 ? `
           <div class="profilRozetler">
@@ -4080,55 +4082,55 @@ function profilSayfasiniYenile(){
       <div class="arkadasKutu">
         <div class="arkadasBaslik">
           <span>👥 Arkadaşlar</span>
-          <span class="cnt">${MOCK_ARKADASLAR.length}</span>
+          <span class="cnt">${arkadaslar.length}</span>
         </div>
         <div class="arkadasArama">
           <input id="arkadasAramaInput" placeholder="Kullanıcı adı ara..." oninput="arkadasAra()" autocomplete="off">
           <button class="btn" onclick="arkadasAra()" type="button">🔍 Ara</button>
         </div>
         <div id="arkadasAramaSonuc"></div>
-        ${MOCK_GELEN_ISTEKLER.length > 0 ? `
+        ${gelenIstekler.length > 0 ? `
           <div class="istekKutu bekleyen">
-            <div class="istekBaslik">📨 Gelen İstekler <span class="cnt">${MOCK_GELEN_ISTEKLER.length}</span></div>
-            ${MOCK_GELEN_ISTEKLER.map(i => `
+            <div class="istekBaslik">📨 Gelen İstekler <span class="cnt">${gelenIstekler.length}</span></div>
+            ${gelenIstekler.map(i => `
               <div class="istekSatir">
-                <div class="simge">${i.ad[0].toUpperCase()}</div>
+                <div class="simge">${(i.fromUsername || '?')[0].toUpperCase()}</div>
                 <div class="bilgi">
-                  <div class="ad">${temiz(i.ad)}</div>
-                  <div class="alt">${i.ortak} ortak</div>
+                  <div class="ad">${temiz(i.fromUsername || 'Bilinmiyor')}</div>
+                  <div class="alt">Arkadaş olmak istiyor</div>
                 </div>
                 <div class="butonlar">
-                  <button class="btn btn-kabul" onclick="arkadasKabul('${i.id}')">✓</button>
-                  <button class="btn btn-reddet" onclick="arkadasReddet('${i.id}')">✗</button>
+                  <button class="btn btn-kabul" onclick="arkadasKabul('${i.id}', '${i.from}')">✓</button>
+                  <button class="btn btn-reddet" onclick="arkadasReddet('${i.id}', '${i.from}')">✗</button>
                 </div>
               </div>
             `).join('')}
           </div>
         ` : ''}
-        ${MOCK_GIDEN_ISTEKLER.length > 0 ? `
+        ${gidenIstekler.length > 0 ? `
           <div class="istekKutu">
-            <div class="istekBaslik">📤 Gönderilen <span class="cnt">${MOCK_GIDEN_ISTEKLER.length}</span></div>
-            ${MOCK_GIDEN_ISTEKLER.map(i => `
+            <div class="istekBaslik">📤 Gönderilen <span class="cnt">${gidenIstekler.length}</span></div>
+            ${gidenIstekler.map(i => `
               <div class="istekSatir">
-                <div class="simge">${i.ad[0].toUpperCase()}</div>
+                <div class="simge">${(i.toUsername || '?')[0].toUpperCase()}</div>
                 <div class="bilgi">
-                  <div class="ad">${temiz(i.ad)}</div>
+                  <div class="ad">${temiz(i.toUsername || 'Bilinmiyor')}</div>
                   <div class="alt">⏳ Bekleniyor</div>
                 </div>
                 <div class="butonlar">
-                  <button class="btn btn-iptal" onclick="arkadasIptal('${i.id}')">✗</button>
+                  <button class="btn btn-iptal" onclick="arkadasIptal('${i.id}', '${i.to}')">✗</button>
                 </div>
               </div>
             `).join('')}
           </div>
         ` : ''}
         <div class="arkadasGrid">
-          ${MOCK_ARKADASLAR.map(a => `
-            <div class="arkadasIsimSatir" onclick="arkadasMenuAc('${a.id}', this)">
+          ${arkadaslar.length > 0 ? arkadaslar.map(a => `
+            <div class="arkadasIsimSatir" onclick="arkadasMenuAc('${a.id}', '${temiz(a.username || '?')}', this)">
               <span style="color:var(--muted);font-size:12px">•</span>
-              <span>${temiz(a.ad)}</span>
+              <span>${temiz(a.username || 'Bilinmiyor')}</span>
             </div>
-          `).join('')}
+          `).join('') : '<div style="padding:16px;text-align:center;color:var(--muted);font-size:12px">Henüz arkadaşın yok.<br>Yukarıdan arayarak ekleyebilirsin.</div>'}
         </div>
       </div>
     </div>
@@ -4144,24 +4146,22 @@ function profilSayfasKapat(){
   const t = document.querySelector('#view > .toolbar'); if(t) t.style.display='';
   const f = $('formWrap'); if(f) f.style.display='';
   const g = $('grid'); if(g) g.style.display='';
-  const db = $('dashBanner'); if(db) db.style.display='flex';
+  const db2 = $('dashBanner'); if(db2) db2.style.display='flex';
   const ds = $('dashStats'); if(ds) ds.style.display='grid';
   switchCat(aktifCat);
   updateDash();
 }
 
-// Arkadaş menüsü
-function arkadasMenuAc(id, element){
+// ============ ARKADAŞ MENÜSÜ ============
+function arkadasMenuAc(friendId, friendUsername, element){
   const eskiMenu = document.querySelector('.arkadasMenu');
   if(eskiMenu) eskiMenu.remove();
-  const arkadas = MOCK_ARKADASLAR.find(a => a.id === id);
-  if(!arkadas) return;
   const menu = document.createElement('div');
   menu.className = 'arkadasMenu';
   menu.style.cssText = 'position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:1000;min-width:180px;animation:giris .15s ease;';
   menu.innerHTML = `
-    <button onclick="arkadasProfilGor('${id}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:var(--text);cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">👁️ Profilini Gör</button>
-    <button onclick="arkadasCikar('${id}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:#ff5a3c;cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">✗ Arkadaşlıktan Çıkar</button>
+    <button onclick="arkadasProfilGor('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:var(--text);cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">👁️ Profilini Gör</button>
+    <button onclick="arkadasCikar('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:#ff5a3c;cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">✗ Arkadaşlıktan Çıkar</button>
   `;
   menu.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('mouseenter', () => btn.style.background = 'rgba(var(--accent-r),.1)');
@@ -4181,72 +4181,186 @@ function arkadasMenuAc(id, element){
   }, 10);
 }
 
-function arkadasAra(){
+// ============ ARKADAŞ ARAMA (Firebase usernames koleksiyonu) ============
+let arkadasAraTimer = null;
+async function arkadasAra(){
   const input = $('arkadasAramaInput');
   const sonuc = $('arkadasAramaSonuc');
   if(!input || !sonuc) return;
   const q = input.value.trim().toLowerCase();
   if(q.length < 2){ sonuc.innerHTML = ''; return; }
-  const bulunanlar = MOCK_KULLANICILAR.filter(k =>
-    k.ad.toLowerCase().includes(q) && !MOCK_ARKADASLAR.some(a => a.id === k.id)
-  );
-  if(bulunanlar.length === 0){
-    sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">Kullanıcı bulunamadı.</div>';
-    return;
-  }
-  sonuc.innerHTML = bulunanlar.map(k => `
-    <div class="aramaSonucSatir">
-      <div class="simge">${k.ad[0].toUpperCase()}</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:13px;font-weight:600">${temiz(k.ad)}</div>
-      </div>
-      <button class="btn small solid" onclick="arkadasIstekGonder('${k.id}')">➕ İstek</button>
-    </div>
-  `).join('');
+  
+  clearTimeout(arkadasAraTimer);
+  sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">🔍 Aranıyor...</div>';
+  
+  arkadasAraTimer = setTimeout(async () => {
+    try {
+      const uid = auth.currentUser.uid;
+      const snap = await db.collection('usernames').limit(200).get();
+      const users = snap.docs.map(d => ({id: d.id, ...d.data()})).filter(u => {
+        return u.id.includes(q) && u.userId !== uid;
+      }).slice(0, 10);
+      
+      if(users.length === 0){
+        sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">Kullanıcı bulunamadı.</div>';
+        return;
+      }
+      
+      const [arkSnap, gidenSnap] = await Promise.all([
+        db.collection('users').doc(uid).collection('friends').get(),
+        db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').get()
+      ]);
+      const arkadasIds = new Set(arkSnap.docs.map(d => d.data().userId || d.id));
+      const gidenIds = new Set(gidenSnap.docs.map(d => d.data().to || d.id));
+      
+      sonuc.innerHTML = users.map(k => {
+        const zatenArkadas = arkadasIds.has(k.userId);
+        const istekGonderildi = gidenIds.has(k.userId);
+        let butonHTML = '';
+        if(zatenArkadas){
+          butonHTML = '<span style="font-size:11px;color:var(--muted);padding:4px 8px">✓ Arkadaş</span>';
+        } else if(istekGonderildi){
+          butonHTML = '<span style="font-size:11px;color:#ffb020;padding:4px 8px">⏳ Beklemede</span>';
+        } else {
+          butonHTML = `<button class="btn small solid" onclick="arkadasIstekGonder('${k.userId}', '${temiz(k.id)}')">➕ İstek</button>`;
+        }
+        return `
+          <div class="aramaSonucSatir">
+            <div class="simge">${k.id[0].toUpperCase()}</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:13px;font-weight:600">${temiz(k.id)}</div>
+            </div>
+            ${butonHTML}
+          </div>
+        `;
+      }).join('');
+    } catch(e) {
+      sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:#ff5a3c">Hata: '+temiz(e.message)+'</div>';
+    }
+  }, 400);
 }
 
-function arkadasIstekGonder(id){
-  alert(`✅ "${id}" kullanıcısına istek gönderildi! (Mock)`);
-  const sonuc = $('arkadasAramaSonuc');
-  if(sonuc) sonuc.innerHTML = '';
-  const input = $('arkadasAramaInput');
-  if(input) input.value = '';
-}
-
-function arkadasProfilGor(id){
-  const a = MOCK_ARKADASLAR.find(x => x.id === id);
-  if(a) alert(`👤 ${a.ad}\n🎮 ${a.oyun} oyun • 🎬 ${a.film} film • 📺 ${a.dizi} dizi`);
-}
-
-function arkadasKabul(id){
-  const idx = MOCK_GELEN_ISTEKLER.findIndex(i => i.id === id);
-  if(idx > -1){
-    const istek = MOCK_GELEN_ISTEKLER[idx];
-    MOCK_GELEN_ISTEKLER.splice(idx, 1);
-    MOCK_ARKADASLAR.push({id: istek.id, ad: istek.ad, avatar: '', oyun: 0, film: 0, dizi: 0});
+// ============ İSTEK GÖNDER ============
+async function arkadasIstekGonder(toUserId, toUsername){
+  if(!auth.currentUser) return;
+  const uid = auth.currentUser.uid;
+  const myUsername = store('neonHub_username') || (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
+  const myAvatar = store('neonHub_avatar') || auth.currentUser.photoURL || '';
+  
+  try {
+    const istekId = Date.now().toString();
+    const ts = firebase.firestore.FieldValue.serverTimestamp();
+    
+    await db.collection('users').doc(toUserId).collection('friendRequests').doc('incoming').collection('items').doc(istekId).set({
+      id: istekId, from: uid, fromUsername: myUsername, fromAvatar: myAvatar, timestamp: ts
+    });
+    await db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).set({
+      id: istekId, to: toUserId, toUsername: toUsername, timestamp: ts
+    });
+    
+    alert(`✅ "${toUsername}" kullanıcısına arkadaşlık isteği gönderildi!`);
     profilSayfasiniYenile();
+  } catch(e) {
+    alert('❌ İstek gönderilemedi: ' + e.message);
   }
 }
 
-function arkadasReddet(id){
+// ============ İSTEK KABUL ============
+async function arkadasKabul(istekId, fromUserId){
+  if(!auth.currentUser) return;
+  const uid = auth.currentUser.uid;
+  const myUsername = store('neonHub_username') || (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
+  const myAvatar = store('neonHub_avatar') || auth.currentUser.photoURL || '';
+  
+  try {
+    const fromProfile = await db.collection('users').doc(fromUserId).collection('profile').doc('info').get();
+    const fromData = fromProfile.exists ? fromProfile.data() : {};
+    const fromUsername = fromData.username || 'Bilinmiyor';
+    const fromAvatar = fromData.avatar || '';
+    const ts = firebase.firestore.FieldValue.serverTimestamp();
+    
+    await Promise.all([
+      db.collection('users').doc(uid).collection('friends').doc(fromUserId).set({
+        userId: fromUserId, username: fromUsername, avatar: fromAvatar, addedAt: ts
+      }),
+      db.collection('users').doc(fromUserId).collection('friends').doc(uid).set({
+        userId: uid, username: myUsername, avatar: myAvatar, addedAt: ts
+      })
+    ]);
+    await Promise.all([
+      db.collection('users').doc(uid).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete(),
+      db.collection('users').doc(fromUserId).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete().catch(()=>{})
+    ]);
+    
+    alert(`✅ ${fromUsername} ile arkadaş oldunuz!`);
+    profilSayfasiniYenile();
+  } catch(e) {
+    alert('❌ Kabul edilemedi: ' + e.message);
+  }
+}
+
+// ============ İSTEK REDDET ============
+async function arkadasReddet(istekId, fromUserId){
   if(!confirm('İsteği reddetmek istediğinden emin misin?')) return;
-  const idx = MOCK_GELEN_ISTEKLER.findIndex(i => i.id === id);
-  if(idx > -1){ MOCK_GELEN_ISTEKLER.splice(idx, 1); profilSayfasiniYenile(); }
+  if(!auth.currentUser) return;
+  const uid = auth.currentUser.uid;
+  try {
+    await Promise.all([
+      db.collection('users').doc(uid).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete(),
+      db.collection('users').doc(fromUserId).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete().catch(()=>{})
+    ]);
+    profilSayfasiniYenile();
+  } catch(e) {
+    alert('❌ Reddedilemedi: ' + e.message);
+  }
 }
 
-function arkadasIptal(id){
-  if(!confirm('İsteği iptal etmek istediğinden emin misin?')) return;
-  const idx = MOCK_GIDEN_ISTEKLER.findIndex(i => i.id === id);
-  if(idx > -1){ MOCK_GIDEN_ISTEKLER.splice(idx, 1); profilSayfasiniYenile(); }
+// ============ İSTEK İPTAL ============
+async function arkadasIptal(istekId, toUserId){
+  if(!confirm('Gönderdiğin isteği iptal etmek istediğinden emin misin?')) return;
+  if(!auth.currentUser) return;
+  const uid = auth.currentUser.uid;
+  try {
+    await Promise.all([
+      db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete(),
+      db.collection('users').doc(toUserId).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete().catch(()=>{})
+    ]);
+    profilSayfasiniYenile();
+  } catch(e) {
+    alert('❌ İptal edilemedi: ' + e.message);
+  }
 }
 
-function arkadasCikar(id){
+// ============ ARKADAŞ ÇIKAR ============
+async function arkadasCikar(friendId){
   if(!confirm('Arkadaşlıktan çıkarmak istediğinden emin misin?')) return;
-  const idx = MOCK_ARKADASLAR.findIndex(a => a.id === id);
-  if(idx > -1){ MOCK_ARKADASLAR.splice(idx, 1); profilSayfasiniYenile(); }
+  if(!auth.currentUser) return;
+  const uid = auth.currentUser.uid;
+  try {
+    await Promise.all([
+      db.collection('users').doc(uid).collection('friends').doc(friendId).delete(),
+      db.collection('users').doc(friendId).collection('friends').doc(uid).delete().catch(()=>{})
+    ]);
+    profilSayfasiniYenile();
+  } catch(e) {
+    alert('❌ Çıkarılamadı: ' + e.message);
+  }
 }
 
-// Kullanıcı adı düzenleme
+// ============ ARKADAŞ PROFİLİ GÖR ============
+async function arkadasProfilGor(friendId){
+  try {
+    const profileSnap = await db.collection('users').doc(friendId).collection('profile').doc('info').get();
+    const friendSnap = await db.collection('users').doc(friendId).collection('friends').get();
+    if(!profileSnap.exists){ alert('👤 Profil bilgisi bulunamadı.'); return; }
+    const data = profileSnap.data();
+    alert(`👤 ${data.username || 'Bilinmiyor'}\n📧 ${data.email || '-'}\n👥 ${friendSnap.size} arkadaşı var`);
+  } catch(e) {
+    alert('❌ Profil yüklenemedi: ' + e.message);
+  }
+}
+
+// ============ KULLANICI ADI DÜZENLEME ============
 function kullaniciAdiDuzenleBaslat(){
   const display = $('usernameDisplay');
   const editArea = $('usernameEditArea');
@@ -4264,8 +4378,7 @@ function kullaniciAdiDuzenleBaslat(){
   `;
   const input = $('usernameInput');
   if(input){
-    input.focus();
-    input.select();
+    input.focus(); input.select();
     input.addEventListener('keydown', (e) => {
       if(e.key === 'Enter') kullaniciAdiKaydet();
       if(e.key === 'Escape') kullaniciAdiVazgec();
@@ -4277,10 +4390,7 @@ function kullaniciAdiVazgec(){
   const display = $('usernameDisplay');
   const editArea = $('usernameEditArea');
   if(display) display.style.display = '';
-  if(editArea){
-    editArea.style.display = 'none';
-    editArea.innerHTML = '';
-  }
+  if(editArea){ editArea.style.display = 'none'; editArea.innerHTML = ''; }
 }
 
 async function kullaniciAdiKaydet(){
@@ -4306,12 +4416,10 @@ async function kullaniciAdiKaydet(){
     const uid = auth.currentUser.uid;
     try{ await db.collection('usernames').doc(eskiAd.toLowerCase()).delete(); }catch(e){}
     await db.collection('usernames').doc(yeniAd.toLowerCase()).set({
-      email: auth.currentUser.email, userId: uid,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      email: auth.currentUser.email, userId: uid, createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
     await db.collection('users').doc(uid).collection('profile').doc('info').set({
-      username: yeniAd, email: auth.currentUser.email,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      username: yeniAd, email: auth.currentUser.email, updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }, {merge: true});
     store('neonHub_username', yeniAd);
     const textEl = $('usernameText');
@@ -4323,7 +4431,7 @@ async function kullaniciAdiKaydet(){
   }
 }
 
-// Profil resmi değiştirme
+// ============ PROFİL RESMİ ============
 function profilResmiDegistir(){
   const modal = document.createElement('div');
   modal.className = 'modal open';
@@ -4350,10 +4458,7 @@ function profilResmiDegistir(){
 function avatarModalKapat(){
   const m = $('avatarModal');
   if(m) m.remove();
-  if(!$('oyunModal')?.classList.contains('open') && 
-     !$('filmModal')?.classList.contains('open') && 
-     !$('diziModal')?.classList.contains('open') &&
-     !$('steamModal')?.classList.contains('open')){
+  if(!$('oyunModal')?.classList.contains('open') && !$('filmModal')?.classList.contains('open') && !$('diziModal')?.classList.contains('open') && !$('steamModal')?.classList.contains('open')){
     document.body.style.overflow = '';
   }
 }
@@ -4401,12 +4506,9 @@ function avatarKaldir(){
 // Veri yönetimi
 function profilVeriDisaAktar(){
   const veri = {
-    versiyon: '1.0',
-    tarih: new Date().toISOString(),
+    versiyon: '1.0', tarih: new Date().toISOString(),
     kullanici: auth.currentUser?.email || '-',
-    oyunlar: VERI.oyunlar,
-    filmler: VERI.filmler,
-    diziler: VERI.diziler,
+    oyunlar: VERI.oyunlar, filmler: VERI.filmler, diziler: VERI.diziler,
     bolumler: bolumlerim,
     favoriler: { oyunlar: oyunFavoriler, filmler: filmFavoriler, diziler: diziFavoriler },
     notlar: { oyunlar: oyunNotlarim, filmler: filmNotlarim, diziler: diziNotlarim }
@@ -4423,8 +4525,7 @@ function profilVeriDisaAktar(){
 
 function profilVeriIceAktar(){
   const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = '.json';
+  input.type = 'file'; input.accept = '.json';
   input.onchange = async (e) => {
     const file = e.target.files[0];
     if(!file) return;
@@ -4453,6 +4554,11 @@ function profilVeriIceAktar(){
   };
   input.click();
 }
+
+// Escape tuşu
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && profilAcik) profilSayfasKapat();
+});
 </script>
 </body>
 </html>

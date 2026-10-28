@@ -315,34 +315,25 @@ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn-kabul{background:#4ade80 !important;border-color:#4ade80 !important;color:#061016 !important}
 .btn-reddet{background:rgba(255,90,60,.15) !important;border-color:#ff5a3c !important;color:#ff5a3c !important}
 .btn-iptal{background:rgba(255,176,32,.15) !important;border-color:#ffb020 !important;color:#ffb020 !important}
-.profile-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+.sidebar-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
 width:100%;padding:14px 6px;cursor:pointer;background:transparent;color:var(--muted);
-border:none;border-top:1px solid var(--line);margin-top:0;transition:background .2s;flex-shrink:0}
-.profile-btn:hover{background:rgba(255,255,255,.05);color:var(--text)}
-.profile-icon{font-size:26px;line-height:1}
-.profile-name{display:block;font-size:9px;font-weight:700;letter-spacing:2px}
-.profile-menu{position:absolute;bottom:92px;left:10px;width:220px;background:var(--panel);
-border:1px solid var(--line);border-radius:10px;display:none;z-index:100;
-box-shadow:0 10px 30px rgba(0,0,0,.5);animation:menuOpen .2s ease;overflow:hidden}
-@keyframes menuOpen{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.profile-menu button{width:100%;padding:12px 16px;text-align:left;background:transparent;
-border:none;border-bottom:1px solid var(--line);color:var(--text);cursor:pointer;
-font-size:14px;transition:background .15s;font-family:inherit}
-.profile-menu button:last-child{border-bottom:none}
-.profile-menu button:hover{background:rgba(255,255,255,.08);color:var(--accent)}
-.profile-menu .logout-btn{color:#ff5a3c}
-.profile-menu .logout-btn:hover{background:rgba(255,90,60,.1);color:#ff5a3c}
-#profileMenu.active{display:block}
+border:none;transition:background .2s,color .2s;flex-shrink:0}
+.sidebar-btn:hover{background:rgba(255,255,255,.05);color:var(--text)}
+.sidebar-btn:active{background:rgba(var(--accent-r),.1);color:var(--accent)}
+.sidebar-btn-icon{font-size:26px;line-height:1}
+.sidebar-btn-name{display:block;font-size:9px;font-weight:700;letter-spacing:2px}
+.sidebar-btn + .sidebar-btn{border-top:1px solid var(--line)}
 input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 .actions,.ep,.epMain,.epCheck,.epExpandBtn,.sezonTab,.modal,
 .modalClose,.modalFavoriBtn,.modalEkleBtn,.tb-controls,#side,#main,#view,
-.nav,.grid,.cover,.body,header,.profile-btn,.profile-menu{
+.nav,.grid,.cover,.body,header,.sidebar-btn{
 -webkit-app-region:no-drag !important;
 }
 #arama:focus{box-shadow:0 0 0 2px rgba(var(--accent-r),.3)}
 .mobile-menu-btn,.mobile-nav,.sidebar-overlay{display:none}
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999}
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1001}
 .sidebar-overlay.active{display:block}
+.sidebar-overlay.active ~ .mobile-nav{display:none !important}
 @media (max-width: 1024px) and (min-width: 769px) {
 #side{width:70px;min-width:70px}
 .navAd{font-size:8px}
@@ -352,7 +343,7 @@ input,select,button,textarea,.toolbar,#formWrap,.sonuc,.card,.chip,.btn,
 @media (max-width: 768px) {
 #side{position:fixed;left:-100%;top:0;z-index:1000;width:80%;max-width:300px;height:100vh;
 transition:left 0.3s ease;box-shadow:2px 0 10px rgba(0,0,0,0.5)}
-#side.open{left:0}
+#side.open{left:0;z-index:1002 !important}
 .mobile-menu-btn{display:flex !important;position:fixed;top:16px;left:16px;z-index:999;
 width:44px;height:44px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
 align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:var(--accent);
@@ -385,7 +376,9 @@ padding:8px 12px;cursor:pointer;color:var(--muted);transition:color 0.2s;min-wid
 #formWrap{padding:16px;border-radius:12px;margin-bottom:16px}
 #formWrap form{grid-template-columns:1fr}
 #ayarlarSayfa{padding:16px}
-.profile-menu{bottom:80px;left:16px;right:16px;width:auto}
+.sidebar-btn{flex-direction:row;gap:10px;justify-content:flex-start;padding:12px 14px}
+.sidebar-btn-name{display:block;color:var(--muted);font-size:12px;letter-spacing:1px}
+.sidebar-btn-icon{font-size:20px}
 .sezonTabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
 .sezonTab{flex-shrink:0;font-size:12px;padding:7px 12px}
 .epExpandedContent{grid-template-columns:1fr}
@@ -470,11 +463,10 @@ background:#1d1d24;color:#f4f4f6;padding:6px 10px;border-radius:9px;font-size:11
 letter-spacing:.5px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none}
 .nav:hover .navAd{display:block}
 #surum{display:none}
-.profile-btn{padding:10px 6px;border-top:none;margin-top:4px;border-radius:14px;width:44px}
-.profile-btn:hover{background:rgba(255,255,255,.10)}
-.profile-icon{font-size:20px}
-.profile-name{display:none}
-.profile-menu{left:70px;top:50%;transform:translateY(-50%);bottom:auto;width:200px}
+.sidebar-btn{padding:10px 6px;border-top:none;margin-top:4px;border-radius:14px;width:44px}
+.sidebar-btn:hover{background:rgba(255,255,255,.10)}
+.sidebar-btn-icon{font-size:20px}
+.sidebar-btn-name{display:none}
 .card{border:none;background:var(--card);box-shadow:0 10px 30px rgba(20,20,50,.08);border-radius:20px}
 .card:hover{border-color:transparent;box-shadow:0 16px 40px rgba(20,20,50,.12)}
 .cover{background:radial-gradient(circle at 50% 40%,#f2f0fa,#e9e7f2)}
@@ -530,9 +522,8 @@ border-radius:0 26px 26px 0;padding:20px 12px;align-items:stretch}
 padding:0;box-shadow:none;font-size:12px;letter-spacing:1px}
 .nav.active .navAd{color:#fff}
 #surum{display:block;color:#5a5a66}
-.profile-btn{width:100%;flex-direction:row;gap:10px;justify-content:flex-start;padding:12px 14px}
-.profile-name{display:block;color:var(--muted)}
-.profile-menu{left:12px;right:12px;top:auto;bottom:90px;transform:none;width:auto}
+.sidebar-btn{width:100%;flex-direction:row;gap:10px;justify-content:flex-start;padding:12px 14px}
+.sidebar-btn-name{display:block;color:var(--muted)}
 #dashBanner{padding:16px 18px}
 .dbTitle{font-size:16px}
 }
@@ -540,7 +531,8 @@ padding:0;box-shadow:none;font-size:12px;letter-spacing:1px}
 #nav{align-items:center;flex:0 0 auto}
 .nav{width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center}
 #logo{width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
-.profile-btn{width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.sidebar-btn{width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.sidebar-btn + .sidebar-btn{border-top:none;margin-top:0}
 }
 html[data-theme="dark"]{--bg:#0d0f14;--panel:#151a23;--card:#1b212c;--text:#e9edf3;--muted:#8a93a3;--line:#262d3a}
 html[data-theme="dark"] body{background:radial-gradient(1100px 380px at 75% -10%,rgba(var(--accent-r),.07),transparent),var(--bg)}
@@ -578,7 +570,6 @@ html[data-theme="dark"] .dbTitle{color:var(--text)}
 html[data-theme="dark"] .statCard{background:var(--card);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.3)}
 html[data-theme="dark"] .statCard .scVal{color:var(--text)}
 html[data-theme="dark"] .scIcon{background:rgba(var(--accent-r),.15)}
-html[data-theme="dark"] .profile-menu{background:var(--panel);border-color:var(--line)}
 html[data-theme="dark"] .mobile-nav{background:var(--panel);border-color:var(--line)}
 html[data-theme="dark"] .mobile-menu-btn{background:var(--panel);border-color:var(--line)}
 html[data-theme="dark"] .sidebar-overlay{background:rgba(0,0,0,.6)}
@@ -695,7 +686,6 @@ color:var(--text);min-width:200px}
 .profilMeta{justify-content:center}
 .usernameEditWrap input{font-size:18px;min-width:160px}
 }
-/* ============ BIÇAK ANİMASYONLU GİRİŞ EKRANI ============ */
 @property --ia{syntax:'<length-percentage>';inherits:true;initial-value:50%}
 @property --ib{syntax:'<length-percentage>';inherits:true;initial-value:114%}
 #loginScreen{position:fixed;inset:0;z-index:9999;display:flex;padding:20px;overflow:auto;
@@ -841,6 +831,467 @@ justify-content:center;transform:translateY(14px)}
 .panelGiris,.panelKayit{left:8%;right:8%;width:auto;top:176px;padding-bottom:12px}
 #loginScreen .alan input{font-size:16px}
 }
+/* ============ MOBİL & TABLET OPTİMİZE (FİNAL) ============ */
+
+/* Tablet (768-1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #view { padding: 20px 24px 40px; }
+  #dashBanner { padding: 16px 20px; border-radius: 18px; }
+  .dbTitle { font-size: 18px; }
+  #dashStats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .statCard { padding: 12px 14px; border-radius: 16px; }
+  .statCard .scVal { font-size: 18px; }
+  .profilHero { padding: 24px 28px; gap: 20px; }
+  .profilAvatar { width: 100px; height: 100px; font-size: 40px; }
+  .profilAd { font-size: 24px; }
+  #ayarlarSayfa > div:last-child { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .modalBox { max-width: 90%; }
+  .btn { min-height: 40px; }
+}
+
+/* Telefon (max 768px) - TAM OPTİMİZE */
+@media (max-width: 768px) {
+  /* Genel Layout */
+  #view { padding: 60px 12px 100px !important; }
+  header { margin-bottom: 12px; gap: 10px; }
+  h1 { font-size: 20px !important; letter-spacing: 2px !important; }
+  #basAlt { font-size: 11px; }
+  
+  /* Toolbar */
+  .toolbar { gap: 8px; margin-bottom: 10px; }
+  #arama { font-size: 15px; padding: 11px 14px; border-radius: 10px; }
+  .chips { gap: 6px; padding-bottom: 6px; }
+  .chip { padding: 7px 12px; font-size: 12px; min-height: 34px; }
+  
+  /* Dashboard Banner - KOMPAKT */
+  #dashBanner { 
+    padding: 14px 16px; 
+    border-radius: 16px; 
+    margin: 2px 0 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .dbTitle { font-size: 15px; letter-spacing: 0; }
+  .dbSub { font-size: 11px; margin-top: 2px; }
+  .dbArt { font-size: 28px; }
+  
+  /* Dashboard Stats - 2 SÜTUN */
+  #dashStats { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 8px; 
+    margin-bottom: 12px; 
+  }
+  .statCard { padding: 10px 12px; border-radius: 14px; gap: 3px; }
+  .statCard .scTop { font-size: 10px; gap: 6px; }
+  .scIcon { width: 22px; height: 22px; font-size: 11px; }
+  .statCard .scVal { font-size: 16px; }
+  .statCard .scSub { font-size: 9px; }
+  
+  /* Kartlar */
+  .grid { gap: 10px !important; }
+  .card { border-radius: 12px; }
+  .card .body { padding: 10px 12px 12px; }
+  .card .body h3 { font-size: 13px; }
+  .card .meta { font-size: 11px; }
+  .card .badge { font-size: 9px; padding: 3px 7px; top: 6px; right: 6px; }
+  .card .actions button { font-size: 11px; padding: 6px; min-height: 36px; }
+  
+  /* Butonlar - TOUCH FRIENDLY */
+  .btn { 
+    padding: 10px 16px; 
+    font-size: 13px; 
+    min-height: 44px; 
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn.small { padding: 8px 12px; font-size: 12px; min-height: 36px; }
+  
+  /* Form */
+  #formWrap { padding: 14px; border-radius: 12px; }
+  #formWrap form { grid-template-columns: 1fr; gap: 10px; }
+  #formWrap input, #formWrap select { font-size: 14px; padding: 10px 12px; min-height: 44px; }
+  
+  /* Modal - TAM EKRAN */
+  .modal { padding: 0; }
+  .modalBox { max-width: 100%; max-height: 100vh; height: 100vh; border-radius: 0; }
+  .modalHero { height: 180px; }
+  .modalPoster { width: 100px; height: 140px; border-radius: 10px; }
+  .modalInfo h2 { font-size: 18px; letter-spacing: 1px; }
+  .modalClose { width: 36px; height: 36px; font-size: 20px; }
+  .modalFavoriBtn { width: 36px; height: 36px; font-size: 18px; }
+  .modalBody { padding: 16px; }
+  .modalTab { padding: 7px 12px; font-size: 12px; min-height: 38px; }
+  
+  /* Modal İçerik */
+  .oyunAciklama, .filmAciklama, .diziAciklama { 
+    padding: 12px; font-size: 13px; max-height: 200px; border-radius: 10px;
+  }
+  .infoGrid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .infoCard { padding: 10px; border-radius: 8px; }
+  .infoCard label { font-size: 9px; }
+  .infoCard .value { font-size: 13px; }
+  
+  /* Dizi Bölümleri */
+  .sezonTabs { gap: 4px; overflow-x: auto; flex-wrap: nowrap; }
+  .sezonTab { padding: 6px 10px; font-size: 11px; }
+  .epMain { padding: 9px 10px; gap: 10px; }
+  .epCheck { width: 22px; height: 22px; }
+  .epTitle { font-size: 13px; }
+  .epOzet { font-size: 11px; }
+  .epExpandedContent { grid-template-columns: 1fr; }
+  .epCrewGrid { grid-template-columns: 1fr 1fr; }
+  
+  /* Cast & Benzer */
+  .castGrid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .castCard img { width: 50px; height: 50px; }
+  .benzerGrid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .galeri { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  
+  /* ============ AYARLAR SAYFASI (KLASÖRLER) ============ */
+  #ayarlarSayfa { padding: 16px 12px !important; }
+  #ayarlarSayfa > div:first-child { 
+    gap: 10px; 
+    margin-bottom: 16px; 
+  }
+  #ayarlarSayfa > div:first-child h1 { 
+    font-size: 20px !important; 
+    letter-spacing: 2px !important; 
+  }
+  
+  /* Ana Sayfa Klasörler */
+  #ayarlarSayfa > div:last-child { 
+    gap: 10px !important; 
+  }
+  #ayarlarSayfa .ayarKlasor .body {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+  #ayarlarSayfa .ayarKlasor .body > div:first-child {
+    font-size: 28px !important;
+    width: 40px !important;
+  }
+  #ayarlarSayfa .ayarKlasor .body h3 {
+    font-size: 15px !important;
+  }
+  #ayarlarSayfa .ayarKlasor .body .meta {
+    font-size: 11px !important;
+  }
+  #ayarlarSayfa .ayarKlasor .body > div:last-child {
+    font-size: 18px !important;
+  }
+  
+  /* Klasör İç Sayfalar */
+  #ayarlarSayfa .card { 
+    border-radius: 14px !important;
+    margin-top: 12px !important;
+  }
+  #ayarlarSayfa .card:first-child {
+    margin-top: 0 !important;
+  }
+  #ayarlarSayfa .card .body { 
+    padding: 14px !important; 
+  }
+  #ayarlarSayfa .card h3 { 
+    font-size: 15px !important; 
+    margin-bottom: 4px !important;
+  }
+  #ayarlarSayfa .card .meta { 
+    font-size: 11px !important; 
+    margin-bottom: 10px !important;
+  }
+  
+  /* Tema Butonları - 2 sütun */
+  #ayarlarSayfa .temaListe { 
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 6px !important; 
+  }
+  #ayarlarSayfa .temaButon { 
+    padding: 10px 4px !important; 
+    font-size: 10px !important; 
+    border-radius: 8px !important;
+    min-height: 60px !important;
+  }
+  #ayarlarSayfa .temaDot { 
+    width: 24px !important; 
+    height: 24px !important; 
+  }
+  
+  /* Slider */
+  #ayarlarSayfa .sliderRow { 
+    gap: 8px !important; 
+    padding: 4px 0 !important;
+  }
+  #ayarlarSayfa .sliderRow input { 
+    min-height: 40px !important; 
+  }
+  
+  /* Veri Yönetimi Butonları */
+  #ayarlarSayfa .card button {
+    min-height: 44px !important;
+    font-size: 13px !important;
+  }
+  #ayarlarSayfa .card button.btn.solid {
+    padding: 12px !important;
+  }
+  
+  /* Steam Input */
+  #ayarlarSayfa .apiInput { 
+    font-size: 14px !important; 
+    padding: 11px 13px !important; 
+    min-height: 44px !important;
+  }
+  
+  /* Hesap Bilgi Kartları */
+  #ayarlarSayfa [style*="grid-template-columns: 1fr 1fr"] {
+    gap: 8px !important;
+  }
+  #ayarlarSayfa [style*="grid-template-columns: 1fr 1fr"] > div {
+    padding: 10px !important;
+  }
+  #ayarlarSayfa [style*="grid-template-columns: 1fr 1fr"] > div > div:first-child {
+    font-size: 9px !important;
+  }
+  #ayarlarSayfa [style*="grid-template-columns: 1fr 1fr"] > div > div:last-child {
+    font-size: 12px !important;
+  }
+  
+  /* Tehlikeli Bölge */
+  #ayarlarSayfa .card[style*="border-color:rgba(255,90,60,.3)"] {
+    border-width: 2px !important;
+  }
+  
+  /* ============ PROFİL SAYFASI ============ */
+  .profilHero { 
+    flex-direction: column !important; 
+    text-align: center !important; 
+    padding: 20px 16px !important; 
+    gap: 14px !important;
+    border-radius: 16px !important;
+  }
+  .profilAvatarWrap { margin: 0 auto !important; }
+  .profilAvatar { width: 90px !important; height: 90px !important; font-size: 36px !important; }
+  .profilAd { font-size: 20px !important; margin-bottom: 4px !important; }
+  .profilEmail { font-size: 12px !important; }
+  .profilMeta { justify-content: center !important; font-size: 11px !important; gap: 10px !important; }
+  .profilRozetler { justify-content: center !important; gap: 6px !important; margin-top: 10px !important; }
+  .profilRozet { padding: 3px 8px !important; font-size: 10px !important; }
+  
+  .profilGrid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .kutuphaneOzet, .arkadasKutu { padding: 16px !important; border-radius: 14px !important; }
+  .kutuphaneBaslik, .arkadasBaslik { font-size: 11px !important; margin-bottom: 12px !important; }
+  .ozetSatir { padding: 8px 0 !important; }
+  .ozetSayi { font-size: 16px !important; }
+  .ozetSure { font-size: 12px !important; }
+  
+  /* Arkadaş Arama */
+  .arkadasArama { flex-direction: column !important; gap: 8px !important; }
+  .arkadasArama input { min-height: 44px !important; font-size: 14px !important; }
+  .arkadasArama button { width: 100% !important; min-height: 44px !important; }
+  .istekKutu { padding: 10px !important; }
+  .istekSatir { padding: 8px 0 !important; }
+  .istekSatir .butonlar button { min-height: 32px !important; padding: 6px 10px !important; }
+  
+  /* Kullanıcı Adı Düzenleme */
+  .editableField { padding: 6px 10px !important; }
+  .usernameEditWrap { 
+    gap: 6px !important; 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .usernameEditWrap input { 
+    font-size: 16px !important; 
+    padding: 10px 12px !important; 
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+  .usernameEditWrap button { 
+    width: 100% !important; 
+    min-height: 44px !important;
+  }
+  
+  /* Mobile Nav */
+  .mobile-nav { padding: 6px 0 calc(6px + env(safe-area-inset-bottom)); }
+  .mobile-nav-item { padding: 6px 8px; min-width: 50px; }
+  .mobile-nav-item svg { width: 20px; height: 20px; }
+  .mobile-nav-item span { font-size: 9px; }
+  
+  /* Profile Menu */
+  .profile-menu { left: 8px; right: 8px; bottom: 72px; width: auto; border-radius: 12px; }
+  .profile-menu button { padding: 12px 14px; font-size: 13px; min-height: 44px; }
+  
+  /* Hamburger Menu */
+  .mobile-menu-btn { 
+    width: 40px !important; 
+    height: 40px !important; 
+    font-size: 20px !important;
+    top: 12px !important;
+    left: 12px !important;
+  }
+  
+  /* Sidebar */
+  .sidebar-btn { 
+    flex-direction: row !important; 
+    gap: 10px !important; 
+    justify-content: flex-start !important; 
+    padding: 12px 14px !important;
+    min-height: 48px !important;
+  }
+  .sidebar-btn-name { 
+    display: block !important; 
+    color: var(--muted) !important;
+    font-size: 12px !important;
+  }
+  .sidebar-btn-icon { font-size: 20px !important; }
+  
+  /* Steam Modal */
+  .steamListe { max-height: 40vh; }
+  .steamSatir { padding: 7px 10px; gap: 10px; }
+  .steamSatir img { width: 72px; height: 34px; }
+  
+  /* Scroll */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { border-radius: 4px; }
+  
+  /* Input/Select Genel */
+  input, select, textarea { 
+    font-size: 14px !important; 
+    padding: 10px 12px !important; 
+    border-radius: 10px !important;
+    min-height: 40px !important;
+  }
+}
+
+/* Küçük Telefonlar (max 375px) - EKSTRA KOMPAKT */
+@media (max-width: 375px) {
+  #view { padding: 56px 10px 90px !important; }
+  h1 { font-size: 18px !important; letter-spacing: 1.5px !important; }
+  #dashBanner { padding: 12px 14px; }
+  .dbTitle { font-size: 14px; }
+  #dashStats { gap: 6px; }
+  .statCard { padding: 8px 10px; }
+  .statCard .scVal { font-size: 14px; }
+  .grid { gap: 8px !important; }
+  .card .body { padding: 8px 10px 10px; }
+  .btn { padding: 9px 14px; font-size: 12px; min-height: 40px; }
+  .profilAvatar { width: 80px !important; height: 80px !important; font-size: 32px !important; }
+  .profilAd { font-size: 18px !important; }
+  .modalHero { height: 160px; }
+  .modalPoster { width: 90px; height: 125px; }
+  .castGrid { grid-template-columns: repeat(2, 1fr); }
+  #ayarlarSayfa .temaListe { grid-template-columns: repeat(2, 1fr) !important; }
+  .mobile-nav-item { padding: 5px 6px; min-width: 44px; }
+  .mobile-nav-item svg { width: 18px; height: 18px; }
+  .mobile-nav-item span { font-size: 8px; }
+  #ayarlarSayfa .card .body { padding: 12px !important; }
+  #ayarlarSayfa .card h3 { font-size: 14px !important; }
+}
+
+/* Landscape Telefon */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modalHero { height: 140px; }
+  .modalBody { padding: 12px; }
+  .profilHero { padding: 16px !important; }
+  .profilAvatar { width: 70px !important; height: 70px !important; font-size: 28px !important; }
+  #dashStats { grid-template-columns: repeat(4, 1fr); }
+  .mobile-nav { padding: 4px 0 calc(4px + env(safe-area-inset-bottom)); }
+  .mobile-nav-item { padding: 4px 8px; }
+  #ayarlarSayfa .card .body { padding: 10px !important; }
+}
+
+/* Touch İyileştirmeleri - Tüm Mobil */
+@media (hover: none) and (pointer: coarse) {
+  /* Hover efektlerini kaldır, active ekle */
+  .card:hover { transform: none; }
+  .card:active { transform: scale(0.98); transition: transform 0.1s; }
+  .btn:hover { transform: none; }
+  .btn:active { transform: scale(0.97); opacity: 0.8; }
+  .chip:hover { color: var(--muted); }
+  .chip:active { background: rgba(var(--accent-r),.1); }
+  .nav:hover { background: none; }
+  .nav:active { background: rgba(var(--accent-r),.1); }
+  .ayarKlasor:hover { transform: none; }
+  .ayarKlasor:active { transform: scale(0.98); background: rgba(var(--accent-r),.05); }
+  
+  /* Touch target'ları büyüt */
+  .btn, .chip, .modalTab, .sezonTab, .view-toggle button {
+    min-height: 44px;
+  }
+  
+  /* Scroll iyileştirme */
+  * { -webkit-tap-highlight-color: transparent; }
+  body { -webkit-overflow-scrolling: touch; }
+  #main { -webkit-overflow-scrolling: touch; }
+  #ayarlarSayfa { -webkit-overflow-scrolling: touch; }
+  
+  /* Input focus iyileştirme */
+  input:focus, select:focus, textarea:focus {
+    font-size: 16px !important; /* iOS zoom önleme */
+  }
+}
+
+/* Safe Area - iPhone Notch */
+@supports (padding: max(0px)) {
+  #view { 
+    padding-left: max(12px, env(safe-area-inset-left)); 
+    padding-right: max(12px, env(safe-area-inset-right)); 
+    padding-bottom: max(100px, calc(80px + env(safe-area-inset-bottom)));
+  }
+  .mobile-nav { 
+    padding-bottom: max(6px, env(safe-area-inset-bottom)); 
+  }
+  .profile-menu { 
+    bottom: max(72px, calc(56px + env(safe-area-inset-bottom))); 
+  }
+  #ayarlarSayfa {
+    padding-bottom: max(40px, calc(20px + env(safe-area-inset-bottom))) !important;
+  }
+}
+
+/* Scrollbar gizle (mobilde) */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar { display: none; }
+  * { scrollbar-width: none; }
+}
+
+/* Print */
+@media print {
+  .mobile-nav, .mobile-menu-btn, #side, .titlebar, .tb-controls { display: none !important; }
+  body { overflow: visible; }
+  #main { overflow: visible; }
+}
+/* ============ AYARLAR & PROFİL AÇIKKEN MOBİL FİX ============ */
+@media (max-width: 768px) {
+#view.ayarlar-acik > header,
+#view.ayarlar-acik > .toolbar,
+#view.ayarlar-acik #formWrap,
+#view.ayarlar-acik #grid,
+#view.ayarlar-acik #dashBanner,
+#view.ayarlar-acik #dashStats,
+#view.profil-acik > header,
+#view.profil-acik > .toolbar,
+#view.profil-acik #formWrap,
+#view.profil-acik #grid,
+#view.profil-acik #dashBanner,
+#view.profil-acik #dashStats {
+display: none !important;
+}
+#view.ayarlar-acik,
+#view.profil-acik {
+padding-top: 20px !important;
+padding-bottom: 20px !important;
+}
+#view.ayarlar-acik + .mobile-nav,
+#view.profil-acik + .mobile-nav {
+display: none !important;
+}
+body:has(#view.ayarlar-acik) .mobile-nav,
+body:has(#view.profil-acik) .mobile-nav {
+display: none !important;
+}
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -896,7 +1347,6 @@ const db = firebase.firestore();
     <span>Ayarlar</span>
   </div>
 </nav>
-
 <div id="loginScreen">
 <div class="girisKart">
 <div class="girisSahne" id="girisSahne" data-mod="giris">
@@ -981,7 +1431,6 @@ NeonHub
 </div>
 </div>
 </div>
-
 <aside id="side">
   <div id="logo" title="NeonHub">
     <svg viewBox="0 0 24 24" fill="none">
@@ -994,15 +1443,14 @@ NeonHub
   </div>
   <nav id="nav"></nav>
   <div id="surum">v7.0</div>
-  <button class="profile-btn" onclick="toggleProfileMenu(event)">
-    <span class="profile-icon">👤</span>
-    <span class="profile-name">PROFİL</span>
+  <button class="sidebar-btn" onclick="openProfile()" title="Profil">
+    <span class="sidebar-btn-icon">👤</span>
+    <span class="sidebar-btn-name">PROFİL</span>
   </button>
-  <div class="profile-menu" id="profileMenu">
-    <button onclick="openProfile()">👤 Profilim</button>
-    <button onclick="openSettings()">⚙️ Ayarlar</button>
-    <button onclick="logout()" class="logout-btn">🚪 Çıkış Yap</button>
-  </div>
+  <button class="sidebar-btn" onclick="ayarlarSayfasAc()" title="Ayarlar">
+    <span class="sidebar-btn-icon">⚙️</span>
+    <span class="sidebar-btn-name">AYARLAR</span>
+  </button>
 </aside>
 <main id="main">
   <div id="view">
@@ -1035,7 +1483,6 @@ NeonHub
     <div id="ayarlarSayfa" style="display:none"></div>
   </div>
 </main>
-
 <div class="modal" id="diziModal">
   <div class="modalBox" style="max-width:1000px">
     <div class="modalHero">
@@ -1081,7 +1528,6 @@ NeonHub
     </div>
   </div>
 </div>
-
 <div class="modal" id="oyunModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -1128,7 +1574,6 @@ NeonHub
     </div>
   </div>
 </div>
-
 <div class="modal" id="filmModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -1171,7 +1616,6 @@ NeonHub
     </div>
   </div>
 </div>
-
 <div class="modal" id="onizlemeModal">
   <div class="modalBox">
     <div class="modalHero">
@@ -1193,9 +1637,7 @@ NeonHub
     </div>
   </div>
 </div>
-
 <script>
-// ============ YARDIMCI ============
 async function cloudYukle(collection, docId, data) {
   if (!auth.currentUser) return;
   try {
@@ -1216,8 +1658,6 @@ async function setPersistenceFromCheckbox() {
   const remember = document.getElementById('beniHatirla').checked;
   await auth.setPersistence(remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION);
 }
-
-// ============ LOGIN ============
 function showLogin() { document.getElementById('loginScreen').style.display = 'flex'; }
 function hideLogin() { document.getElementById('loginScreen').style.display = 'none'; }
 async function loginWithGoogle() {
@@ -1227,17 +1667,14 @@ async function loginWithGoogle() {
     await auth.signInWithPopup(provider);
   } catch(e) { authMesaj('Giriş hatası: ' + e.message); }
 }
-
 let isRegisterMode = false;
 const GECIS_MS = 1100;
-
 function girisPaneliDurumu() {
   const giris = document.querySelector('.panelGiris'), kayit = document.querySelector('.panelKayit');
   giris.inert = isRegisterMode;  kayit.inert = !isRegisterMode;
   giris.setAttribute('aria-hidden', String(isRegisterMode));
   kayit.setAttribute('aria-hidden', String(!isRegisterMode));
 }
-
 function toggleRegisterMode() {
   const sahne = document.getElementById('girisSahne');
   if (!sahne || sahne.classList.contains('gecisVar')) return;
@@ -1263,7 +1700,6 @@ function toggleRegisterMode() {
   sahne.addEventListener('animationend', animBitti);
   const yedek = setTimeout(bitir, GECIS_MS + 300);
 }
-
 function sifreGoster(inputId, btn) {
   const alan = document.getElementById(inputId);
   const goster = alan.type === 'password';
@@ -1271,7 +1707,6 @@ function sifreGoster(inputId, btn) {
   btn.classList.toggle('acik', goster);
   btn.setAttribute('aria-label', goster ? 'Şifreyi gizle' : 'Şifreyi göster');
 }
-
 function sifreGucu(s) {
   if (!s) return { seviye: 0, yazi: 'En az 6 karakter' };
   if (s.length < 6) return { seviye: 1, yazi: 'Çok kısa — en az 6 karakter' };
@@ -1280,13 +1715,11 @@ function sifreGucu(s) {
   if (puan === 3) return { seviye: 3, yazi: 'İyi' };
   return { seviye: 4, yazi: 'Güçlü' };
 }
-
 document.getElementById('registerPassword').addEventListener('input', (e) => {
   const g = sifreGucu(e.target.value);
   document.getElementById('gucKutu').dataset.seviye = g.seviye;
   document.getElementById('gucYazi').textContent = g.yazi;
 });
-
 function authMesaj(metin, tur) {
   const el = document.getElementById(isRegisterMode ? 'kayitMesaj' : 'girisMesaj');
   if (!el) { alert(metin); return; }
@@ -1298,7 +1731,6 @@ function authMesajTemizle() {
   document.querySelectorAll('.formMesaj').forEach(el => { el.textContent = ''; el.classList.remove('goster'); });
 }
 document.querySelectorAll('#loginScreen input').forEach(i => i.addEventListener('input', authMesajTemizle));
-
 async function loginWithCredentials() {
   const input = document.getElementById('loginUsername').value.trim();
   const password = document.getElementById('loginPassword').value;
@@ -1318,7 +1750,6 @@ async function loginWithCredentials() {
     else authMesaj('❌ Giriş hatası: ' + e.message);
   }
 }
-
 async function registerWithUsername() {
   const username = document.getElementById('registerUsername').value.trim();
   const email = document.getElementById('registerEmail').value.trim();
@@ -1350,7 +1781,6 @@ async function registerWithUsername() {
     else authMesaj('❌ Kayıt hatası: ' + e.message);
   }
 }
-
 async function logout() {
   if (confirm('Çıkış yapmak istediğinden emin misin?')) { await auth.signOut(); }
 }
@@ -1358,8 +1788,6 @@ auth.onAuthStateChanged((user) => {
   if (user) { hideLogin(); }
   else { showLogin(); }
 });
-
-// ============ HESAP SİLME ============
 async function hesapSil() {
   if (!auth.currentUser) { alert('Önce giriş yapmalısın.'); return; }
   if (!confirm('⚠️ HESABINI SİLMEK İSTEDİĞİNDEN EMİN MİSİN?\nBu işlem geri alınamaz!')) return;
@@ -1392,7 +1820,6 @@ async function hesapSil() {
     else alert('❌ Hesap silme hatası:\n' + e.message);
   }
 }
-
 function win(action){
   if(window.electronAPI){
     if(action==='minimize') window.electronAPI.minimize();
@@ -1408,8 +1835,6 @@ document.addEventListener('keydown', e=>{
     else document.exitFullscreen?.();
   }
 });
-
-// ============ SABITLER ============
 const SVG = {
   oyunlar:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>',
   filmler:'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="m10 15 4 2.5-4 2.5Z"/></svg>',
@@ -1492,7 +1917,6 @@ const RENKLER = {
 const $=id=>document.getElementById(id);
 const store=(k,v)=>v===undefined?localStorage.getItem(k):localStorage.setItem(k,v);
 const json=(k,def)=>{try{return JSON.parse(store(k))||def}catch(e){return def}};
-
 let aktifCat="oyunlar", duzenlenenId=null, sonucCache=[], araTimer;
 let aktifDiziId=null, aktifOyunId=null, aktifFilmId=null;
 let onizlemeData=null;
@@ -1645,84 +2069,183 @@ function durumYaz(api){
     :'<span style="color:#ffe14d">⚠ Anahtar yok.</span>';
   $(`${api}Key`).value=key;
 }
-
-// ============ AYARLAR SAYFASI ============
 function ayarlarGizle(){
-  const s=document.getElementById("ayarlarSayfa");
-  if(s && s.style.display==="block"){
-    s.style.display="none";
-    const h=document.querySelector("#view > header"); if(h) h.style.display="";
-    const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="";
-    const f=document.getElementById("formWrap"); if(f) f.style.display="";
-    const g=document.getElementById("grid"); if(g) g.style.display="";
-  }
+const s=document.getElementById("ayarlarSayfa");
+if(s && s.style.display==="block"){
+s.style.display="none";
+const h=document.querySelector("#view > header"); if(h) h.style.display="";
+const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="";
+const f=document.getElementById("formWrap"); if(f) f.style.display="";
+const g=document.getElementById("grid"); if(g) g.style.display="";
+const db2=document.getElementById("dashBanner"); if(db2) db2.style.display="flex";
+const ds=document.getElementById("dashStats"); if(ds) ds.style.display="grid";
+const mn=document.querySelector(".mobile-nav"); if(mn) mn.style.display="";
+const view=document.getElementById("view"); if(view) view.classList.remove("ayarlar-acik");
+}
 }
 function ayarlarSayfasKapat(){
-  ayarlarGizle();
-  switchCat(aktifCat);
+ayarlarGizle();
+const db2=document.getElementById("dashBanner"); if(db2) db2.style.display="flex";
+const ds=document.getElementById("dashStats"); if(ds) ds.style.display="grid";
+const mn=document.querySelector(".mobile-nav"); if(mn) mn.style.display="";
+const view=document.getElementById("view"); if(view) view.classList.remove("ayarlar-acik");
+switchCat(aktifCat);
 }
-function ayarlarSayfasAc(){
-  const h=document.querySelector("#view > header"); if(h) h.style.display="none";
-  const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="none";
-  const f=document.getElementById("formWrap"); if(f){ f.style.display="none"; f.classList.remove("open"); }
-  const g=document.getElementById("grid"); if(g) g.style.display="none";
-  const s=document.getElementById("ayarlarSayfa");
-  s.style.display="block";
-  s.innerHTML=`
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
-      <button class="btn" onclick="ayarlarSayfasKapat()">← Geri Dön</button>
-      <h1 style="font-size:24px;letter-spacing:4px">⚙️ AYARLAR</h1>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>🎨 Tema • <b id="temaKapsam" style="color:var(--accent)"></b></h3>
-        <p class="meta" style="margin:6px 0 12px">Aktif bölümün vurgu rengini değiştir</p>
-        <div id="temaListe" class="temaListe"></div>
-      </div></div>
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>📐 Kart Boyutu</h3>
-        <p class="meta" style="margin:6px 0 12px">Kartları büyüt veya küçült</p>
-        <div class="sliderRow"><span>Küçük</span><input id="zoom" type="range" min="0.85" max="1.5" step="0.05" oninput="zoomAyarla(this.value)"><span>Büyük</span></div>
-      </div></div>
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>🎮 Oyun Kaynağı (RAWG)</h3>
-        <input id="rawgKey" class="apiInput" placeholder="RAWG API anahtarı" autocomplete="off" style="margin-top:10px">
-        <button type="button" class="btn" style="width:100%;padding:8px" onclick="saveKey('rawg')">Kaydet</button>
-        <div id="rawgDurum" class="apiDurum muted"></div>
-        <div style="margin-top:10px;font-size:11px" class="muted"><a class="apiLink" href="https://rawg.io/apidocs" target="_blank">rawg.io/apidocs</a></div>
-      </div></div>
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>🎬 Film Kaynağı (OMDb)</h3>
-        <input id="omdbKey" class="apiInput" placeholder="OMDb API anahtarı" autocomplete="off" style="margin-top:10px">
-        <button type="button" class="btn" style="width:100%;padding:8px" onclick="saveKey('omdb')">Kaydet</button>
-        <div id="omdbDurum" class="apiDurum muted"></div>
-        <div style="margin-top:10px;font-size:11px" class="muted"><a class="apiLink" href="https://www.omdbapi.com/apikey.aspx" target="_blank">omdbapi.com/apikey.aspx</a></div>
-      </div></div>
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>👤 Hesap</h3>
-        <p class="meta" id="hesapBilgi" style="margin:10px 0"></p>
-        <button class="btn danger" style="width:100%;margin-bottom:8px" onclick="logout()">🚪 Çıkış Yap</button>
-        <button class="btn danger" style="width:100%;background:#ff5a3c;color:#fff;border-color:#ff5a3c" onclick="hesapSil()">🗑️ Hesabımı Sil</button>
-        <p class="meta" style="margin-top:8px;font-size:10px;color:#ff5a3c">⚠️ Bu işlem geri alınamaz!</p>
-      </div></div>
-      <div class="card" style="cursor:default"><div class="body">
-        <h3>ℹ️ Kısayollar & Bilgi</h3>
-        <div class="popBilgi" style="margin-top:10px;border-top:none;padding-top:0">
-          <kbd>/</kbd> arama • <kbd>Esc</kbd> geri/kapat • <kbd>F11</kbd> tam ekran<br>
-          Oyunlar → RAWG • Filmler → OMDb • Diziler → TV Maze
-        </div>
-      </div></div>
-    </div>`;
-  document.getElementById("zoom").value=store("neonHub_zoom")||"1";
-  renderTemaListe();
-  durumYaz("rawg");
-  durumYaz("omdb");
-  const u=auth.currentUser;
-  const hb=document.getElementById("hesapBilgi");
-  if(hb) hb.textContent=u?("Giriş: "+u.email):"Giriş yapılmadı";
-  s.style.animation="none"; void s.offsetWidth; s.style.animation="giris .28s ease both";
+function ayarlarSayfasAc(klasor){
+const h=document.querySelector("#view > header"); if(h) h.style.display="none";
+const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="none";
+const f=document.getElementById("formWrap"); if(f){ f.style.display="none"; f.classList.remove("open"); }
+const g=document.getElementById("grid"); if(g) g.style.display="none";
+const p=document.getElementById("profilSayfa"); if(p) p.classList.remove("open");
+const db2=document.getElementById("dashBanner"); if(db2) db2.style.display="none";
+const ds=document.getElementById("dashStats"); if(ds) ds.style.display="none";
+const mn=document.querySelector(".mobile-nav"); if(mn) mn.style.display="none";
+const view=document.getElementById("view"); if(view) view.classList.add("ayarlar-acik");
+const s=document.getElementById("ayarlarSayfa");
+s.style.display="block";
+if(!klasor){
+s.innerHTML=`
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+<button class="btn" onclick="ayarlarSayfasKapat()">← Geri Dön</button>
+<h1 style="font-size:24px;letter-spacing:4px">⚙️ AYARLAR</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="card ayarKlasor" onclick="ayarlarSayfasAc('gorunum')" style="cursor:pointer">
+<div class="body" style="flex-direction:row;align-items:center;gap:16px;padding:18px 20px">
+<div style="font-size:36px;width:50px;text-align:center;flex-shrink:0">🎨</div>
+<div style="flex:1;min-width:0"><h3 style="font-size:17px;margin-bottom:4px">Görünüm</h3>
+<p class="meta" style="margin:0;font-size:12px">Tema modu, bölüm renkleri ve kart boyutu</p></div>
+<div style="color:var(--muted);font-size:20px;flex-shrink:0">›</div>
+</div></div>
+<div class="card ayarKlasor" onclick="ayarlarSayfasAc('veri')" style="cursor:pointer">
+<div class="body" style="flex-direction:row;align-items:center;gap:16px;padding:18px 20px">
+<div style="font-size:36px;width:50px;text-align:center;flex-shrink:0">📦</div>
+<div style="flex:1;min-width:0"><h3 style="font-size:17px;margin-bottom:4px">Veri Yönetimi</h3>
+<p class="meta" style="margin:0;font-size:12px">Yedekle, geri yükle ve bulut senkronizasyonu</p></div>
+<div style="color:var(--muted);font-size:20px;flex-shrink:0">›</div>
+</div></div>
+<div class="card ayarKlasor" onclick="ayarlarSayfasAc('steam')" style="cursor:pointer">
+<div class="body" style="flex-direction:row;align-items:center;gap:16px;padding:18px 20px">
+<div style="font-size:36px;width:50px;text-align:center;flex-shrink:0">🎮</div>
+<div style="flex:1;min-width:0"><h3 style="font-size:17px;margin-bottom:4px">Steam Hesabı</h3>
+<p class="meta" style="margin:0;font-size:12px">Steam kütüphaneni bağla ve oyunlarını aktar</p></div>
+<div style="color:var(--muted);font-size:20px;flex-shrink:0">›</div>
+</div></div>
+<div class="card ayarKlasor" onclick="ayarlarSayfasAc('hesap')" style="cursor:pointer">
+<div class="body" style="flex-direction:row;align-items:center;gap:16px;padding:18px 20px">
+<div style="font-size:36px;width:50px;text-align:center;flex-shrink:0">👤</div>
+<div style="flex:1;min-width:0"><h3 style="font-size:17px;margin-bottom:4px">Hesap</h3>
+<p class="meta" style="margin:0;font-size:12px">Hesap bilgileri, çıkış yap ve hesabı sil</p></div>
+<div style="color:var(--muted);font-size:20px;flex-shrink:0">›</div>
+</div></div>
+</div>`;
+} else if(klasor==='gorunum'){
+s.innerHTML=`
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+<button class="btn" onclick="ayarlarSayfasAc()">← Geri</button>
+<h1 style="font-size:22px;letter-spacing:3px">🎨 Görünüm</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="card" style="cursor:default"><div class="body">
+<h3>🌓 Tema Modu</h3>
+<p class="meta" style="margin:6px 0 14px">Açık veya koyu tema arasında geçiş yap</p>
+<div class="temaListe" id="temaModListe"></div>
+</div></div>
+<div class="card" style="cursor:default"><div class="body">
+<h3>🎨 Bölüm Rengi • <b id="temaKapsam" style="color:var(--accent)"></b></h3>
+<p class="meta" style="margin:6px 0 14px">Aktif bölümün vurgu rengini değiştir</p>
+<div class="temaListe" id="temaListe"></div>
+</div></div>
+<div class="card" style="cursor:default"><div class="body">
+<h3>📐 Kart Boyutu</h3>
+<p class="meta" style="margin:6px 0 14px">Kartları büyüt veya küçült</p>
+<div class="sliderRow"><span>Küçük</span><input id="zoom" type="range" min="0.85" max="1.5" step="0.05" oninput="zoomAyarla(this.value)"><span>Büyük</span></div>
+</div></div>
+</div>`;
+document.getElementById("zoom").value=store("neonHub_zoom")||"1";
+renderTemaListe();
+temaModYaz();
+} else if(klasor==='veri'){
+s.innerHTML=`
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+<button class="btn" onclick="ayarlarSayfasAc()">← Geri</button>
+<h1 style="font-size:22px;letter-spacing:3px">📦 Veri Yönetimi</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="card" style="cursor:default"><div class="body">
+<h3>💾 Yedekleme</h3>
+<p class="meta" style="margin:6px 0 14px">Verilerini JSON dosyası olarak indir veya geri yükle</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button class="btn solid" onclick="profilVeriDisaAktar()" style="padding:14px">📤 Dışa Aktar</button>
+<button class="btn" onclick="profilVeriIceAktar()" style="padding:14px">📥 İçe Aktar</button>
+</div>
+</div></div>
+<div class="card" style="cursor:default"><div class="body">
+<h3>☁️ Bulut Senkronizasyonu</h3>
+<p class="meta" style="margin:6px 0 14px">Verilerini Firebase bulutla senkronize et</p>
+<div id="syncWrapAyarlar" style="display:flex;flex-direction:column;gap:10px"></div>
+</div></div>
+</div>`;
+syncButonunuAyarlarSayfasinaTasi();
+} else if(klasor==='steam'){
+const proxyDefault = 'https://neonhub-steam.neonhub.workers.dev';
+if(!store('neonHub_steamProxy')) store('neonHub_steamProxy', proxyDefault);
+s.innerHTML=`
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+<button class="btn" onclick="ayarlarSayfasAc()">← Geri</button>
+<h1 style="font-size:22px;letter-spacing:3px">🎮 Steam Hesabı</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="card" style="cursor:default"><div class="body">
+<h3>🔗 Steam Bağlantısı</h3>
+<p class="meta" style="margin:6px 0 14px">Steam kütüphaneni ve oynama saatlerini aktar</p>
+<input type="hidden" id="steamProxyInput" value="${store('neonHub_steamProxy')||proxyDefault}">
+<div style="margin-bottom:12px">
+<label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px">Steam Profil Linki</label>
+<input id="steamIdInput" class="apiInput" placeholder="steamcommunity.com/id/adin" value="${store('neonHub_steamId')||''}" autocomplete="off" style="margin:0">
+</div>
+<button type="button" class="btn solid" style="width:100%;padding:12px" onclick="steamBaglan()">🔗 Bağlan</button>
+<div id="steamDurum" class="apiDurum muted" style="margin-top:12px"></div>
+<div style="display:flex;gap:8px;margin-top:14px">
+<button type="button" class="btn" style="flex:1" onclick="steamModalAc()">📥 İçe Aktar</button>
+<button type="button" class="btn" style="flex:1" onclick="steamSaatGuncelle()">🔄 Güncelle</button>
+</div>
+</div></div>
+</div>`;
+steamDurumYaz();
+} else if(klasor==='hesap'){
+const u=auth.currentUser;
+s.innerHTML=`
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+<button class="btn" onclick="ayarlarSayfasAc()">← Geri</button>
+<h1 style="font-size:22px;letter-spacing:3px">👤 Hesap</h1>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="card" style="cursor:default"><div class="body">
+<h3>📋 Hesap Bilgileri</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+<div style="background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--line)">
+<div style="font-size:10px;color:var(--muted);text-transform:uppercase">Email</div>
+<div style="font-size:13px;margin-top:4px;word-break:break-all">${u?temiz(u.email):'-'}</div>
+</div>
+<div style="background:var(--card);padding:12px;border-radius:10px;border:1px solid var(--line)">
+<div style="font-size:10px;color:var(--muted);text-transform:uppercase">Kullanıcı Adı</div>
+<div style="font-size:13px;margin-top:4px">${temiz(store('neonHub_username')||'Belirlenmemiş')}</div>
+</div>
+</div>
+</div></div>
+<div class="card" style="cursor:default"><div class="body">
+<button class="btn danger" style="width:100%;padding:12px" onclick="logout()">🚪 Çıkış Yap</button>
+</div></div>
+<div class="card" style="cursor:default;border-color:rgba(255,90,60,.3)"><div class="body">
+<h3 style="color:#ff5a3c">⚠️ Tehlikeli Bölge</h3>
+<button class="btn danger" style="width:100%;padding:12px;background:#ff5a3c;color:#fff;border-color:#ff5a3c" onclick="hesapSil()">🗑️ Hesabımı Sil</button>
+</div></div>
+</div>`;
 }
-
+s.style.animation="none"; void s.offsetWidth; s.style.animation="giris .28s ease both";
+updateDash();
+}
 function buildNav(){
   $("nav").innerHTML=Object.entries(KAT).map(([k,c])=>`
     <button class="nav" data-cat="${k}" onclick="switchCat('${k}')">
@@ -1732,8 +2255,6 @@ function buildNav(){
 }
 function switchCat(k){
   ayarlarGizle();
-  const s = $('profilSayfa');
-  if(s) s.classList.remove('open');
   aktifCat=k;
   const c=KAT[k];
   temaUygula();
@@ -2104,7 +2625,7 @@ async function secSonuc(i){
       store("neonHub_oyunlar", JSON.stringify(VERI.oyunlar));
       cloudYukle("oyunlar", yeniOyun.id, yeniOyun);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.name)+'" Oynayacaklarım listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     } else if(it.tip==="omdb"){
       const d=await API.omdb(`i=${it.raw.imdbID}&plot=short`);
       filmOMDbCache[d.imdbID]=d;
@@ -2120,7 +2641,7 @@ async function secSonuc(i){
       store("neonHub_filmler", JSON.stringify(VERI.filmler));
       cloudYukle("filmler", yeniFilm.id, yeniFilm);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(d.Title)+'" İzleyeceklerim listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     } else if(it.tip==="tvmaze"){
       const diziData = it.raw;
       let sezonSayisi = "";
@@ -2140,13 +2661,12 @@ async function secSonuc(i){
       store("neonHub_diziler", JSON.stringify(VERI.diziler));
       cloudYukle("diziler", yeniDizi.id, yeniDizi);
       son.innerHTML='<span class="meta" style="color:#4ade80">✔ "'+temiz(diziData.name)+'" İzleyeceklerim listesine eklendi!</span>';
-      setTimeout(()=>{ formKapat(); render(); updateDash(); }, 800);
+      setTimeout(()=>{ formKapat(); render(); }, 800);
     }
   }catch(e){
     son.innerHTML='<span class="meta">Hata: '+temiz(e.message)+"</span>";
   }
 }
-
 async function diziModalAc(id){
   aktifDiziId=id;
   const dizi=VERI.diziler.find(d=>d.id===id);
@@ -2633,7 +3153,6 @@ function diziModalKapat(){
   document.body.style.overflow="";
   aktifDiziId=null;
 }
-
 async function oyunModalAc(id){
   aktifOyunId=id;
   const oyun=VERI.oyunlar.find(o=>o.id===id);
@@ -2832,7 +3351,6 @@ function oyunModalKapat(){
   document.body.style.overflow="";
   aktifOyunId=null;
 }
-
 async function filmModalAc(id){
   aktifFilmId=id;
   const film=VERI.filmler.find(f=>f.id===id);
@@ -3062,7 +3580,6 @@ function filmModalKapat(){
   document.body.style.overflow="";
   aktifFilmId=null;
 }
-
 async function benzerOyunAc(rawgId){
   if(!API.rawgKey()) return;
   const mevcut = VERI.oyunlar.find(o=>o.rawgId==rawgId);
@@ -3210,14 +3727,11 @@ function onizlemeModalKapat(){
   }
   onizlemeData = null;
 }
-
-// ============ KISA YOLLAR ============
 document.addEventListener("keydown",e=>{
   const ayarlarAcik=$("ayarlarSayfa").style.display==="block";
   if(e.key==="/"&&!ayarlarAcik&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){ e.preventDefault();$("arama").focus(); }
   if(e.key==="Escape"){
     formKapat();
-    document.getElementById("profileMenu").classList.remove("active");
     if(ayarlarAcik){ ayarlarSayfasKapat(); }
     else if($("onizlemeModal").classList.contains("open")) onizlemeModalKapat();
     else if($("diziModal").classList.contains("open")) diziModalKapat();
@@ -3231,8 +3745,6 @@ $("diziModal").addEventListener("click",e=>{if(e.target===$("diziModal")) diziMo
 $("oyunModal").addEventListener("click",e=>{if(e.target===$("oyunModal")) oyunModalKapat();});
 $("filmModal").addEventListener("click",e=>{if(e.target===$("filmModal")) filmModalKapat();});
 $("onizlemeModal").addEventListener("click",e=>{if(e.target===$("onizlemeModal")) onizlemeModalKapat();});
-
-// ============ BASLAT ============
 buildNav();
 temaUygula();
 document.documentElement.style.setProperty("--zoom",store("neonHub_zoom")||"1");
@@ -3255,27 +3767,9 @@ try{
   }
 }catch(e){}
 switchCat("oyunlar");
-
-// ============ PROFİL MENÜSÜ ============
-function toggleProfileMenu() {
-  const menu = $('profileMenu');
-  menu.classList.toggle('active');
-}
-function openSettings() {
-  toggleProfileMenu();
-  ayarlarSayfasAc();
-}
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.profile-btn') && !e.target.closest('.profile-menu')) {
-    $('profileMenu').classList.remove('active');
-  }
-});
-
-// ============ MANUEL SYNC ============
 cloudYukle = function(){ return Promise.resolve(); };
 cloudSet  = function(){ return Promise.resolve(); };
 cloudSil  = function(){ return Promise.resolve(); };
-
 let _sonCekme = 0;
 async function cloudDanYukle(sessiz){
   if(!auth.currentUser) return;
@@ -3430,19 +3924,27 @@ sil = async function(id){
       .set({cat:cat, ts:Date.now()}).catch(()=>{});
   }
 };
-
-// ============ MOBİL MENÜ ============
 function toggleMobileMenu() {
   const side = document.getElementById('side');
   const overlay = document.querySelector('.sidebar-overlay');
+  const mobileNav = document.querySelector('.mobile-nav');
   side.classList.toggle('open');
   overlay.classList.toggle('active');
+  if(mobileNav){
+    if(side.classList.contains('open')){
+      mobileNav.style.display = 'none';
+    } else {
+      mobileNav.style.display = '';
+    }
+  }
 }
 function closeMobileMenu() {
   const side = document.getElementById('side');
   const overlay = document.querySelector('.sidebar-overlay');
+  const mobileNav = document.querySelector('.mobile-nav');
   side.classList.remove('open');
   overlay.classList.remove('active');
+  if(mobileNav) mobileNav.style.display = '';
 }
 function mobileNav(target, element) {
   document.querySelectorAll('.mobile-nav-item').forEach(item => {
@@ -3467,58 +3969,11 @@ switchCat = function(k) {
   _originalSwitchCatMobile(k);
   updateMobileNavActive(k);
 };
-const _originalAyarlariAc = ayarlarSayfasAc;
-ayarlarSayfasAc = function() {
-  _originalAyarlariAc();
-  document.querySelectorAll('.mobile-nav-item').forEach(item => {
-    item.classList.remove('active');
-    if (item.onclick && item.onclick.toString().includes("'ayarlar'")) {
-      item.classList.add('active');
-    }
-  });
-  // Veri yönetimi kartını ekle
-  const s = $('ayarlarSayfa');
-  if(s && !s.querySelector('#veriYonetimKart')){
-    const grid = s.children[1];
-    if(grid){
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.id = 'veriYonetimKart';
-      div.style.cursor = 'default';
-      div.innerHTML = `<div class="body">
-        <h3>📦 Veri Yönetimi</h3>
-        <p class="meta" style="margin:6px 0 12px">Verilerini yedekle veya geri yükle</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <button class="btn" onclick="profilVeriDisaAktar()">📤 Dışa Aktar</button>
-          <button class="btn" onclick="profilVeriIceAktar()">📥 İçe Aktar</button>
-        </div>
-      </div>`;
-      grid.appendChild(div);
-    }
-  }
-  // Tema kartını ekle
-  if(s && !s.querySelector('#temaKart')){
-    const grid = s.children[1];
-    if(grid){
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.id = 'temaKart';
-      div.style.cursor = 'default';
-      div.innerHTML = '<div class="body"><h3>🌓 Görünüm Teması</h3>'+
-        '<p class="meta" style="margin:6px 0 12px">Açık veya koyu tema arasında geçiş yap</p>'+
-        '<div class="temaListe" id="temaModListe"></div></div>';
-      grid.prepend(div);
-      temaModYaz();
-    }
-  }
-};
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeMobileMenu();
   }
 });
-
-// ============ GÖRÜNÜM DEĞİŞTİRME ============
 let currentView = store('neonHub_view') || 'grid';
 function setView(view) {
   currentView = view;
@@ -3556,8 +4011,6 @@ render = function() {
     $('grid').classList.remove('list-view');
   }
 };
-
-// ============ DASHBOARD ============
 (function(){
   const header=document.querySelector('#view > header');
   if(header && !$('dashBanner')){
@@ -3566,8 +4019,6 @@ render = function() {
     header.after(banner); banner.after(stats);
   }
 })();
-
-// TEK updateDash FONKSİYONU
 function updateDash(){
   const banner=$('dashBanner'), stats=$('dashStats');
   if(!banner||!stats) return;
@@ -3688,8 +4139,6 @@ function updateDash(){
   }
   stats.innerHTML = haftaKart + ortaKart + favKart + sureCard;
 }
-
-// durumDegistir override — timestamp kaydet
 const _origDurumDegistir = durumDegistir;
 durumDegistir = async function(id, yeniDurum){
   const now = Date.now();
@@ -3708,20 +4157,14 @@ durumDegistir = async function(id, yeniDurum){
   }
   return _origDurumDegistir(id, yeniDurum);
 };
-
-// filtre override
 const _origFiltre = filtre;
 filtre = function(f){ _origFiltre(f); updateDash(); };
-
-// favori toggle override
 ['oyunFavoriToggle','filmFavoriToggle','diziFavoriToggle'].forEach(fn=>{
   if(typeof window[fn] === 'function'){
     const orig = window[fn];
     window[fn] = function(){ orig.apply(this, arguments); updateDash(); };
   }
 });
-
-// bolumTikla override
 if(typeof bolumTikla === 'function'){
   const _origBT = bolumTikla;
   bolumTikla = function(k){ _origBT(k); updateDash(); };
@@ -3730,7 +4173,6 @@ if(typeof sezonuIsaretle === 'function'){
   const _origSI = sezonuIsaretle;
   sezonuIsaretle = function(w){ _origSI(w); updateDash(); };
 }
-
 const _dashRender = render;
 render = function(){ _dashRender(); updateDash(); };
 const _dashAyarAc = ayarlarSayfasAc;
@@ -3738,8 +4180,6 @@ ayarlarSayfasAc = function(){ _dashAyarAc(); updateDash(); };
 const _dashAyarKapat = ayarlarSayfasKapat;
 ayarlarSayfasKapat = function(){ _dashAyarKapat(); updateDash(); };
 updateDash();
-
-// ============ TEMA SİSTEMİ ============
 function temaUygulaMod(){
   const t = store('neonHub_theme') || 'light';
   document.documentElement.setAttribute('data-theme', t);
@@ -3760,31 +4200,8 @@ function temaModYaz(){
     '<span class="temaDot" style="background:#151a23;color:#151a23"></span><span>🌙 Koyu</span></button>';
 }
 temaUygulaMod();
-
-// ============ STEAM ENTEGRASYONU ============
 let steamOyunlar = [], steamPlayer = null;
 const STEAM_PROXY_VARSAYILAN = 'https://neonhub-steam.neonhub.workers.dev';
-function steamKartEkle(){
-  const s=$('ayarlarSayfa'); if(!s||!s.children[1]) return;
-  const grid=s.children[1];
-  if($('steamKart')){ steamDurumYaz(); return; }
-  const div=document.createElement('div');
-  div.className='card'; div.id='steamKart'; div.style.cursor='default';
-  div.innerHTML='<div class="body"><h3>🎮 Steam Hesabı</h3>'+
-    '<p class="meta" style="margin:6px 0 10px">Steam kütüphaneni ve oynama saatlerini aktar</p>'+
-    '<input id="steamProxyInput" class="apiInput" placeholder="Worker proxy adresi" autocomplete="off">'+
-    '<input id="steamIdInput" class="apiInput" placeholder="Steam profil linkin veya adın" autocomplete="off">'+
-    '<button type="button" class="btn solid" style="width:100%;padding:9px" onclick="steamBaglan()">🔗 Bağlan ve Oyunları Getir</button>'+
-    '<div id="steamDurum" class="apiDurum muted"></div>'+
-    '<div style="display:flex;gap:8px;margin-top:10px">'+
-    '<button type="button" class="btn" style="flex:1;padding:8px" onclick="steamModalAc()">📥 İçe Aktar</button>'+
-    '<button type="button" class="btn" style="flex:1;padding:8px" onclick="steamSaatGuncelle()">🔄 Saatleri Güncelle</button></div>'+
-    '<div style="margin-top:10px;font-size:11px" class="muted">Gerekli: Steam profili → Gizlilik → "Oyun detayları: Herkese Açık"</div></div>';
-  grid.appendChild(div);
-  $('steamProxyInput').value=store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
-  $('steamIdInput').value=store('neonHub_steamId')||'';
-  steamDurumYaz();
-}
 function steamDurumYaz(){
   const el=$('steamDurum'); if(!el) return;
   const proxy=store('neonHub_steamProxy'), id=store('neonHub_steamId');
@@ -3792,8 +4209,6 @@ function steamDurumYaz(){
   else if(!id) el.innerHTML='<span style="color:#ffe14d">⚠ Bağlı değil.</span>';
   else el.innerHTML='<span style="color:#4ade80">✔ Bağlı:</span> '+temiz(id)+(steamPlayer?' • '+temiz(steamPlayer.persona):'');
 }
-const _steamAyarAc = ayarlarSayfasAc;
-ayarlarSayfasAc = function(){ _steamAyarAc(); steamKartEkle(); };
 async function steamBaglan(){
   const proxy=($('steamProxyInput').value||'').trim().replace(/\/$/,'');
   const id=($('steamIdInput').value||'').trim();
@@ -3895,12 +4310,6 @@ async function steamSaatGuncelle(){
 }
 (function(){
   if(!store('neonHub_steamProxy')) store('neonHub_steamProxy', STEAM_PROXY_VARSAYILAN);
-  const _sk = steamKartEkle;
-  steamKartEkle = function(){
-    _sk();
-    const inp = $('steamProxyInput');
-    if(inp && !inp.value.trim()) inp.value = store('neonHub_steamProxy') || STEAM_PROXY_VARSAYILAN;
-  };
   const _sb = steamBaglan;
   steamBaglan = async function(){
     const inp = $('steamProxyInput');
@@ -3908,39 +4317,35 @@ async function steamSaatGuncelle(){
     await _sb();
   };
 })();
-
-// ============ PROFİL SAYFASI — GERÇEK FIREBASE SİSTEMİ ============
 let profilAcik = false;
-
 function openProfile(){
-  toggleProfileMenu();
-  const u = auth.currentUser;
-  if(!u){ alert('Önce giriş yapmalısın.'); return; }
-  const h = document.querySelector('#view > header'); if(h) h.style.display='none';
-  const t = document.querySelector('#view > .toolbar'); if(t) t.style.display='none';
-  const f = $('formWrap'); if(f){ f.style.display='none'; f.classList.remove('open'); }
-  const g = $('grid'); if(g) g.style.display='none';
-  const a = $('ayarlarSayfa'); if(a) a.style.display='none';
-  const db2 = $('dashBanner'); if(db2) db2.style.display='none';
-  const ds = $('dashStats'); if(ds) ds.style.display='none';
-  let s = $('profilSayfa');
-  if(!s){
-    s = document.createElement('div');
-    s.id = 'profilSayfa';
-    $('view').appendChild(s);
-  }
-  s.classList.add('open');
-  profilAcik = true;
-  profilSayfasiniYenile();
-  updateDash();
+const u = auth.currentUser;
+if(!u){ alert('Önce giriş yapmalısın.'); return; }
+const h=document.querySelector("#view > header"); if(h) h.style.display="none";
+const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="none";
+const f=$("formWrap"); if(f){ f.style.display="none"; f.classList.remove("open"); }
+const g=$("grid"); if(g) g.style.display="none";
+const a=$("ayarlarSayfa"); if(a) a.style.display="none";
+const db2=$("dashBanner"); if(db2) db2.style.display="none";
+const ds=$("dashStats"); if(ds) ds.style.display="none";
+const mn=document.querySelector(".mobile-nav"); if(mn) mn.style.display="none";
+const view=document.getElementById("view"); if(view){ view.classList.add("profil-acik"); view.classList.remove("ayarlar-acik"); }
+let s=$("profilSayfa");
+if(!s){
+s=document.createElement("div");
+s.id="profilSayfa";
+$("view").appendChild(s);
 }
-
+s.classList.add("open");
+profilAcik=true;
+profilSayfasiniYenile();
+updateDash();
+}
 async function profilSayfasiniYenile(){
   const s = $('profilSayfa');
   if(!s) return;
   const u = auth.currentUser;
   if(!u) return;
-  
   const username = store('neonHub_username') || (u.email ? u.email.split('@')[0] : 'Misafir');
   const email = u.email || '-';
   const createdAt = store('neonHub_kayitTarihi');
@@ -3949,8 +4354,6 @@ async function profilSayfasiniYenile(){
   const googleAvatar = u.photoURL || '';
   const avatarUrl = localAvatar || googleAvatar;
   const basHarf = (username[0] || 'U').toUpperCase();
-  
-  // Kütüphane istatistikleri
   const oyunSay = VERI.oyunlar.length;
   const filmSay = VERI.filmler.length;
   const diziSay = VERI.diziler.length;
@@ -3985,8 +4388,6 @@ async function profilSayfasiniYenile(){
   const diziSureStr = diziDk > 0 ? sureFormatla(diziDk) : '0 dk';
   const oyunSureStr = oyunSaat > 0 ? oyunSaat.toFixed(1) + ' sa' : '0 sa';
   const toplamSaat = oyunSaat + (filmDk / 60) + (diziDk / 60);
-  
-  // Rozetler
   const toplamKayit = oyunSay + filmSay + diziSay;
   const rozetler = [];
   if(toplamKayit >= 1) rozetler.push('🌱 İlk Adım');
@@ -3994,8 +4395,6 @@ async function profilSayfasiniYenile(){
   if(toplamSaat >= 100) rozetler.push('🔥 100 Saat');
   if(VERI.oyunlar.filter(o=>o.durum==='completed').length >= 5) rozetler.push('🎮 Oyuncu');
   if(VERI.filmler.filter(f=>f.durum==='watched').length >= 10) rozetler.push('🎬 Sinema Sever');
-  
-  // Firebase'den arkadaş verilerini çek
   let arkadaslar = [], gelenIstekler = [], gidenIstekler = [];
   try {
     const uid = u.uid;
@@ -4007,10 +4406,7 @@ async function profilSayfasiniYenile(){
     arkadaslar = arkSnap.docs.map(d => ({id: d.id, ...d.data()}));
     gelenIstekler = gelenSnap.docs.map(d => ({id: d.id, ...d.data()}));
     gidenIstekler = gidenSnap.docs.map(d => ({id: d.id, ...d.data()}));
-  } catch(e) {
-    console.error('Arkadaş verileri çekilemedi:', e);
-  }
-  
+  } catch(e) { console.error('Arkadaş verileri çekilemedi:', e); }
   s.innerHTML = `
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
       <button class="btn" onclick="profilSayfasKapat()">← Geri Dön</button>
@@ -4034,135 +4430,55 @@ async function profilSayfasiniYenile(){
           <span>🏅 <b>${uyelikGun}</b> gündür üye</span>
           <span>🆔 <b style="font-family:monospace">${u.uid.substring(0,8)}...</b></span>
         </div>
-        ${rozetler.length > 0 ? `
-          <div class="profilRozetler">
-            ${rozetler.map(r => `<span class="profilRozet">${r}</span>`).join('')}
-          </div>
-        ` : ''}
+        ${rozetler.length > 0 ? `<div class="profilRozetler">${rozetler.map(r => `<span class="profilRozet">${r}</span>`).join('')}</div>` : ''}
       </div>
     </div>
     <div class="profilGrid">
       <div class="kutuphaneOzet">
         <div class="kutuphaneBaslik">📊 Kütüphane</div>
-        <div class="ozetSatir">
-          <div class="ozetIkon">🎮</div>
-          <div class="ozetBilgi">
-            <div class="ozetUstSatir">
-              <span class="ozetSayi">${oyunSay} <span class="ozetEtiket" style="font-size:11px">oyun</span></span>
-              <span class="ozetSure">${oyunSureStr}</span>
-            </div>
-            <div class="ozetEtiket">toplam oynama</div>
-          </div>
-        </div>
-        <div class="ozetSatir">
-          <div class="ozetIkon">🎬</div>
-          <div class="ozetBilgi">
-            <div class="ozetUstSatir">
-              <span class="ozetSayi">${filmSay} <span class="ozetEtiket" style="font-size:11px">film</span></span>
-              <span class="ozetSure">${filmSureStr}</span>
-            </div>
-            <div class="ozetEtiket">izlenen süre</div>
-          </div>
-        </div>
-        <div class="ozetSatir">
-          <div class="ozetIkon">📺</div>
-          <div class="ozetBilgi">
-            <div class="ozetUstSatir">
-              <span class="ozetSayi">${diziSay} <span class="ozetEtiket" style="font-size:11px">dizi</span></span>
-              <span class="ozetSure">${diziSureStr}</span>
-            </div>
-            <div class="ozetEtiket">izlenen bölüm süresi</div>
-          </div>
-        </div>
-        <div class="ozetToplam">
-          <span class="etiket">🕐 Toplam</span>
-          <span class="deger">${sureFormatla(Math.round(toplamSaat * 60))}</span>
-        </div>
+        <div class="ozetSatir"><div class="ozetIkon">🎮</div><div class="ozetBilgi"><div class="ozetUstSatir"><span class="ozetSayi">${oyunSay} <span class="ozetEtiket" style="font-size:11px">oyun</span></span><span class="ozetSure">${oyunSureStr}</span></div><div class="ozetEtiket">toplam oynama</div></div></div>
+        <div class="ozetSatir"><div class="ozetIkon">🎬</div><div class="ozetBilgi"><div class="ozetUstSatir"><span class="ozetSayi">${filmSay} <span class="ozetEtiket" style="font-size:11px">film</span></span><span class="ozetSure">${filmSureStr}</span></div><div class="ozetEtiket">izlenen süre</div></div></div>
+        <div class="ozetSatir"><div class="ozetIkon">📺</div><div class="ozetBilgi"><div class="ozetUstSatir"><span class="ozetSayi">${diziSay} <span class="ozetEtiket" style="font-size:11px">dizi</span></span><span class="ozetSure">${diziSureStr}</span></div><div class="ozetEtiket">izlenen bölüm süresi</div></div></div>
+        <div class="ozetToplam"><span class="etiket">🕐 Toplam</span><span class="deger">${sureFormatla(Math.round(toplamSaat * 60))}</span></div>
       </div>
       <div class="arkadasKutu">
-        <div class="arkadasBaslik">
-          <span>👥 Arkadaşlar</span>
-          <span class="cnt">${arkadaslar.length}</span>
-        </div>
+        <div class="arkadasBaslik"><span>👥 Arkadaşlar</span><span class="cnt">${arkadaslar.length}</span></div>
         <div class="arkadasArama">
           <input id="arkadasAramaInput" placeholder="Kullanıcı adı ara..." oninput="arkadasAra()" autocomplete="off">
           <button class="btn" onclick="arkadasAra()" type="button">🔍 Ara</button>
         </div>
         <div id="arkadasAramaSonuc"></div>
-        ${gelenIstekler.length > 0 ? `
-          <div class="istekKutu bekleyen">
-            <div class="istekBaslik">📨 Gelen İstekler <span class="cnt">${gelenIstekler.length}</span></div>
-            ${gelenIstekler.map(i => `
-              <div class="istekSatir">
-                <div class="simge">${(i.fromUsername || '?')[0].toUpperCase()}</div>
-                <div class="bilgi">
-                  <div class="ad">${temiz(i.fromUsername || 'Bilinmiyor')}</div>
-                  <div class="alt">Arkadaş olmak istiyor</div>
-                </div>
-                <div class="butonlar">
-                  <button class="btn btn-kabul" onclick="arkadasKabul('${i.id}', '${i.from}')">✓</button>
-                  <button class="btn btn-reddet" onclick="arkadasReddet('${i.id}', '${i.from}')">✗</button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
-        ${gidenIstekler.length > 0 ? `
-          <div class="istekKutu">
-            <div class="istekBaslik">📤 Gönderilen <span class="cnt">${gidenIstekler.length}</span></div>
-            ${gidenIstekler.map(i => `
-              <div class="istekSatir">
-                <div class="simge">${(i.toUsername || '?')[0].toUpperCase()}</div>
-                <div class="bilgi">
-                  <div class="ad">${temiz(i.toUsername || 'Bilinmiyor')}</div>
-                  <div class="alt">⏳ Bekleniyor</div>
-                </div>
-                <div class="butonlar">
-                  <button class="btn btn-iptal" onclick="arkadasIptal('${i.id}', '${i.to}')">✗</button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        ` : ''}
+        ${gelenIstekler.length > 0 ? `<div class="istekKutu bekleyen"><div class="istekBaslik">📨 Gelen İstekler <span class="cnt">${gelenIstekler.length}</span></div>${gelenIstekler.map(i => `<div class="istekSatir"><div class="simge">${(i.fromUsername || '?')[0].toUpperCase()}</div><div class="bilgi"><div class="ad">${temiz(i.fromUsername || 'Bilinmiyor')}</div><div class="alt">Arkadaş olmak istiyor</div></div><div class="butonlar"><button class="btn btn-kabul" onclick="arkadasKabul('${i.id}', '${i.from}')">✓</button><button class="btn btn-reddet" onclick="arkadasReddet('${i.id}', '${i.from}')">✗</button></div></div>`).join('')}</div>` : ''}
+        ${gidenIstekler.length > 0 ? `<div class="istekKutu"><div class="istekBaslik">📤 Gönderilen <span class="cnt">${gidenIstekler.length}</span></div>${gidenIstekler.map(i => `<div class="istekSatir"><div class="simge">${(i.toUsername || '?')[0].toUpperCase()}</div><div class="bilgi"><div class="ad">${temiz(i.toUsername || 'Bilinmiyor')}</div><div class="alt">⏳ Bekleniyor</div></div><div class="butonlar"><button class="btn btn-iptal" onclick="arkadasIptal('${i.id}', '${i.to}')">✗</button></div></div>`).join('')}</div>` : ''}
         <div class="arkadasGrid">
-          ${arkadaslar.length > 0 ? arkadaslar.map(a => `
-            <div class="arkadasIsimSatir" onclick="arkadasMenuAc('${a.id}', '${temiz(a.username || '?')}', this)">
-              <span style="color:var(--muted);font-size:12px">•</span>
-              <span>${temiz(a.username || 'Bilinmiyor')}</span>
-            </div>
-          `).join('') : '<div style="padding:16px;text-align:center;color:var(--muted);font-size:12px">Henüz arkadaşın yok.<br>Yukarıdan arayarak ekleyebilirsin.</div>'}
+          ${arkadaslar.length > 0 ? arkadaslar.map(a => `<div class="arkadasIsimSatir" onclick="arkadasMenuAc('${a.id}', '${temiz(a.username || '?')}', this)"><span style="color:var(--muted);font-size:12px">•</span><span>${temiz(a.username || 'Bilinmiyor')}</span></div>`).join('') : '<div style="padding:16px;text-align:center;color:var(--muted);font-size:12px">Henüz arkadaşın yok.<br>Yukarıdan arayarak ekleyebilirsin.</div>'}
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
   s.style.animation='none'; void s.offsetWidth; s.style.animation='giris .28s ease both';
 }
-
 function profilSayfasKapat(){
-  const s = $('profilSayfa');
-  if(s) s.classList.remove('open');
-  profilAcik = false;
-  const h = document.querySelector('#view > header'); if(h) h.style.display='';
-  const t = document.querySelector('#view > .toolbar'); if(t) t.style.display='';
-  const f = $('formWrap'); if(f) f.style.display='';
-  const g = $('grid'); if(g) g.style.display='';
-  const db2 = $('dashBanner'); if(db2) db2.style.display='flex';
-  const ds = $('dashStats'); if(ds) ds.style.display='grid';
-  switchCat(aktifCat);
-  updateDash();
+const s=$("profilSayfa");
+if(s) s.classList.remove("open");
+profilAcik=false;
+const h=document.querySelector("#view > header"); if(h) h.style.display="";
+const t=document.querySelector("#view > .toolbar"); if(t) t.style.display="";
+const f=$("formWrap"); if(f) f.style.display="";
+const g=$("grid"); if(g) g.style.display="";
+const db2=$("dashBanner"); if(db2) db2.style.display="flex";
+const ds=$("dashStats"); if(ds) ds.style.display="grid";
+const mn=document.querySelector(".mobile-nav"); if(mn) mn.style.display="";
+const view=document.getElementById("view"); if(view) view.classList.remove("profil-acik");
+switchCat(aktifCat);
+updateDash();
 }
-
-// ============ ARKADAŞ MENÜSÜ ============
 function arkadasMenuAc(friendId, friendUsername, element){
   const eskiMenu = document.querySelector('.arkadasMenu');
   if(eskiMenu) eskiMenu.remove();
   const menu = document.createElement('div');
   menu.className = 'arkadasMenu';
   menu.style.cssText = 'position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:1000;min-width:180px;animation:giris .15s ease;';
-  menu.innerHTML = `
-    <button onclick="arkadasProfilGor('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:var(--text);cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">👁️ Profilini Gör</button>
-    <button onclick="arkadasCikar('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:#ff5a3c;cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">✗ Arkadaşlıktan Çıkar</button>
-  `;
+  menu.innerHTML = `<button onclick="arkadasProfilGor('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:var(--text);cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">👁️ Profilini Gör</button><button onclick="arkadasCikar('${friendId}'); this.parentElement.remove();" style="width:100%;padding:8px 12px;text-align:left;background:none;border:none;color:#ff5a3c;cursor:pointer;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:8px;">✗ Arkadaşlıktan Çıkar</button>`;
   menu.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('mouseenter', () => btn.style.background = 'rgba(var(--accent-r),.1)');
     btn.addEventListener('mouseleave', () => btn.style.background = 'none');
@@ -4173,15 +4489,10 @@ function arkadasMenuAc(friendId, friendUsername, element){
   document.body.appendChild(menu);
   setTimeout(() => {
     document.addEventListener('click', function kapat(e){
-      if(!menu.contains(e.target) && e.target !== element){
-        menu.remove();
-        document.removeEventListener('click', kapat);
-      }
+      if(!menu.contains(e.target) && e.target !== element){ menu.remove(); document.removeEventListener('click', kapat); }
     });
   }, 10);
 }
-
-// ============ ARKADAŞ ARAMA (Firebase usernames koleksiyonu) ============
 let arkadasAraTimer = null;
 async function arkadasAra(){
   const input = $('arkadasAramaInput');
@@ -4189,165 +4500,102 @@ async function arkadasAra(){
   if(!input || !sonuc) return;
   const q = input.value.trim().toLowerCase();
   if(q.length < 2){ sonuc.innerHTML = ''; return; }
-  
   clearTimeout(arkadasAraTimer);
   sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">🔍 Aranıyor...</div>';
-  
   arkadasAraTimer = setTimeout(async () => {
     try {
       const uid = auth.currentUser.uid;
       const snap = await db.collection('usernames').limit(200).get();
-      const users = snap.docs.map(d => ({id: d.id, ...d.data()})).filter(u => {
-        return u.id.includes(q) && u.userId !== uid;
-      }).slice(0, 10);
-      
-      if(users.length === 0){
-        sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">Kullanıcı bulunamadı.</div>';
-        return;
-      }
-      
+      const users = snap.docs.map(d => ({id: d.id, ...d.data()})).filter(u => { return u.id.includes(q) && u.userId !== uid; }).slice(0, 10);
+      if(users.length === 0){ sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:var(--muted)">Kullanıcı bulunamadı.</div>'; return; }
       const [arkSnap, gidenSnap] = await Promise.all([
         db.collection('users').doc(uid).collection('friends').get(),
         db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').get()
       ]);
       const arkadasIds = new Set(arkSnap.docs.map(d => d.data().userId || d.id));
       const gidenIds = new Set(gidenSnap.docs.map(d => d.data().to || d.id));
-      
       sonuc.innerHTML = users.map(k => {
         const zatenArkadas = arkadasIds.has(k.userId);
         const istekGonderildi = gidenIds.has(k.userId);
         let butonHTML = '';
-        if(zatenArkadas){
-          butonHTML = '<span style="font-size:11px;color:var(--muted);padding:4px 8px">✓ Arkadaş</span>';
-        } else if(istekGonderildi){
-          butonHTML = '<span style="font-size:11px;color:#ffb020;padding:4px 8px">⏳ Beklemede</span>';
-        } else {
-          butonHTML = `<button class="btn small solid" onclick="arkadasIstekGonder('${k.userId}', '${temiz(k.id)}')">➕ İstek</button>`;
-        }
-        return `
-          <div class="aramaSonucSatir">
-            <div class="simge">${k.id[0].toUpperCase()}</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:13px;font-weight:600">${temiz(k.id)}</div>
-            </div>
-            ${butonHTML}
-          </div>
-        `;
+        if(zatenArkadas) butonHTML = '<span style="font-size:11px;color:var(--muted);padding:4px 8px">✓ Arkadaş</span>';
+        else if(istekGonderildi) butonHTML = '<span style="font-size:11px;color:#ffb020;padding:4px 8px">⏳ Beklemede</span>';
+        else butonHTML = `<button class="btn small solid" onclick="arkadasIstekGonder('${k.userId}', '${temiz(k.id)}')">➕ İstek</button>`;
+        return `<div class="aramaSonucSatir"><div class="simge">${k.id[0].toUpperCase()}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600">${temiz(k.id)}</div></div>${butonHTML}</div>`;
       }).join('');
-    } catch(e) {
-      sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:#ff5a3c">Hata: '+temiz(e.message)+'</div>';
-    }
+    } catch(e) { sonuc.innerHTML = '<div style="padding:10px;font-size:11px;color:#ff5a3c">Hata: '+temiz(e.message)+'</div>'; }
   }, 400);
 }
-
-// ============ İSTEK GÖNDER ============
 async function arkadasIstekGonder(toUserId, toUsername){
   if(!auth.currentUser) return;
   const uid = auth.currentUser.uid;
   const myUsername = store('neonHub_username') || (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
   const myAvatar = store('neonHub_avatar') || auth.currentUser.photoURL || '';
-  
   try {
     const istekId = Date.now().toString();
     const ts = firebase.firestore.FieldValue.serverTimestamp();
-    
-    await db.collection('users').doc(toUserId).collection('friendRequests').doc('incoming').collection('items').doc(istekId).set({
-      id: istekId, from: uid, fromUsername: myUsername, fromAvatar: myAvatar, timestamp: ts
-    });
-    await db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).set({
-      id: istekId, to: toUserId, toUsername: toUsername, timestamp: ts
-    });
-    
+    await db.collection('users').doc(toUserId).collection('friendRequests').doc('incoming').collection('items').doc(istekId).set({id: istekId, from: uid, fromUsername: myUsername, fromAvatar: myAvatar, timestamp: ts});
+    await db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).set({id: istekId, to: toUserId, toUsername: toUsername, timestamp: ts});
     alert(`✅ "${toUsername}" kullanıcısına arkadaşlık isteği gönderildi!`);
     profilSayfasiniYenile();
-  } catch(e) {
-    alert('❌ İstek gönderilemedi: ' + e.message);
-  }
+  } catch(e) { alert('❌ İstek gönderilemedi: ' + e.message); }
 }
-
-// ============ İSTEK KABUL ============
 async function arkadasKabul(istekId, fromUserId){
   if(!auth.currentUser) return;
   const uid = auth.currentUser.uid;
   const myUsername = store('neonHub_username') || (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
   const myAvatar = store('neonHub_avatar') || auth.currentUser.photoURL || '';
-  
   try {
     const fromProfile = await db.collection('users').doc(fromUserId).collection('profile').doc('info').get();
     const fromData = fromProfile.exists ? fromProfile.data() : {};
     const fromUsername = fromData.username || 'Bilinmiyor';
     const fromAvatar = fromData.avatar || '';
     const ts = firebase.firestore.FieldValue.serverTimestamp();
-    
     await Promise.all([
-      db.collection('users').doc(uid).collection('friends').doc(fromUserId).set({
-        userId: fromUserId, username: fromUsername, avatar: fromAvatar, addedAt: ts
-      }),
-      db.collection('users').doc(fromUserId).collection('friends').doc(uid).set({
-        userId: uid, username: myUsername, avatar: myAvatar, addedAt: ts
-      })
+      db.collection('users').doc(uid).collection('friends').doc(fromUserId).set({userId: fromUserId, username: fromUsername, avatar: fromAvatar, addedAt: ts}),
+      db.collection('users').doc(fromUserId).collection('friends').doc(uid).set({userId: uid, username: myUsername, avatar: myAvatar, addedAt: ts})
     ]);
     await Promise.all([
       db.collection('users').doc(uid).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete(),
       db.collection('users').doc(fromUserId).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete().catch(()=>{})
     ]);
-    
     alert(`✅ ${fromUsername} ile arkadaş oldunuz!`);
     profilSayfasiniYenile();
-  } catch(e) {
-    alert('❌ Kabul edilemedi: ' + e.message);
-  }
+  } catch(e) { alert('❌ Kabul edilemedi: ' + e.message); }
 }
-
-// ============ İSTEK REDDET ============
 async function arkadasReddet(istekId, fromUserId){
   if(!confirm('İsteği reddetmek istediğinden emin misin?')) return;
   if(!auth.currentUser) return;
-  const uid = auth.currentUser.uid;
   try {
     await Promise.all([
-      db.collection('users').doc(uid).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete(),
+      db.collection('users').doc(auth.currentUser.uid).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete(),
       db.collection('users').doc(fromUserId).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete().catch(()=>{})
     ]);
     profilSayfasiniYenile();
-  } catch(e) {
-    alert('❌ Reddedilemedi: ' + e.message);
-  }
+  } catch(e) { alert('❌ Reddedilemedi: ' + e.message); }
 }
-
-// ============ İSTEK İPTAL ============
 async function arkadasIptal(istekId, toUserId){
   if(!confirm('Gönderdiğin isteği iptal etmek istediğinden emin misin?')) return;
   if(!auth.currentUser) return;
-  const uid = auth.currentUser.uid;
   try {
     await Promise.all([
-      db.collection('users').doc(uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete(),
+      db.collection('users').doc(auth.currentUser.uid).collection('friendRequests').doc('outgoing').collection('items').doc(istekId).delete(),
       db.collection('users').doc(toUserId).collection('friendRequests').doc('incoming').collection('items').doc(istekId).delete().catch(()=>{})
     ]);
     profilSayfasiniYenile();
-  } catch(e) {
-    alert('❌ İptal edilemedi: ' + e.message);
-  }
+  } catch(e) { alert('❌ İptal edilemedi: ' + e.message); }
 }
-
-// ============ ARKADAŞ ÇIKAR ============
 async function arkadasCikar(friendId){
   if(!confirm('Arkadaşlıktan çıkarmak istediğinden emin misin?')) return;
   if(!auth.currentUser) return;
-  const uid = auth.currentUser.uid;
   try {
     await Promise.all([
-      db.collection('users').doc(uid).collection('friends').doc(friendId).delete(),
-      db.collection('users').doc(friendId).collection('friends').doc(uid).delete().catch(()=>{})
+      db.collection('users').doc(auth.currentUser.uid).collection('friends').doc(friendId).delete(),
+      db.collection('users').doc(friendId).collection('friends').doc(auth.currentUser.uid).delete().catch(()=>{})
     ]);
     profilSayfasiniYenile();
-  } catch(e) {
-    alert('❌ Çıkarılamadı: ' + e.message);
-  }
+  } catch(e) { alert('❌ Çıkarılamadı: ' + e.message); }
 }
-
-// ============ ARKADAŞ PROFİLİ GÖR ============
 async function arkadasProfilGor(friendId){
   try {
     const profileSnap = await db.collection('users').doc(friendId).collection('profile').doc('info').get();
@@ -4355,12 +4603,8 @@ async function arkadasProfilGor(friendId){
     if(!profileSnap.exists){ alert('👤 Profil bilgisi bulunamadı.'); return; }
     const data = profileSnap.data();
     alert(`👤 ${data.username || 'Bilinmiyor'}\n📧 ${data.email || '-'}\n👥 ${friendSnap.size} arkadaşı var`);
-  } catch(e) {
-    alert('❌ Profil yüklenemedi: ' + e.message);
-  }
+  } catch(e) { alert('❌ Profil yüklenemedi: ' + e.message); }
 }
-
-// ============ KULLANICI ADI DÜZENLEME ============
 function kullaniciAdiDuzenleBaslat(){
   const display = $('usernameDisplay');
   const editArea = $('usernameEditArea');
@@ -4368,31 +4612,16 @@ function kullaniciAdiDuzenleBaslat(){
   const currentUsername = store('neonHub_username') || (auth.currentUser?.email ? auth.currentUser.email.split('@')[0] : 'Misafir');
   display.style.display = 'none';
   editArea.style.display = 'block';
-  editArea.innerHTML = `
-    <div class="usernameEditWrap">
-      <input type="text" id="usernameInput" value="${temiz(currentUsername)}" placeholder="Yeni kullanıcı adı" maxlength="20" autocomplete="off">
-      <button class="btn solid" onclick="kullaniciAdiKaydet()">💾</button>
-      <button class="btn" onclick="kullaniciAdiVazgec()">✗</button>
-    </div>
-    <div id="usernameDurum" class="usernameDurum muted"></div>
-  `;
+  editArea.innerHTML = `<div class="usernameEditWrap"><input type="text" id="usernameInput" value="${temiz(currentUsername)}" placeholder="Yeni kullanıcı adı" maxlength="20" autocomplete="off"><button class="btn solid" onclick="kullaniciAdiKaydet()">💾</button><button class="btn" onclick="kullaniciAdiVazgec()">✗</button></div><div id="usernameDurum" class="usernameDurum muted"></div>`;
   const input = $('usernameInput');
-  if(input){
-    input.focus(); input.select();
-    input.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter') kullaniciAdiKaydet();
-      if(e.key === 'Escape') kullaniciAdiVazgec();
-    });
-  }
+  if(input){ input.focus(); input.select(); input.addEventListener('keydown', (e) => { if(e.key === 'Enter') kullaniciAdiKaydet(); if(e.key === 'Escape') kullaniciAdiVazgec(); }); }
 }
-
 function kullaniciAdiVazgec(){
   const display = $('usernameDisplay');
   const editArea = $('usernameEditArea');
   if(display) display.style.display = '';
   if(editArea){ editArea.style.display = 'none'; editArea.innerHTML = ''; }
 }
-
 async function kullaniciAdiKaydet(){
   const input = $('usernameInput');
   const durum = $('usernameDurum');
@@ -4405,124 +4634,58 @@ async function kullaniciAdiKaydet(){
   if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Kontrol ediliyor...</span>';
   try{
     const mevcutDoc = await db.collection('usernames').doc(yeniAd.toLowerCase()).get();
-    if(mevcutDoc.exists){
-      const mevcutData = mevcutDoc.data();
-      if(mevcutData.userId !== auth.currentUser.uid){
-        if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Bu ad zaten alınmış</span>';
-        return;
-      }
-    }
+    if(mevcutDoc.exists){ const mevcutData = mevcutDoc.data(); if(mevcutData.userId !== auth.currentUser.uid){ if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Bu ad zaten alınmış</span>'; return; } }
     if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Kaydediliyor...</span>';
     const uid = auth.currentUser.uid;
     try{ await db.collection('usernames').doc(eskiAd.toLowerCase()).delete(); }catch(e){}
-    await db.collection('usernames').doc(yeniAd.toLowerCase()).set({
-      email: auth.currentUser.email, userId: uid, createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
-    await db.collection('users').doc(uid).collection('profile').doc('info').set({
-      username: yeniAd, email: auth.currentUser.email, updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, {merge: true});
+    await db.collection('usernames').doc(yeniAd.toLowerCase()).set({email: auth.currentUser.email, userId: uid, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
+    await db.collection('users').doc(uid).collection('profile').doc('info').set({username: yeniAd, email: auth.currentUser.email, updatedAt: firebase.firestore.FieldValue.serverTimestamp()}, {merge: true});
     store('neonHub_username', yeniAd);
     const textEl = $('usernameText');
     if(textEl) textEl.textContent = yeniAd;
     if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Değiştirildi!</span>';
     setTimeout(() => kullaniciAdiVazgec(), 800);
-  }catch(e){
-    if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Hata: '+temiz(e.message)+'</span>';
-  }
+  }catch(e){ if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ Hata: '+temiz(e.message)+'</span>'; }
 }
-
-// ============ PROFİL RESMİ ============
 function profilResmiDegistir(){
   const modal = document.createElement('div');
-  modal.className = 'modal open';
-  modal.id = 'avatarModal';
-  modal.innerHTML = `
-    <div class="modalBox" style="max-width:420px">
-      <button class="modalClose" onclick="avatarModalKapat()">×</button>
-      <div class="modalBody" style="padding-top:56px">
-        <h2 style="font-size:20px;letter-spacing:2px;margin-bottom:16px">📷 Profil Resmi</h2>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <button class="btn" onclick="avatarYukle()">📁 Bilgisayardan Yükle</button>
-          ${auth.currentUser?.photoURL ? `<button class="btn" onclick="avatarGoogleKullan()">🔵 Google Fotoğrafını Kullan</button>` : ''}
-          ${store('neonHub_avatar') ? `<button class="btn danger" onclick="avatarKaldir()">🗑️ Özel Resmi Kaldır</button>` : ''}
-        </div>
-        <div id="avatarDurum" class="muted" style="margin-top:16px;font-size:12px;text-align:center"></div>
-      </div>
-    </div>
-  `;
+  modal.className = 'modal open'; modal.id = 'avatarModal';
+  modal.innerHTML = `<div class="modalBox" style="max-width:420px"><button class="modalClose" onclick="avatarModalKapat()">×</button><div class="modalBody" style="padding-top:56px"><h2 style="font-size:20px;letter-spacing:2px;margin-bottom:16px">📷 Profil Resmi</h2><div style="display:flex;flex-direction:column;gap:10px"><button class="btn" onclick="avatarYukle()">📁 Bilgisayardan Yükle</button>${auth.currentUser?.photoURL ? `<button class="btn" onclick="avatarGoogleKullan()">🔵 Google Fotoğrafını Kullan</button>` : ''}${store('neonHub_avatar') ? `<button class="btn danger" onclick="avatarKaldir()">🗑️ Özel Resmi Kaldır</button>` : ''}</div><div id="avatarDurum" class="muted" style="margin-top:16px;font-size:12px;text-align:center"></div></div></div>`;
   document.body.appendChild(modal);
   modal.addEventListener('click', (e) => { if(e.target === modal) avatarModalKapat(); });
   document.body.style.overflow = 'hidden';
 }
-
 function avatarModalKapat(){
   const m = $('avatarModal');
   if(m) m.remove();
-  if(!$('oyunModal')?.classList.contains('open') && !$('filmModal')?.classList.contains('open') && !$('diziModal')?.classList.contains('open') && !$('steamModal')?.classList.contains('open')){
-    document.body.style.overflow = '';
-  }
+  if(!$('oyunModal')?.classList.contains('open') && !$('filmModal')?.classList.contains('open') && !$('diziModal')?.classList.contains('open') && !$('steamModal')?.classList.contains('open')) document.body.style.overflow = '';
 }
-
 function avatarYukle(){
   const input = document.createElement('input');
   input.type = 'file'; input.accept = 'image/*';
   input.onchange = async (e) => {
     const file = e.target.files[0];
     if(!file) return;
-    if(file.size > 2 * 1024 * 1024){
-      const durum = $('avatarDurum');
-      if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ 2MB\'dan küçük olmalı</span>';
-      return;
-    }
+    if(file.size > 2 * 1024 * 1024){ const durum = $('avatarDurum'); if(durum) durum.innerHTML = '<span style="color:#ff5a3c">❌ 2MB\'dan küçük olmalı</span>'; return; }
     const durum = $('avatarDurum');
     if(durum) durum.innerHTML = '<span style="color:#ffe14d">⏳ Yükleniyor...</span>';
     const reader = new FileReader();
-    reader.onload = (ev) => {
-      store('neonHub_avatar', ev.target.result);
-      profilSayfasiniYenile();
-      if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Güncellendi!</span>';
-      setTimeout(() => avatarModalKapat(), 800);
-    };
+    reader.onload = (ev) => { store('neonHub_avatar', ev.target.result); profilSayfasiniYenile(); if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Güncellendi!</span>'; setTimeout(() => avatarModalKapat(), 800); };
     reader.readAsDataURL(file);
   };
   input.click();
 }
-
-function avatarGoogleKullan(){
-  localStorage.removeItem('neonHub_avatar');
-  profilSayfasiniYenile();
-  const durum = $('avatarDurum');
-  if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Google kullanılıyor!</span>';
-  setTimeout(() => avatarModalKapat(), 800);
-}
-
-function avatarKaldir(){
-  if(!confirm('Özel resmi kaldırmak istediğinden emin misin?')) return;
-  localStorage.removeItem('neonHub_avatar');
-  profilSayfasiniYenile();
-  setTimeout(() => avatarModalKapat(), 400);
-}
-
-// Veri yönetimi
+function avatarGoogleKullan(){ localStorage.removeItem('neonHub_avatar'); profilSayfasiniYenile(); const durum = $('avatarDurum'); if(durum) durum.innerHTML = '<span style="color:#4ade80">✅ Google kullanılıyor!</span>'; setTimeout(() => avatarModalKapat(), 800); }
+function avatarKaldir(){ if(!confirm('Özel resmi kaldırmak istediğinden emin misin?')) return; localStorage.removeItem('neonHub_avatar'); profilSayfasiniYenile(); setTimeout(() => avatarModalKapat(), 400); }
 function profilVeriDisaAktar(){
-  const veri = {
-    versiyon: '1.0', tarih: new Date().toISOString(),
-    kullanici: auth.currentUser?.email || '-',
-    oyunlar: VERI.oyunlar, filmler: VERI.filmler, diziler: VERI.diziler,
-    bolumler: bolumlerim,
-    favoriler: { oyunlar: oyunFavoriler, filmler: filmFavoriler, diziler: diziFavoriler },
-    notlar: { oyunlar: oyunNotlarim, filmler: filmNotlarim, diziler: diziNotlarim }
-  };
+  const veri = {versiyon: '1.0', tarih: new Date().toISOString(), kullanici: auth.currentUser?.email || '-', oyunlar: VERI.oyunlar, filmler: VERI.filmler, diziler: VERI.diziler, bolumler: bolumlerim, favoriler: {oyunlar: oyunFavoriler, filmler: filmFavoriler, diziler: diziFavoriler}, notlar: {oyunlar: oyunNotlarim, filmler: filmNotlarim, diziler: diziNotlarim}};
   const blob = new Blob([JSON.stringify(veri, null, 2)], {type: 'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = `neonhub-yedek-${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
+  a.href = url; a.download = `neonhub-yedek-${new Date().toISOString().slice(0,10)}.json`; a.click();
   URL.revokeObjectURL(url);
   alert('✅ Verilerin JSON dosyası olarak indirildi!');
 }
-
 function profilVeriIceAktar(){
   const input = document.createElement('input');
   input.type = 'file'; input.accept = '.json';
@@ -4534,19 +4697,11 @@ function profilVeriIceAktar(){
       const text = await file.text();
       const veri = JSON.parse(text);
       if(!veri.versiyon){ alert('❌ Geçersiz dosya!'); return; }
-      VERI.oyunlar = veri.oyunlar || [];
-      VERI.filmler = veri.filmler || [];
-      VERI.diziler = veri.diziler || [];
+      VERI.oyunlar = veri.oyunlar || []; VERI.filmler = veri.filmler || []; VERI.diziler = veri.diziler || [];
       Object.assign(bolumlerim, veri.bolumler || {});
-      Object.assign(oyunFavoriler, veri.favoriler?.oyunlar || {});
-      Object.assign(filmFavoriler, veri.favoriler?.filmler || {});
-      Object.assign(diziFavoriler, veri.favoriler?.diziler || {});
-      Object.assign(oyunNotlarim, veri.notlar?.oyunlar || {});
-      Object.assign(filmNotlarim, veri.notlar?.filmler || {});
-      Object.assign(diziNotlarim, veri.notlar?.diziler || {});
-      store(KAT.oyunlar.depo, JSON.stringify(VERI.oyunlar));
-      store(KAT.filmler.depo, JSON.stringify(VERI.filmler));
-      store(KAT.diziler.depo, JSON.stringify(VERI.diziler));
+      Object.assign(oyunFavoriler, veri.favoriler?.oyunlar || {}); Object.assign(filmFavoriler, veri.favoriler?.filmler || {}); Object.assign(diziFavoriler, veri.favoriler?.diziler || {});
+      Object.assign(oyunNotlarim, veri.notlar?.oyunlar || {}); Object.assign(filmNotlarim, veri.notlar?.filmler || {}); Object.assign(diziNotlarim, veri.notlar?.diziler || {});
+      store(KAT.oyunlar.depo, JSON.stringify(VERI.oyunlar)); store(KAT.filmler.depo, JSON.stringify(VERI.filmler)); store(KAT.diziler.depo, JSON.stringify(VERI.diziler));
       store('neonHub_bolumlerim', JSON.stringify(bolumlerim));
       alert('✅ Veriler geri yüklendi! Sayfa yenileniyor...');
       location.reload();
@@ -4554,11 +4709,7 @@ function profilVeriIceAktar(){
   };
   input.click();
 }
-
-// Escape tuşu
-document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape' && profilAcik) profilSayfasKapat();
-});
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && profilAcik) profilSayfasKapat(); });
 </script>
 </body>
 </html>

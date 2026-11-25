@@ -4197,21 +4197,112 @@ function steamDurumYaz(){
   else el.innerHTML='<span style="color:#4ade80">✔ Bağlı:</span> '+temiz(id)+(steamPlayer?' • '+temiz(steamPlayer.persona):'');
 }
 async function steamBaglan(){
-  const proxy=($('steamProxyInput').value||'').trim().replace(/\/$/,'');
-  const id=($('steamIdInput').value||'').trim();
-  if(!proxy){ alert('❌ Önce Worker proxy adresini gir.'); return; }
-  if(!id){ alert('❌ Steam ID veya profil adını gir.'); return; }
-  store('neonHub_steamProxy',proxy); store('neonHub_steamId',id);
-  $('steamDurum').innerHTML='<span style="color:#ffe14d">⏳ Steam kütüphanen çekiliyor...</span>';
-  try{
-    const d=await apiFetch(proxy+'/steam?steamid='+encodeURIComponent(id), 15000);
-    steamOyunlar=d.games||[]; steamPlayer=d.player||null;
-    $('steamDurum').innerHTML='<span style="color:#4ade80">✔ '+steamOyunlar.length+' oyun bulundu.</span> Toplam: <b>'+steamToplamSaat()+' saat</b>';
-    steamModalAc();
-  }catch(e){
-    $('steamDurum').innerHTML='<span style="color:#ff5a3c">❌ Hata: '+temiz(e.message)+'</span>';
-    alert('❌ Steam\'e bağlanılamadı.\n\nKontrol et:\n1. Worker proxy adresi doğru mu?\n2. Steam profili "Oyun detayları" Herkese Açık mı?\n3. Steam ID / profil adı doğru mu?');
-  }
+const id=($('steamIdInput').value||'').trim();
+if(!id){ alert('❌ Steam ID veya profil adını gir.'); return; }
+store('neonHub_steamId', id);
+
+$('steamDurum').innerHTML='<span style="color:#ffe14d">⏳ Steam kütüphanen çekiliyor...</span>';
+
+// Steam ID'yi normalize et
+let steamId64 = id;
+const customUrlMatch = id.match(/steamcommunity\.com\/id\/([^\/]+)/);
+const profileMatch = id.match(/steamcommunity\.com\/profiles\/(\d+)/);
+
+if(customUrlMatch){
+$('steamDurum').innerHTML='<span style="color:#ff5a3c">❌ Custom URL desteklenmiyor. Lütfen SteamID64 kullan (17 haneli sayı).<br><br>💡 SteamID64\'ünü bulmak için:<br>1. steamid.io adresine git<br>2. Profil linkini yapıştır<br>3. "steamID64" değerini kopyala</span>';
+return;
+} else if(profileMatch){
+steamId64 = profileMatch[1];
+} else if(/^\d{17}$/.test(id)){
+steamId64 = id;
+} else {
+$('steamDurum').innerHTML='<span style="color:#ff5a3c">❌ Geçersiz Steam ID. 17 haneli sayı olmalı (örn: 76561198000000000)</span>';
+return;
+}
+
+try{
+// CORS proxy üzerinden Steam XML endpoint'e istek at
+const xmlUrl = `https://steamcommunity.com/profiles/${steamId64}/games?tab=all&xml=1`;
+const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(xmlUrl)}`;
+
+$('steamDurum').innerHTML='<span style="color:#ffe14d">⏳ Profil bilgileri alınıyor...</span>';
+
+const response = await fetch(proxyUrl, { 
+signal: AbortSignal.timeout(15000) 
+});
+
+if(!response.ok){
+throw new Error('Steam profili bulunamadı veya erişilemedi (HTTP ' + response.status + ')');
+}
+
+const xmlText = await response.text();
+
+// Basit XML parser (DOMParser)
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+// Parse hatası var mı kontrol et
+const parseError = xmlDoc.querySelector('parsererror');
+if(parseError){
+throw new Error('Steam yanıtı okunamadı. Profil gizli olabilir.');
+}
+
+// Profil bilgilerini çıkar
+const steamID = xmlDoc.querySelector('steamID')?.textContent || '';
+const avatarFull = xmlDoc.querySelector('avatarFull')?.textContent || '';
+const onlineState = xmlDoc.querySelector('onlineState')?.textContent || '';
+
+// Oyunları çıkar
+const gameNodes = xmlDoc.querySelectorAll('game');
+const games = [];
+
+gameNodes.forEach(g => {
+const appID = g.querySelector('appID')?.textContent;
+const name = g.querySelector('name')?.textContent;
+const logo = g.querySelector('logo')?.textContent;
+const hoursOnRecord = g.querySelector('hoursOnRecord')?.textContent;
+
+if(appID && name){
+games.push({
+appid: parseInt(appID),
+name: name,
+img: logo || `https://cdn.cloudflare.steamstatic.com/steam/apps/${appID}/header.jpg`,
+playtime: hoursOnRecord ? parseFloat(hoursOnRecord) : 0
+});
+}
+});
+
+if(games.length === 0){
+throw new Error('Hiç oyun bulunamadı. Steam profilinde "Oyun detayları" Herkese Açık olmalı.');
+}
+
+steamOyunlar = games;
+steamPlayer = {
+persona: steamID || id,
+avatar: avatarFull,
+state: onlineState
+};
+
+$('steamDurum').innerHTML='<span style="color:#4ade80">✔ ' + games.length + ' oyun bulundu.</span> Toplam: <b>' + steamToplamSaat() + ' saat</b>';
+steamModalAc();
+
+} catch(e){
+$('steamDurum').innerHTML='<span style="color:#ff5a3c">❌ Hata: ' + temiz(e.message) + '</span>';
+
+const helpHtml = `
+<div style="margin-top:12px;padding:12px;background:var(--card);border-radius:8px;border:1px solid var(--line);font-size:12px;line-height:1.6">
+<b style="color:#ffe14d">⚠️ Kontrol listesi:</b><br>
+1. SteamID64 doğru mu? (17 haneli sayı)<br>
+2. Steam profili <b>"Herkese Açık"</b> mı?<br>
+3. <b>"Oyun detayları"</b> Herkese Açık mı?<br><br>
+<b style="color:var(--text)">💡 Nasıl ayarlanır:</b><br>
+Steam → Profil → Profili Düzenle → Gizlilik Ayarları:<br>
+• Profilim: <b>Herkese Açık</b><br>
+• Oyun detayları: <b>Herkese Açık</b>
+</div>
+`;
+$('steamDurum').innerHTML += helpHtml;
+}
 }
 function steamToplamSaat(){ let t=0; steamOyunlar.forEach(g=>t+=(g.playtime||0)); return Math.round(t); }
 function steamEkliMi(appid){ return VERI.oyunlar.some(o=>o.steamAppId==appid); }

@@ -2175,7 +2175,7 @@ s.innerHTML=`
 </div>`;
 syncButonunuAyarlarSayfasinaTasi();
 } else if(klasor==='steam'){
-const proxyDefault = 'https://neonhub-steam.neonhub.workers.dev';
+const proxyDefault = '/api/steam';
 if(!store('neonHub_steamProxy')) store('neonHub_steamProxy', proxyDefault);
 s.innerHTML=`
 <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
@@ -4188,7 +4188,7 @@ function temaModYaz(){
 }
 temaUygulaMod();
 let steamOyunlar = [], steamPlayer = null;
-const STEAM_PROXY_VARSAYILAN = 'https://neonhub-steam.neonhub.workers.dev';
+const STEAM_PROXY_VARSAYILAN = '/api/steam';
 function steamDurumYaz(){
   const el=$('steamDurum'); if(!el) return;
   const proxy=store('neonHub_steamProxy'), id=store('neonHub_steamId');
